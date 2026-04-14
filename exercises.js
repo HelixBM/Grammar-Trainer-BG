@@ -336,3 +336,12 @@ const EXERCISE_DB = {
   },
 
 };
+// Auto-generates titles from the keys (e.g. "present-tenses" -> "Present Tenses")
+for (const [key, topic] of Object.entries(EXERCISE_DB)) {
+  if (!topic.title) {
+    topic.title = key
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
+}
