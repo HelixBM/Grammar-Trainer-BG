@@ -495,28 +495,83 @@ function clearDrop(zone) {
 
 function renderError(ex) {
   const words = ex.sentence.split(' ');
+  const isMulti = Array.isArray(ex.errorIndex);
+  const neededCount = isMulti ? ex.errorIndex.length : 1;
   let html = '<div class="error-sentence">';
   words.forEach((w, i) => {
     html += `<span class="error-word" id="errw-${i}" onclick="selectError(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){selectError(${i});event.preventDefault();}" tabindex="0">${w}</span> `;
   });
   html += '</div>';
-  html += `<div class="error-correction-input" id="correctionArea" style="display:none">
-    <span style="font-size:0.85rem;color:var(--text-muted)">Replace with:</span>
-    <input type="text" id="correctionInput" placeholder="Type the correction…" autocomplete="off">
-  </div>`;
+  if (isMulti) {
+    html += `<div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.5rem;">Select <strong>${neededCount} words</strong> that contain errors, then type corrections below.</div>`;
+  }
+  html += `<div id="correctionArea" style="display:none">`;
+  if (isMulti) {
+    ex.errorIndex.forEach((_, idx) => {
+      html += `<div class="error-correction-input" style="margin-bottom:0.4rem">
+        <span id="corr-label-${idx}" style="font-size:0.85rem;color:var(--text-muted);min-width:90px">Word ${idx+1} — replace with:</span>
+        <input type="text" id="correctionInput-${idx}" placeholder="correction or - to delete…" autocomplete="off">
+      </div>`;
+    });
+  } else {
+    html += `<div class="error-correction-input">
+      <span style="font-size:0.85rem;color:var(--text-muted)">Replace with:</span>
+      <input type="text" id="correctionInput" placeholder="Type the correction…" autocomplete="off">
+    </div>`;
+  }
+  html += `</div>`;
   return html;
 }
 
 let selectedErrorIndex = null;
+let selectedErrorIndices = []; // for multi-word exercises
+
 function selectError(i) {
   if (document.getElementById('nextBtn').style.display !== 'none') return;
-  document.querySelectorAll('.error-word').forEach(el => el.classList.remove('selected'));
-  document.getElementById('errw-' + i).classList.add('selected');
-  selectedErrorIndex = i;
+  const topic = EXERCISE_DB[state.currentTopic];
+  const ex = topic.exercises[state.currentIndex];
+  const isMulti = Array.isArray(ex.errorIndex);
   
-  const correctionArea = document.getElementById('correctionArea');
-  correctionArea.style.display = 'flex';
-  document.getElementById('correctionInput').focus();
+  if (isMulti) {
+    const needed = ex.errorIndex.length;
+    const pos = selectedErrorIndices.indexOf(i);
+    if (pos !== -1) {
+      // deselect
+      selectedErrorIndices.splice(pos, 1);
+      document.getElementById('errw-' + i).classList.remove('selected');
+    } else if (selectedErrorIndices.length < needed) {
+      selectedErrorIndices.push(i);
+      document.getElementById('errw-' + i).classList.add('selected');
+    }
+    if (selectedErrorIndices.length > 0) {
+      document.getElementById('correctionArea').style.display = 'block';
+      // Update labels to show which selected word each input corresponds to
+      const words = ex.sentence.split(' ');
+      selectedErrorIndices.forEach((wordIdx, k) => {
+        const label = document.getElementById('corr-label-' + k);
+        if (label) label.textContent = `"${words[wordIdx]}" → replace with:`;
+      });
+      // Reset unselected labels to default
+      for (let k = selectedErrorIndices.length; k < needed; k++) {
+        const label = document.getElementById('corr-label-' + k);
+        if (label) label.textContent = `Word ${k+1} — replace with:`;
+      }
+      // Focus first empty input
+      for (let k = 0; k < needed; k++) {
+        const inp = document.getElementById('correctionInput-' + k);
+        if (inp && inp.value === '') { inp.focus(); break; }
+      }
+    } else {
+      document.getElementById('correctionArea').style.display = 'none';
+    }
+  } else {
+    document.querySelectorAll('.error-word').forEach(el => el.classList.remove('selected'));
+    document.getElementById('errw-' + i).classList.add('selected');
+    selectedErrorIndex = i;
+    const correctionArea = document.getElementById('correctionArea');
+    correctionArea.style.display = 'flex';
+    document.getElementById('correctionInput').focus();
+  }
 }
 
 // ============================================================
@@ -585,25 +640,71 @@ function checkAnswer() {
   }
 
   else if (ex.type === 'error') {
-    if (selectedErrorIndex === null) return;
-    const correctionVal = document.getElementById('correctionInput').value.trim().toLowerCase();
-    const correctIndex = ex.errorIndex;
-    const correctWord = ex.correction.toLowerCase();
+    const isMulti = Array.isArray(ex.errorIndex);
     
-    const deletionAnswers = ['-', '', 'delete', 'remove'];
-    const correctionMatches = correctWord === '-'
-      ? deletionAnswers.includes(correctionVal)
-      : correctionVal === correctWord;
-    if (selectedErrorIndex === correctIndex && correctionMatches) {
-      document.getElementById('errw-' + selectedErrorIndex).classList.add('correct-word');
-      isCorrect = true;
-    } else {
-      if (selectedErrorIndex !== correctIndex) {
-        document.getElementById('errw-' + selectedErrorIndex).classList.remove('selected');
-        document.getElementById('errw-' + selectedErrorIndex).classList.add('wrong-word');
+    if (isMulti) {
+      if (selectedErrorIndices.length < ex.errorIndex.length) return;
+      const deletionAnswers = ['-', '', 'delete', 'remove'];
+      
+      // Check that the set of selected word indices matches the expected set
+      const sortedSelected = [...selectedErrorIndices].sort((a,b) => a-b);
+      const sortedExpected = [...ex.errorIndex].sort((a,b) => a-b);
+      const indicesMatch = sortedSelected.length === sortedExpected.length &&
+        sortedSelected.every((v,k) => v === sortedExpected[k]);
+      
+      let correctionsMatch = true;
+      if (indicesMatch) {
+        // For each expected error word, find which input slot the student used
+        // (inputs are ordered by selection order; match each expected index to its slot)
+        ex.errorIndex.forEach((expectedIdx, k) => {
+          const slot = selectedErrorIndices.indexOf(expectedIdx);
+          const inp = document.getElementById('correctionInput-' + slot);
+          const corrVal = inp ? inp.value.trim().toLowerCase() : '';
+          const expected = (ex.correction[k] || '').toLowerCase();
+          const isDeletion = expected === '-';
+          if (isDeletion ? !deletionAnswers.includes(corrVal) : corrVal !== expected) {
+            correctionsMatch = false;
+          }
+        });
       }
-      document.getElementById('errw-' + correctIndex).classList.add('correct-word');
-      isCorrect = false;
+      
+      isCorrect = indicesMatch && correctionsMatch;
+      
+      if (isCorrect) {
+        ex.errorIndex.forEach(idx => {
+          document.getElementById('errw-' + idx).classList.remove('selected');
+          document.getElementById('errw-' + idx).classList.add('correct-word');
+        });
+      } else {
+        selectedErrorIndices.forEach(idx => {
+          document.getElementById('errw-' + idx).classList.remove('selected');
+          document.getElementById('errw-' + idx).classList.add('wrong-word');
+        });
+        ex.errorIndex.forEach(idx => {
+          document.getElementById('errw-' + idx).classList.add('correct-word');
+        });
+      }
+    } else {
+      if (selectedErrorIndex === null) return;
+      const correctionVal = document.getElementById('correctionInput').value.trim().toLowerCase();
+      const correctIndex = ex.errorIndex;
+      const correctWord = ex.correction.toLowerCase();
+      
+      const deletionAnswers = ['-', '', 'delete', 'remove'];
+      const correctionMatches = correctWord === '-'
+        ? deletionAnswers.includes(correctionVal)
+        : correctionVal === correctWord;
+      if (selectedErrorIndex === correctIndex && correctionMatches) {
+        document.getElementById('errw-' + selectedErrorIndex).classList.add('correct-word');
+        isCorrect = true;
+      } else {
+        if (selectedErrorIndex !== correctIndex) {
+          document.getElementById('errw-' + selectedErrorIndex).classList.remove('selected');
+          document.getElementById('errw-' + selectedErrorIndex).classList.add('wrong-word');
+        }
+        document.getElementById('errw-' + correctIndex).classList.add('correct-word');
+        isCorrect = false;
+      }
     }
   }
 
@@ -620,10 +721,20 @@ function checkAnswer() {
     }
     else if (ex.type === 'mc') correctText = ex.options[ex.correct];
     else if (ex.type === 'error') {
-      const wrongWord = ex.sentence.split(' ')[ex.errorIndex];
-      correctText = ex.correction === '-'
-        ? `Remove the word "${wrongWord}"`
-        : `Change "${wrongWord}" to "${ex.correction}"`;
+      const words = ex.sentence.split(' ');
+      if (Array.isArray(ex.errorIndex)) {
+        const parts = ex.errorIndex.map((idx, k) => {
+          const w = words[idx];
+          const c = ex.correction[k];
+          return c === '-' ? `Remove "${w}"` : `Change "${w}" → "${c}"`;
+        });
+        correctText = parts.join(' and ');
+      } else {
+        const wrongWord = words[ex.errorIndex];
+        correctText = ex.correction === '-'
+          ? `Remove the word "${wrongWord}"`
+          : `Change "${wrongWord}" to "${ex.correction}"`;
+      }
     }
     else if (ex.type === 'drag') correctText = Object.values(ex.blanks).join(', ');
 
@@ -642,6 +753,7 @@ function nextExercise() {
   state.currentIndex++;
   selectedMC = null;
   selectedErrorIndex = null;
+  selectedErrorIndices = [];
 
   if (!state.progress[state.currentTopic]) state.progress[state.currentTopic] = { completed: 0 };
   state.progress[state.currentTopic].completed = Math.max(
