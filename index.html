@@ -72,238 +72,86 @@ body {
 }
 
 /* --- Topic Grid (Home) --- */
-.home-intro {
-  margin-bottom: 2rem;
-}
-.home-intro h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  letter-spacing: -0.03em;
-}
-.home-intro p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-.topic-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 0.75rem;
-}
+.home-intro { margin-bottom: 2rem; }
+.home-intro h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.03em; }
+.home-intro p { color: var(--text-muted); font-size: 0.95rem; }
+.topic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.75rem; }
 .topic-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.25rem;
-  cursor: pointer;
-  transition: border-color 0.15s, box-shadow 0.15s;
-  position: relative;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.25rem; cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s; position: relative;
 }
-.topic-card:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow);
-}
-.topic-card h3 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-}
-.topic-card .topic-count {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-.topic-card .topic-progress {
-  margin-top: 0.75rem;
-  height: 3px;
-  background: var(--border);
-  border-radius: 2px;
-  overflow: hidden;
-}
-.topic-card .topic-progress-bar {
-  height: 100%;
-  background: var(--accent);
-  border-radius: 2px;
-  transition: width 0.3s;
-}
+.topic-card:hover, .topic-card:focus { border-color: var(--accent); box-shadow: var(--shadow); outline: none; }
+.topic-card h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+.topic-card .topic-count { font-size: 0.8rem; color: var(--text-muted); }
+.topic-card .topic-progress { margin-top: 0.75rem; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.topic-card .topic-progress-bar { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.3s; }
 .topic-group-label {
-  grid-column: 1 / -1;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  padding: 1rem 0 0.25rem;
-  border-top: 1px solid var(--border);
+  grid-column: 1 / -1; font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--text-muted); padding: 1rem 0 0.25rem; border-top: 1px solid var(--border);
 }
 .topic-group-label:first-child { border-top: none; padding-top: 0; }
 
 /* --- Exercise View --- */
-.exercise-header {
-  margin-bottom: 1.5rem;
-}
+.exercise-header { margin-bottom: 1.5rem; }
 .back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-family: var(--font);
-  margin-bottom: 1rem;
-  padding: 0;
+  display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--text-muted);
+  text-decoration: none; cursor: pointer; border: none; background: none; font-family: var(--font);
+  margin-bottom: 1rem; padding: 0;
 }
 .back-btn:hover { color: var(--text); }
-.exercise-header h2 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-.exercise-header .exercise-sub {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-top: 0.25rem;
-}
+.exercise-header h2 { font-size: 1.3rem; font-weight: 700; letter-spacing: -0.02em; }
+.exercise-header .exercise-sub { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
 
-.progress-bar-container {
-  height: 4px;
-  background: var(--border);
-  border-radius: 2px;
-  margin-bottom: 1.5rem;
-  overflow: hidden;
-}
-.progress-bar-fill {
-  height: 100%;
-  background: var(--accent);
-  border-radius: 2px;
-  transition: width 0.3s;
-}
+.progress-bar-container { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 1.5rem; overflow: hidden; }
+.progress-bar-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.3s; }
 
 /* --- Exercise Card --- */
-.exercise-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  margin-bottom: 1rem;
-  box-shadow: var(--shadow);
-}
-.exercise-instruction {
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--accent);
-  margin-bottom: 0.75rem;
-}
-.exercise-sentence {
-  font-size: 1.05rem;
-  line-height: 1.8;
-  margin-bottom: 1rem;
-}
+.exercise-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1rem; box-shadow: var(--shadow); }
+.exercise-instruction { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 0.75rem; }
+.exercise-sentence { font-size: 1.05rem; line-height: 1.8; margin-bottom: 1rem; }
 
 /* Gap-fill */
 .gap-input {
-  display: inline-block;
-  border: none;
-  border-bottom: 2px solid var(--border);
-  background: transparent;
-  font-family: var(--mono);
-  font-size: 0.95rem;
-  padding: 0.15rem 0.25rem;
-  width: auto;
-  min-width: 100px;
-  text-align: center;
-  outline: none;
-  transition: border-color 0.2s;
+  display: inline-block; border: none; border-bottom: 2px solid var(--border); background: transparent;
+  font-family: var(--mono); font-size: 0.95rem; padding: 0.15rem 0.25rem; width: auto; min-width: 100px;
+  text-align: center; outline: none; transition: border-color 0.2s;
 }
 .gap-input:focus { border-bottom-color: var(--accent); }
 .gap-input.correct { border-bottom-color: var(--correct); color: var(--correct); background: var(--correct-light); }
 .gap-input.wrong { border-bottom-color: var(--wrong); color: var(--wrong); background: var(--wrong-light); }
 
 /* Multiple choice */
-.mc-options {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
+.mc-options { display: flex; flex-direction: column; gap: 0.5rem; }
 .mc-option {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: all 0.15s;
-  background: var(--bg-card);
+  display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; border: 1px solid var(--border);
+  border-radius: 8px; cursor: pointer; font-size: 0.95rem; transition: all 0.15s; background: var(--bg-card);
 }
-.mc-option:hover { border-color: var(--accent); background: var(--accent-light); }
+.mc-option:hover, .mc-option:focus { border-color: var(--accent); background: var(--accent-light); outline: none; }
 .mc-option.selected { border-color: var(--accent); background: var(--accent-light); }
 .mc-option.correct-answer { border-color: var(--correct); background: var(--correct-light); }
 .mc-option.wrong-answer { border-color: var(--wrong); background: var(--wrong-light); }
 .mc-option .mc-letter {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1.5px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 600;
-  flex-shrink: 0;
+  width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 600; flex-shrink: 0;
 }
 .mc-option.selected .mc-letter { border-color: var(--accent); background: var(--accent); color: white; }
 .mc-option.correct-answer .mc-letter { border-color: var(--correct); background: var(--correct); color: white; }
 .mc-option.wrong-answer .mc-letter { border-color: var(--wrong); background: var(--wrong); color: white; }
 
 /* Drag & Drop */
-.drag-bank {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 1rem;
-  background: var(--bg);
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  min-height: 48px;
-}
+.drag-bank { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 1rem; background: var(--bg); border-radius: 8px; margin-bottom: 1rem; min-height: 48px; }
 .drag-item {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.4rem 0.75rem;
-  background: var(--bg-card);
-  border: 1.5px solid var(--border);
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-family: var(--mono);
-  cursor: grab;
-  user-select: none;
-  transition: all 0.15s;
+  display: inline-flex; align-items: center; padding: 0.4rem 0.75rem; background: var(--bg-card);
+  border: 1.5px solid var(--border); border-radius: 6px; font-size: 0.9rem; font-family: var(--mono);
+  cursor: grab; user-select: none; transition: all 0.15s; touch-action: none;
 }
 .drag-item:active { cursor: grabbing; opacity: 0.7; }
 .drag-item.placed { opacity: 0.4; pointer-events: none; }
-.drag-item.correct { border-color: var(--correct); background: var(--correct-light); }
-.drag-item.wrong { border-color: var(--wrong); background: var(--wrong-light); }
 
 .drop-zone {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 100px;
-  min-height: 34px;
-  border: 2px dashed var(--border);
-  border-radius: 6px;
-  padding: 0.2rem 0.5rem;
-  font-family: var(--mono);
-  font-size: 0.9rem;
-  vertical-align: middle;
-  transition: all 0.15s;
-  cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; min-width: 100px; min-height: 34px;
+  border: 2px dashed var(--border); border-radius: 6px; padding: 0.2rem 0.5rem; font-family: var(--mono);
+  font-size: 0.9rem; vertical-align: middle; transition: all 0.15s; cursor: pointer;
 }
 .drop-zone.over { border-color: var(--accent); background: var(--accent-light); }
 .drop-zone.filled { border-style: solid; border-color: var(--accent); background: var(--accent-light); }
@@ -311,133 +159,47 @@ body {
 .drop-zone.wrong { border-color: var(--wrong); background: var(--wrong-light); border-style: solid; }
 
 /* Error correction */
-.error-sentence {
-  font-size: 1.05rem;
-  line-height: 2;
-  margin-bottom: 0.75rem;
-}
-.error-word {
-  display: inline-block;
-  padding: 0.1rem 0.35rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.15s;
-  border-bottom: 2px solid transparent;
-}
-.error-word:hover { background: var(--accent-light); }
-.error-word.selected {
-  background: var(--accent-light);
-  border-bottom-color: var(--accent);
-}
-.error-correction-input {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
-}
-.error-correction-input input {
-  flex: 1;
-  padding: 0.5rem 0.75rem;
-  border: 1.5px solid var(--border);
-  border-radius: 6px;
-  font-family: var(--mono);
-  font-size: 0.9rem;
-  outline: none;
-}
+.error-sentence { font-size: 1.05rem; line-height: 2; margin-bottom: 0.75rem; }
+.error-word { display: inline-block; padding: 0.1rem 0.35rem; border-radius: 4px; cursor: pointer; transition: all 0.15s; border-bottom: 2px solid transparent; }
+.error-word:hover, .error-word:focus { background: var(--accent-light); outline: none; }
+.error-word.selected { background: var(--accent-light); border-bottom-color: var(--accent); }
+.error-correction-input { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem; }
+.error-correction-input input { flex: 1; padding: 0.5rem 0.75rem; border: 1.5px solid var(--border); border-radius: 6px; font-family: var(--mono); font-size: 0.9rem; outline: none; }
 .error-correction-input input:focus { border-color: var(--accent); }
 .error-word.correct-word { background: var(--correct-light); border-bottom-color: var(--correct); }
 .error-word.wrong-word { background: var(--wrong-light); border-bottom-color: var(--wrong); text-decoration: line-through; }
 
 /* Buttons */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  padding: 0.6rem 1.25rem;
-  border-radius: 8px;
-  font-family: var(--font);
-  font-size: 0.85rem;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: all 0.15s;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.6rem 1.25rem;
+  border-radius: 8px; font-family: var(--font); font-size: 0.85rem; font-weight: 600; border: none; cursor: pointer; transition: all 0.15s;
 }
-.btn-primary {
-  background: var(--accent);
-  color: white;
-}
-.btn-primary:hover { background: #1d4ed8; }
-.btn-outline {
-  background: transparent;
-  border: 1.5px solid var(--border);
-  color: var(--text);
-}
-.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
-.exercise-actions {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: 1.25rem;
-  flex-wrap: wrap;
-}
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover, .btn-primary:focus { background: #1d4ed8; outline: none; }
+.btn-outline { background: transparent; border: 1.5px solid var(--border); color: var(--text); }
+.btn-outline:hover, .btn-outline:focus { border-color: var(--accent); color: var(--accent); outline: none; }
+.exercise-actions { display: flex; gap: 0.75rem; margin-top: 1.25rem; flex-wrap: wrap; }
 
 /* Feedback */
-.feedback {
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
+.feedback { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.9rem; font-weight: 500; }
 .feedback.correct { background: var(--correct-light); color: var(--correct); }
 .feedback.wrong { background: var(--wrong-light); color: var(--wrong); }
-.feedback .explanation {
-  font-weight: 400;
-  margin-top: 0.25rem;
-  color: var(--text);
-  font-size: 0.85rem;
-}
+.feedback .explanation { font-weight: 400; margin-top: 0.25rem; color: var(--text); font-size: 0.85rem; }
 
 /* Results */
-.results-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 2rem;
-  text-align: center;
-  box-shadow: var(--shadow);
-}
-.results-card h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-.results-score {
-  font-size: 3rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin: 1rem 0;
-}
-.results-detail {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
-}
+.results-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; box-shadow: var(--shadow); }
+.results-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+.results-score { font-size: 3rem; font-weight: 700; color: var(--accent); margin: 1rem 0; }
+.results-detail { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
 
-/* Responsive */
+/* Responsive & Print */
 @media (max-width: 600px) {
   .container { padding: 1rem; }
   .topic-grid { grid-template-columns: 1fr; }
   .exercise-card { padding: 1.25rem; }
   .header-inner { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
 }
-
-/* Print hidden */
 @media print { .header, .exercise-actions, .back-btn { display: none; } }
-
-/* Touch-friendly drag for mobile */
-.drag-item { touch-action: none; }
 </style>
 </head>
 <body>
@@ -451,303 +213,9 @@ body {
 
 <div class="container" id="app"></div>
 
+<script src="exercises.js"></script>
+
 <script>
-// ============================================================
-// EXERCISE DATA
-// ============================================================
-const EXERCISES = {
-
-// ---- TENSES ----
-
-"simple-present": {
-  title: "Simple Present",
-  group: "Tenses",
-  exercises: [
-    { type: "gap", instruction: "Fill in the correct Simple Present form.", sentence: "She ___ (go) to school every day.", answer: "goes", hint: "Third person singular: add -es after 'go'." },
-    { type: "gap", instruction: "Fill in the correct Simple Present form.", sentence: "They ___ (not/like) spicy food.", answer: "do not like", alt: ["don't like"], hint: "Negation with 'do not' + base form." },
-    { type: "gap", instruction: "Fill in the correct Simple Present form.", sentence: "Water ___ (boil) at 100 degrees Celsius.", answer: "boils", hint: "General truths use Simple Present." },
-    { type: "gap", instruction: "Fill in the correct Simple Present form.", sentence: "___ your brother ___ (work) in an office?", answer: "Does ... work", alt: ["Does...work"], hint: "Questions: Does + subject + base form." },
-    { type: "mc", instruction: "Choose the correct form.", sentence: "My parents ___ in a small village.", options: ["lives", "live", "are living", "living"], correct: 1, hint: "Plural subject → no -s ending." },
-    { type: "mc", instruction: "Choose the correct form.", sentence: "The train ___ at 9:15 every morning.", options: ["is leaving", "leave", "leaves", "will leave"], correct: 2, hint: "Timetables and schedules use Simple Present." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "He don't know the answer to the question.", errorIndex: 1, correction: "doesn't", hint: "Third person singular needs 'doesn't', not 'don't'." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "She always drink coffee in the morning.", errorIndex: 2, correction: "drinks", hint: "Third person singular: add -s." },
-    { type: "drag", instruction: "Drag the correct verb forms into the gaps.", sentence: "She _1_ English and he _2_ French. They _3_ each other very well.", blanks: { "_1_": "speaks", "_2_": "speaks", "_3_": "understand" }, bank: ["speaks", "speaks", "understand", "understands", "speak"] },
-  ]
-},
-
-"present-progressive": {
-  title: "Present Progressive",
-  group: "Tenses",
-  exercises: [
-    { type: "gap", instruction: "Fill in the Present Progressive.", sentence: "Look! The children ___ (play) in the garden.", answer: "are playing", hint: "are + verb-ing." },
-    { type: "gap", instruction: "Fill in the Present Progressive.", sentence: "I ___ (read) a very interesting book at the moment.", answer: "am reading", hint: "I + am + verb-ing." },
-    { type: "gap", instruction: "Fill in the Present Progressive.", sentence: "She ___ (not/listen) to me right now.", answer: "is not listening", alt: ["isn't listening"], hint: "is not + verb-ing." },
-    { type: "mc", instruction: "Choose the correct form.", sentence: "Why ___ you ___ at me like that?", options: ["do ... look", "are ... looking", "is ... looking", "does ... look"], correct: 1, hint: "An action happening right now → Present Progressive." },
-    { type: "mc", instruction: "Simple Present or Present Progressive?", sentence: "I ___ sushi. It's my favourite food.", options: ["am liking", "like", "am like", "likes"], correct: 1, hint: "'Like' is a stative verb — not normally used in progressive." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "They are planing a surprise party for her.", errorIndex: 2, correction: "planning", hint: "Double the consonant: plan → planning." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "He is wanting a new car.", errorIndex: 1, correction: "wants", hint: "'Want' is a stative verb — use Simple Present." },
-    { type: "drag", instruction: "Drag forms to complete the sentences.", sentence: "Right now, I _1_ TV while my sister _2_ dinner. We _3_ for our parents.", blanks: { "_1_": "am watching", "_2_": "is cooking", "_3_": "are waiting" }, bank: ["am watching", "is cooking", "are waiting", "watches", "cooks", "wait"] },
-  ]
-},
-
-"simple-past": {
-  title: "Simple Past",
-  group: "Tenses",
-  exercises: [
-    { type: "gap", instruction: "Fill in the Simple Past.", sentence: "She ___ (visit) London last summer.", answer: "visited", hint: "Regular verb: add -ed." },
-    { type: "gap", instruction: "Fill in the Simple Past.", sentence: "They ___ (not/see) the accident.", answer: "did not see", alt: ["didn't see"], hint: "Negation: did not + base form." },
-    { type: "gap", instruction: "Fill in the Simple Past.", sentence: "He ___ (take) the bus to work yesterday.", answer: "took", hint: "Irregular verb: take → took." },
-    { type: "gap", instruction: "Fill in the Simple Past.", sentence: "We ___ (buy) a new car last month.", answer: "bought", hint: "Irregular verb: buy → bought." },
-    { type: "mc", instruction: "Choose the correct past form.", sentence: "The concert ___ at 8 p.m. and ___ at 11 p.m.", options: ["started / ended", "has started / has ended", "was starting / was ending", "start / end"], correct: 0, hint: "Completed actions with a past time reference." },
-    { type: "mc", instruction: "Choose the correct form.", sentence: "___ you ___ to the party last Friday?", options: ["Did ... go", "Have ... gone", "Were ... going", "Do ... go"], correct: 0, hint: "'Last Friday' signals Simple Past." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "She writed a letter to her friend.", errorIndex: 1, correction: "wrote", hint: "Irregular verb: write → wrote." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "We didn't went to the cinema.", errorIndex: 2, correction: "go", hint: "After 'didn't', use the base form." },
-    { type: "drag", instruction: "Drag the correct past forms.", sentence: "Yesterday, I _1_ up early, _2_ breakfast and _3_ to work.", blanks: { "_1_": "got", "_2_": "had", "_3_": "drove" }, bank: ["got", "had", "drove", "getted", "have", "drived"] },
-  ]
-},
-
-"past-progressive": {
-  title: "Past Progressive",
-  group: "Tenses",
-  exercises: [
-    { type: "gap", instruction: "Fill in the Past Progressive.", sentence: "At 8 p.m. yesterday, I ___ (watch) a film.", answer: "was watching", hint: "was/were + verb-ing." },
-    { type: "gap", instruction: "Fill in the Past Progressive.", sentence: "The students ___ (not/pay) attention during the lesson.", answer: "were not paying", alt: ["weren't paying"], hint: "Plural subject → were not + verb-ing." },
-    { type: "mc", instruction: "Simple Past or Past Progressive?", sentence: "While I ___ dinner, the phone ___.", options: ["cooked / was ringing", "was cooking / rang", "was cooking / was ringing", "cooked / rang"], correct: 1, hint: "Longer action (progressive) interrupted by shorter action (simple)." },
-    { type: "mc", instruction: "Choose the correct form.", sentence: "What ___ you ___ at 10 o'clock last night?", options: ["did ... do", "were ... doing", "have ... done", "are ... doing"], correct: 1, hint: "Action in progress at a specific past time." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "They was playing football when it started to rain.", errorIndex: 1, correction: "were", hint: "Plural subject 'they' → were." },
-    { type: "drag", instruction: "Complete with Past Progressive or Simple Past.", sentence: "She _1_ a book when someone _2_ on the door. She _3_ up and _4_ the door.", blanks: { "_1_": "was reading", "_2_": "knocked", "_3_": "got", "_4_": "opened" }, bank: ["was reading", "knocked", "got", "opened", "read", "was knocking"] },
-  ]
-},
-
-"present-perfect": {
-  title: "Present Perfect Simple",
-  group: "Tenses",
-  exercises: [
-    { type: "gap", instruction: "Fill in the Present Perfect.", sentence: "I ___ (already/finish) my homework.", answer: "have already finished", hint: "have/has + past participle. 'Already' goes between have and past participle." },
-    { type: "gap", instruction: "Fill in the Present Perfect.", sentence: "She ___ (never/be) to Japan.", answer: "has never been", hint: "has + never + past participle." },
-    { type: "gap", instruction: "Fill in the Present Perfect.", sentence: "They ___ (live) here since 2010.", answer: "have lived", hint: "'Since' signals Present Perfect." },
-    { type: "mc", instruction: "Simple Past or Present Perfect?", sentence: "I ___ my keys. Can you help me find them?", options: ["lost", "have lost", "was losing", "had lost"], correct: 1, hint: "Result in the present → Present Perfect." },
-    { type: "mc", instruction: "Choose the correct form.", sentence: "She ___ three cups of coffee today.", options: ["drank", "has drunk", "is drinking", "drinks"], correct: 1, hint: "'Today' (unfinished time period) → Present Perfect." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "He has went to the supermarket.", errorIndex: 2, correction: "gone", hint: "go → gone (past participle), not 'went'." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "I have seen him yesterday.", errorIndex: 4, correction: "—", hint: "Remove 'yesterday' — definite past time needs Simple Past: 'I saw him yesterday.' The word 'yesterday' is the error." },
-    { type: "drag", instruction: "Drag to complete with Present Perfect.", sentence: "We _1_ here for two hours. She _2_ yet. I _3_ her three times.", blanks: { "_1_": "have waited", "_2_": "hasn't arrived", "_3_": "have called" }, bank: ["have waited", "hasn't arrived", "have called", "waited", "didn't arrive", "called"] },
-  ]
-},
-
-"present-perfect-progressive": {
-  title: "Present Perfect Progressive",
-  group: "Tenses",
-  exercises: [
-    { type: "gap", instruction: "Fill in the Present Perfect Progressive.", sentence: "It ___ (rain) for three hours.", answer: "has been raining", hint: "has/have + been + verb-ing." },
-    { type: "gap", instruction: "Fill in the Present Perfect Progressive.", sentence: "They ___ (work) on this project since January.", answer: "have been working", hint: "have + been + working. 'Since' emphasises duration." },
-    { type: "mc", instruction: "Present Perfect Simple or Progressive?", sentence: "Your eyes are red. ___ you ___?", options: ["Did ... cry", "Have ... cried", "Have ... been crying", "Are ... crying"], correct: 2, hint: "Visible result of a recent ongoing action → Progressive." },
-    { type: "mc", instruction: "Present Perfect Simple or Progressive?", sentence: "She ___ five emails so far today.", options: ["has been writing", "has written", "wrote", "is writing"], correct: 1, hint: "Completed number of items → Simple, not Progressive." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "He has been study all day.", errorIndex: 3, correction: "studying", hint: "been + verb-ING (studying, not study)." },
-  ]
-},
-
-"past-perfect": {
-  title: "Past Perfect",
-  group: "Tenses",
-  exercises: [
-    { type: "gap", instruction: "Fill in the Past Perfect.", sentence: "When I arrived, the film ___ (already/start).", answer: "had already started", hint: "had + already + past participle." },
-    { type: "gap", instruction: "Fill in the Past Perfect.", sentence: "She ___ (not/eat) anything before the meeting.", answer: "had not eaten", alt: ["hadn't eaten"], hint: "had not + past participle." },
-    { type: "mc", instruction: "Choose the correct form.", sentence: "After they ___ lunch, they went for a walk.", options: ["had had", "have had", "had", "were having"], correct: 0, hint: "Action completed before another past action → Past Perfect." },
-    { type: "mc", instruction: "Simple Past or Past Perfect?", sentence: "The bus ___ by the time we ___ the stop.", options: ["left / reached", "had left / reached", "left / had reached", "has left / reached"], correct: 1, hint: "The bus leaving happened BEFORE reaching the stop." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "I had already saw the film before.", errorIndex: 3, correction: "seen", hint: "Past participle of 'see' is 'seen', not 'saw'." },
-    { type: "drag", instruction: "Complete with Past Perfect or Simple Past.", sentence: "After she _1_ her exams, she _2_ on holiday. She _3_ so hard that she _4_ a rest.", blanks: { "_1_": "had passed", "_2_": "went", "_3_": "had worked", "_4_": "needed" }, bank: ["had passed", "went", "had worked", "needed", "passed", "had gone"] },
-  ]
-},
-
-"future-tenses": {
-  title: "Future Tenses",
-  group: "Tenses",
-  exercises: [
-    { type: "gap", instruction: "Fill in the correct future form.", sentence: "Look at those dark clouds! It ___ (rain).", answer: "is going to rain", hint: "Prediction based on present evidence → going to." },
-    { type: "gap", instruction: "Fill in the correct future form.", sentence: "I think she ___ (pass) the exam.", answer: "will pass", hint: "Personal opinion/prediction → will." },
-    { type: "gap", instruction: "Fill in the correct future form.", sentence: "By this time next year, I ___ (finish) my studies.", answer: "will have finished", hint: "Completed by a future point → Future Perfect: will + have + past participle." },
-    { type: "mc", instruction: "Will or going to?", sentence: "We ___ a barbecue this weekend. Everything is planned.", options: ["will have", "are going to have", "are having", "have"], correct: 1, hint: "Pre-planned decision → going to." },
-    { type: "mc", instruction: "Choose the correct future form.", sentence: "This time tomorrow, I ___ on the beach.", options: ["will lie", "will be lying", "am going to lie", "lie"], correct: 1, hint: "Action in progress at a future point → Future Progressive." },
-    { type: "mc", instruction: "Choose the correct form.", sentence: "Wait, I ___ you with those bags.", options: ["will help", "am going to help", "am helping", "help"], correct: 0, hint: "Spontaneous decision → will." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "I will meeting you at the station.", errorIndex: 2, correction: "meet", hint: "will + base form (not will + verb-ing)." },
-    { type: "drag", instruction: "Match the correct future forms.", sentence: "By Friday, we _1_ the report. Right now I think it _2_ difficult. At 3 p.m. tomorrow, I _3_ it to the boss.", blanks: { "_1_": "will have finished", "_2_": "will be", "_3_": "will be presenting" }, bank: ["will have finished", "will be", "will be presenting", "are finishing", "is going to be", "present"] },
-  ]
-},
-
-// ---- CONDITIONALS ----
-
-"conditionals-0-1": {
-  title: "Conditionals: Type 0 & I",
-  group: "Conditionals",
-  exercises: [
-    { type: "gap", instruction: "Fill in the correct form (Type 0).", sentence: "If you ___ (heat) water to 100°C, it ___ (boil).", answer: "heat ... boils", hint: "Type 0: If + present, present. General truth." },
-    { type: "gap", instruction: "Fill in the correct form (Type I).", sentence: "If it ___ (rain) tomorrow, we ___ (stay) at home.", answer: "rains ... will stay", hint: "Type I: If + present, will + base form." },
-    { type: "gap", instruction: "Fill in the correct form (Type I).", sentence: "Unless you ___ (hurry), you ___ (miss) the bus.", answer: "hurry ... will miss", hint: "Unless = If ... not. Type I pattern." },
-    { type: "mc", instruction: "Choose the correct form.", sentence: "If she ___ harder, she ___ the exam.", options: ["studies / will pass", "will study / passes", "studied / would pass", "studies / passes"], correct: 0, hint: "Real/likely future condition → Type I." },
-    { type: "mc", instruction: "Type 0 or Type I?", sentence: "If you ___ an egg, it ___.", options: ["drop / breaks", "drop / will break", "dropped / would break", "will drop / breaks"], correct: 0, hint: "Always true → Type 0 (present + present)." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "If it will rain, we will cancel the trip.", errorIndex: 2, correction: "rains", hint: "No 'will' in the if-clause for Type I." },
-    { type: "drag", instruction: "Complete the conditional sentences.", sentence: "If you _1_ hard, you _2_ good results. If I _3_ time, I _4_ you.", blanks: { "_1_": "work", "_2_": "will get", "_3_": "have", "_4_": "will help" }, bank: ["work", "will get", "have", "will help", "will work", "get"] },
-  ]
-},
-
-"conditionals-2-3": {
-  title: "Conditionals: Type II & III",
-  group: "Conditionals",
-  exercises: [
-    { type: "gap", instruction: "Fill in the correct form (Type II).", sentence: "If I ___ (be) rich, I ___ (buy) a yacht.", answer: "were ... would buy", hint: "Type II: If + past, would + base form. Use 'were' for all persons." },
-    { type: "gap", instruction: "Fill in the correct form (Type III).", sentence: "If she ___ (study) harder, she ___ (pass) the exam.", answer: "had studied ... would have passed", hint: "Type III: If + past perfect, would + have + past participle." },
-    { type: "gap", instruction: "Fill in the correct form (Type II).", sentence: "If he ___ (speak) English, he ___ (get) the job.", answer: "spoke ... would get", hint: "Type II: hypothetical present/future." },
-    { type: "mc", instruction: "Choose the correct form (Type III).", sentence: "If I ___ about the meeting, I ___.", options: ["knew / would come", "had known / would have come", "know / will come", "would know / had come"], correct: 1, hint: "Regret about the past → Type III." },
-    { type: "mc", instruction: "Type II or III?", sentence: "If I ___ you, I ___ that job.", options: ["were / would take", "had been / would have taken", "am / will take", "was / would take"], correct: 0, hint: "Advice for now/general → Type II: 'If I were you...'" },
-    { type: "error", instruction: "Find and correct the error.", sentence: "If I would have more time, I would learn Japanese.", errorIndex: 2, correction: "had", hint: "Type II: If + past simple, not 'would have'." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "If they had knew the truth, they would have acted differently.", errorIndex: 3, correction: "known", hint: "Past participle: know → known, not 'knew'." },
-    { type: "drag", instruction: "Complete with the correct conditional forms.", sentence: "If I _1_ younger, I _2_ around the world. If I _3_ the chance last year, I _4_ it.", blanks: { "_1_": "were", "_2_": "would travel", "_3_": "had had", "_4_": "would have taken" }, bank: ["were", "would travel", "had had", "would have taken", "was", "will travel"] },
-  ]
-},
-
-"mixed-conditionals": {
-  title: "Mixed Conditionals",
-  group: "Conditionals",
-  exercises: [
-    { type: "gap", instruction: "Fill in the Mixed Conditional (past cause → present result).", sentence: "If I ___ (not/miss) the flight, I ___ (be) in Paris now.", answer: "had not missed ... would be", alt: ["hadn't missed ... would be"], hint: "If + Past Perfect, would + base form." },
-    { type: "gap", instruction: "Fill in the Mixed Conditional (general → past result).", sentence: "If she ___ (be) more careful, she ___ (not/break) the vase.", answer: "were ... would not have broken", alt: ["were ... wouldn't have broken"], hint: "If + Past Simple, would + have + past participle." },
-    { type: "mc", instruction: "Which type of conditional?", sentence: "If he hadn't eaten so much, he wouldn't feel sick now.", options: ["Type II", "Type III", "Mixed (past → present)", "Type I"], correct: 2, hint: "Past Perfect in if-clause, would + base in main clause = past cause, present result." },
-    { type: "mc", instruction: "Choose the correct form.", sentence: "If I ___ Spanish, I ___ in that interview last week.", options: ["spoke / would have helped", "had spoken / would help", "speak / will help", "spoken / helped"], correct: 0, hint: "General ability (now) → past result: If + Past Simple, would have + pp." },
-  ]
-},
-
-// ---- PASSIVE ----
-
-"passive-voice": {
-  title: "Passive Voice",
-  group: "Passive & Reported Speech",
-  exercises: [
-    { type: "gap", instruction: "Rewrite in the passive. Fill the gap.", sentence: "The bridge ___ (build) in 1985.", answer: "was built", hint: "Past passive: was/were + past participle." },
-    { type: "gap", instruction: "Fill in the passive form.", sentence: "English ___ (speak) in many countries.", answer: "is spoken", hint: "Present passive: is/are + past participle." },
-    { type: "gap", instruction: "Fill in the passive form.", sentence: "The report ___ (not/finish) yet.", answer: "has not been finished", alt: ["hasn't been finished"], hint: "Present Perfect Passive: has/have + been + pp." },
-    { type: "gap", instruction: "Fill in the passive form.", sentence: "The new school ___ (open) next September.", answer: "will be opened", hint: "Future passive: will + be + past participle." },
-    { type: "mc", instruction: "Choose the correct passive form.", sentence: "The suspect ___ by the police yesterday.", options: ["arrested", "was arrested", "has been arrested", "is arrested"], correct: 1, hint: "'Yesterday' → past passive." },
-    { type: "mc", instruction: "Active or Passive?", sentence: "The cake ___ by my grandmother.", options: ["baked", "was baked", "has baked", "is baking"], correct: 1, hint: "'By my grandmother' = agent → passive voice." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "The window was broke by the ball.", errorIndex: 3, correction: "broken", hint: "Past participle of 'break' is 'broken'." },
-    { type: "drag", instruction: "Complete with passive forms.", sentence: "This book _1_ in 1950. It _2_ into 20 languages. A film _3_ next year.", blanks: { "_1_": "was written", "_2_": "has been translated", "_3_": "will be made" }, bank: ["was written", "has been translated", "will be made", "wrote", "has translated", "will make"] },
-  ]
-},
-
-// ---- REPORTED SPEECH ----
-
-"reported-speech": {
-  title: "Reported Speech",
-  group: "Passive & Reported Speech",
-  exercises: [
-    { type: "gap", instruction: "Change to reported speech.", sentence: "She said: 'I am tired.' → She said that she ___ tired.", answer: "was", hint: "Backshift: am → was." },
-    { type: "gap", instruction: "Change to reported speech.", sentence: "'I will call you,' he said. → He said that he ___ call me.", answer: "would", hint: "Backshift: will → would." },
-    { type: "gap", instruction: "Change to reported speech.", sentence: "'We have finished,' they said. → They said they ___.", answer: "had finished", hint: "Backshift: have finished → had finished." },
-    { type: "mc", instruction: "Choose the correct reported form.", sentence: "'I can swim,' she said. → She said she ___.", options: ["can swim", "could swim", "was swimming", "swam"], correct: 1, hint: "Backshift: can → could." },
-    { type: "mc", instruction: "Choose the correct reported form.", sentence: "'Where do you live?' he asked. → He asked me where I ___.", options: ["live", "lived", "do live", "am living"], correct: 1, hint: "Reported question: no inversion, backshift tense." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "She asked me where did I work.", errorIndex: 4, correction: "I worked", hint: "Reported question: no inversion. 'where I worked'." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "He told that he was busy.", errorIndex: 1, correction: "said", hint: "'Tell' needs an object (tell me/him). Use 'said' without object." },
-    { type: "drag", instruction: "Match the backshift.", sentence: "'I _1_ happy,' she told me. → She told me she _2_ happy. 'I _3_ it,' he said. → He said he _4_ it.", blanks: { "_1_": "am", "_2_": "was", "_3_": "have done", "_4_": "had done" }, bank: ["am", "was", "have done", "had done", "is", "did"] },
-  ]
-},
-
-// ---- MODALS ----
-
-"modal-verbs": {
-  title: "Modal Verbs",
-  group: "Modals & Verb Patterns",
-  exercises: [
-    { type: "gap", instruction: "Fill in the correct modal.", sentence: "You ___ (not/park) here. It's forbidden.", answer: "must not", alt: ["mustn't"], hint: "Prohibition → must not." },
-    { type: "gap", instruction: "Fill in the correct modal.", sentence: "She ___ (be able to) speak three languages by the time she was ten.", answer: "was able to", hint: "Past ability (specific achievement) → was able to." },
-    { type: "mc", instruction: "Choose the correct modal.", sentence: "You ___ see a doctor. You look terrible.", options: ["should", "must", "can", "may"], correct: 0, hint: "Advice → should." },
-    { type: "mc", instruction: "Choose the correct modal.", sentence: "He ___ be at home. His car is in the driveway.", options: ["can", "must", "should", "would"], correct: 1, hint: "Logical deduction (strong certainty) → must." },
-    { type: "mc", instruction: "Choose the correct form.", sentence: "You ___ have told me earlier!", options: ["must", "should", "can", "may"], correct: 1, hint: "Criticism about the past → should have + pp." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "She must to finish the report by Friday.", errorIndex: 2, correction: "finish", hint: "Must + base form — no 'to' needed." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "He can speaks German fluently.", errorIndex: 2, correction: "speak", hint: "Modal + base form — no -s ending." },
-    { type: "drag", instruction: "Choose the right modal for each situation.", sentence: "You _1_ wear a seatbelt. (law) You _2_ try the cake. (recommendation) I _3_ swim when I was five. (past ability)", blanks: { "_1_": "must", "_2_": "should", "_3_": "could" }, bank: ["must", "should", "could", "can", "might", "may"] },
-  ]
-},
-
-"gerund-infinitive": {
-  title: "Gerund vs. Infinitive",
-  group: "Modals & Verb Patterns",
-  exercises: [
-    { type: "gap", instruction: "Gerund or infinitive?", sentence: "She enjoys ___ (read) novels.", answer: "reading", hint: "'Enjoy' is followed by the gerund." },
-    { type: "gap", instruction: "Gerund or infinitive?", sentence: "I decided ___ (apply) for the job.", answer: "to apply", hint: "'Decide' is followed by the infinitive." },
-    { type: "gap", instruction: "Gerund or infinitive?", sentence: "He avoided ___ (answer) my question.", answer: "answering", hint: "'Avoid' is followed by the gerund." },
-    { type: "mc", instruction: "Choose the correct form.", sentence: "I can't stand ___ in a queue.", options: ["to wait", "waiting", "wait", "waited"], correct: 1, hint: "'Can't stand' → gerund." },
-    { type: "mc", instruction: "Choose the correct form.", sentence: "She promised ___ on time.", options: ["being", "be", "to be", "been"], correct: 2, hint: "'Promise' → to + infinitive." },
-    { type: "mc", instruction: "Choose the correct form.", sentence: "I remember ___ the door. (= I did it and I recall it.)", options: ["to lock", "locking", "lock", "locked"], correct: 1, hint: "Remember + gerund = recall a past action." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "She suggested to go to the cinema.", errorIndex: 2, correction: "going", hint: "'Suggest' takes the gerund, not infinitive." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "I look forward to hear from you.", errorIndex: 4, correction: "hearing", hint: "'Look forward to' + gerund (the 'to' is a preposition)." },
-  ]
-},
-
-// ---- RELATIVE CLAUSES ----
-
-"relative-clauses": {
-  title: "Relative Clauses",
-  group: "Sentence Structure",
-  exercises: [
-    { type: "gap", instruction: "Fill in the correct relative pronoun.", sentence: "The woman ___ lives next door is a teacher.", answer: "who", hint: "Person as subject → who." },
-    { type: "gap", instruction: "Fill in the correct relative pronoun.", sentence: "That's the book ___ I told you about.", answer: "which", alt: ["that", "—"], hint: "Thing as object → which/that (or omit in defining clause)." },
-    { type: "gap", instruction: "Fill in the correct relative pronoun.", sentence: "She married a man ___ father is a famous actor.", answer: "whose", hint: "Possession → whose." },
-    { type: "mc", instruction: "Choose the correct pronoun.", sentence: "The hotel ___ we stayed was wonderful.", options: ["which", "where", "who", "whose"], correct: 1, hint: "Place → where." },
-    { type: "mc", instruction: "Defining or non-defining?", sentence: "My brother, ___ is 25, works in Berlin.", options: ["who", "that", "which", "—"], correct: 0, hint: "Non-defining clause (with commas) about a person → who (not 'that')." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "The man which called you is my uncle.", errorIndex: 2, correction: "who", hint: "Person → who/that, not 'which'." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "My sister, that lives in Munich, is a doctor.", errorIndex: 2, correction: "who", hint: "Non-defining clauses use 'who', not 'that'." },
-    { type: "drag", instruction: "Fill in the relative pronouns.", sentence: "The girl _1_ bag was stolen called the police. The café _2_ we met is closed. The reason _3_ I'm late is the traffic.", blanks: { "_1_": "whose", "_2_": "where", "_3_": "why" }, bank: ["whose", "where", "why", "which", "who", "whom"] },
-  ]
-},
-
-// ---- PARTICIPLE CONSTRUCTIONS ----
-
-"participle-constructions": {
-  title: "Participle Constructions",
-  group: "Sentence Structure",
-  exercises: [
-    { type: "gap", instruction: "Rewrite using a present participle construction.", sentence: "___ (walk) through the park, I saw a deer.", answer: "Walking", hint: "Active meaning: present participle (-ing) replaces 'While I was walking'." },
-    { type: "gap", instruction: "Rewrite using a past participle construction.", sentence: "___ (write) in 1847, the novel is still popular today.", answer: "Written", hint: "Passive meaning: past participle replaces 'Although it was written'." },
-    { type: "gap", instruction: "Fill in the correct participle.", sentence: "The film was really ___. (bore)", answer: "boring", hint: "-ing for describing the thing that causes the feeling." },
-    { type: "gap", instruction: "Fill in the correct participle.", sentence: "I was ___ by the result. (surprise)", answer: "surprised", hint: "-ed for describing the person who has the feeling." },
-    { type: "mc", instruction: "Choose the correct participle.", sentence: "___ the email, she immediately replied.", options: ["Having read", "Reading", "Read", "Being read"], correct: 0, hint: "Perfect participle for completed action before the main clause." },
-    { type: "mc", instruction: "-ing or -ed?", sentence: "The lecture was so ___ that I fell asleep.", options: ["bored", "boring", "bore", "being bored"], correct: 1, hint: "The lecture causes boredom → -ing." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "I am very interesting in science.", errorIndex: 3, correction: "interested", hint: "The person has the feeling → -ed (interested), not -ing." },
-  ]
-},
-
-// ---- ADJECTIVE / ADVERB ----
-
-"adjective-adverb": {
-  title: "Adjective & Adverb",
-  group: "Sentence Structure",
-  exercises: [
-    { type: "gap", instruction: "Fill in the correct form.", sentence: "She speaks English very ___ (good).", answer: "well", hint: "'Well' is the adverb of 'good'. It modifies the verb 'speaks'." },
-    { type: "gap", instruction: "Fill in the comparative.", sentence: "This exercise is ___ (difficult) than the last one.", answer: "more difficult", hint: "Long adjective → more + adjective." },
-    { type: "gap", instruction: "Fill in the superlative.", sentence: "This is the ___ (interesting) book I have ever read.", answer: "most interesting", hint: "Long adjective → most + adjective." },
-    { type: "mc", instruction: "Adjective or adverb?", sentence: "He drove ___ through the rain.", options: ["careful", "carefully", "more careful", "carefuller"], correct: 1, hint: "Modifies the verb 'drove' → adverb (-ly)." },
-    { type: "mc", instruction: "Choose the correct comparison.", sentence: "She is ___ student in the class.", options: ["the most intelligent", "the intelligentest", "more intelligent", "intelligent"], correct: 0, hint: "Superlative of long adjective: the most + adjective." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "She sings beautiful at the concert.", errorIndex: 2, correction: "beautifully", hint: "Modifies verb → adverb: beautifully." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "He is more taller than his brother.", errorIndex: 2, correction: "taller", hint: "Short adjective: tall → taller (no 'more')." },
-    { type: "drag", instruction: "Fill in the correct form.", sentence: "She works _1_ (hard). He is a _2_ driver. (careful) This is the _3_ film ever. (bad)", blanks: { "_1_": "hard", "_2_": "careful", "_3_": "worst" }, bank: ["hard", "careful", "worst", "hardly", "carefully", "baddest"] },
-  ]
-},
-
-// ---- WORD ORDER & INVERSION ----
-
-"word-order": {
-  title: "Word Order & Inversion",
-  group: "Sentence Structure",
-  exercises: [
-    { type: "mc", instruction: "Choose the correct word order.", sentence: "Which sentence is correct?", options: ["Never I have seen such a thing.", "Never have I seen such a thing.", "I never have seen such a thing.", "I have never such a thing seen."], correct: 1, hint: "Negative adverb at start → inversion: Never have I..." },
-    { type: "mc", instruction: "Choose the correct word order.", sentence: "Which sentence is correct?", options: ["She speaks always English at home.", "She speaks English always at home.", "She always speaks English at home.", "Always she speaks English at home."], correct: 2, hint: "Adverbs of frequency go before the main verb." },
-    { type: "gap", instruction: "Rewrite with inversion.", sentence: "Not only ___ he clever, but he is also hard-working.", answer: "is", hint: "Not only + inversion: Not only is he..." },
-    { type: "gap", instruction: "Put the adverb in the right position.", sentence: "She has ___ been late to work. (never)", answer: "never", hint: "Adverb of frequency between 'has' and past participle." },
-    { type: "error", instruction: "Find and correct the error.", sentence: "He told me yesterday that he is not ever coming back.", errorIndex: 7, correction: "never", hint: "'Not ever' → use 'never' for natural word order." },
-  ]
-},
-
-};
-
 // ============================================================
 // APP STATE
 // ============================================================
@@ -771,6 +239,22 @@ function saveProgress() {
 }
 
 // ============================================================
+// KEYBOARD SHORTCUTS
+// ============================================================
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && state.view === 'topic') {
+    const checkBtn = document.getElementById('checkBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    if (checkBtn && checkBtn.style.display !== 'none') {
+      checkBtn.click();
+    } else if (nextBtn && nextBtn.style.display !== 'none') {
+      nextBtn.click();
+    }
+  }
+});
+
+// ============================================================
 // RENDER ENGINE
 // ============================================================
 const app = document.getElementById('app');
@@ -784,22 +268,32 @@ function render() {
 }
 
 function updateHeaderStats() {
-  const total = Object.keys(EXERCISES).reduce((sum, k) => sum + EXERCISES[k].exercises.length, 0);
+  // EXERCISE_DB kommt aus der exercises.js Datei
+  if (typeof EXERCISE_DB === 'undefined') {
+      headerStats.textContent = "Error: Database not loaded!";
+      return;
+  }
+  const total = Object.keys(EXERCISE_DB).reduce((sum, k) => sum + EXERCISE_DB[k].exercises.length, 0);
   const done = Object.values(state.progress).reduce((sum, p) => sum + (p.completed || 0), 0);
   headerStats.textContent = `${done} / ${total} exercises completed`;
 }
 
 // ---- HOME ----
 function renderHome() {
+  if (typeof EXERCISE_DB === 'undefined') {
+      app.innerHTML = "<p>Error: exercises.js could not be loaded. Please make sure the file is in the same folder as this HTML file.</p>";
+      return;
+  }
+
   const groups = {};
-  for (const [key, topic] of Object.entries(EXERCISES)) {
+  for (const [key, topic] of Object.entries(EXERCISE_DB)) {
     if (!groups[topic.group]) groups[topic.group] = [];
     groups[topic.group].push({ key, ...topic });
   }
 
   let html = `
     <div class="home-intro">
-      <h2>Abitur Grammar Revision</h2>
+      <h2>Abitur Revision & Grammar</h2>
       <p>Choose a topic to start practising. Your progress is saved automatically.</p>
     </div>
     <div class="topic-grid">
@@ -809,9 +303,9 @@ function renderHome() {
     html += `<div class="topic-group-label">${group}</div>`;
     for (const t of topics) {
       const p = state.progress[t.key] || { completed: 0 };
-      const pct = Math.round((p.completed / t.exercises.length) * 100);
+      const pct = Math.round((p.completed / t.exercises.length) * 100) || 0;
       html += `
-        <div class="topic-card" onclick="startTopic('${t.key}')">
+        <div class="topic-card" onclick="startTopic('${t.key}')" role="button" tabindex="0">
           <h3>${t.title}</h3>
           <div class="topic-count">${t.exercises.length} exercises · ${p.completed || 0} completed</div>
           <div class="topic-progress"><div class="topic-progress-bar" style="width:${pct}%"></div></div>
@@ -831,14 +325,14 @@ function startTopic(key) {
   state.currentIndex = 0;
   state.answers = {};
   state.score = 0;
-  state.total = EXERCISES[key].exercises.length;
+  state.total = EXERCISE_DB[key].exercises.length;
   render();
   window.scrollTo(0, 0);
 }
 
 // ---- RENDER EXERCISE ----
 function renderExercise() {
-  const topic = EXERCISES[state.currentTopic];
+  const topic = EXERCISE_DB[state.currentTopic];
   if (state.currentIndex >= topic.exercises.length) {
     state.view = 'results';
     render();
@@ -869,37 +363,40 @@ function renderExercise() {
 
   html += `<div id="feedback"></div>`;
   html += `<div class="exercise-actions">
-    <button class="btn btn-primary" id="checkBtn" onclick="checkAnswer()">Check</button>
-    <button class="btn btn-outline" id="nextBtn" onclick="nextExercise()" style="display:none">Next →</button>
+    <button class="btn btn-primary" id="checkBtn" onclick="checkAnswer()">Check (Enter)</button>
+    <button class="btn btn-outline" id="nextBtn" onclick="nextExercise()" style="display:none">Next → (Enter)</button>
   </div>`;
   html += '</div>';
 
   app.innerHTML = html;
 
   if (ex.type === 'drag') initDragDrop();
+  
+  // Auto-Fokus
+  const firstGap = document.querySelector('.gap-input');
+  if(firstGap) firstGap.focus();
 }
 
-// ---- GAP-FILL ----
+// ---- COMPONENT RENDERING ----
 function renderGap(ex) {
   const parts = ex.sentence.split('___');
   let html = '<div class="exercise-sentence">';
   for (let i = 0; i < parts.length; i++) {
     html += parts[i];
     if (i < parts.length - 1) {
-      html += `<input type="text" class="gap-input" id="gap-${i}" autocomplete="off" autocorrect="off" spellcheck="false">`;
+      html += `<input type="text" class="gap-input" id="gap-${i}" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="Fill in the blank">`;
     }
   }
   html += '</div>';
   return html;
 }
 
-// ---- MULTIPLE CHOICE ----
 function renderMC(ex) {
-  let html = `<div class="exercise-sentence">${ex.sentence}</div>`;
-  html += '<div class="mc-options">';
-  const letters = ['A', 'B', 'C', 'D'];
+  let html = ex.sentence ? `<div class="exercise-sentence">${ex.sentence}</div>` : '';
+  html += '<div class="mc-options" role="radiogroup">';
+  const letters = ['A', 'B', 'C', 'D', 'E'];
   ex.options.forEach((opt, i) => {
-    html += `<div class="mc-option" id="mc-${i}" onclick="selectMC(${i})">
+    html += `<div class="mc-option" id="mc-${i}" onclick="selectMC(${i})" role="radio" aria-checked="false" tabindex="0">
       <span class="mc-letter">${letters[i]}</span>
       <span>${opt}</span>
     </div>`;
@@ -911,12 +408,16 @@ function renderMC(ex) {
 let selectedMC = null;
 function selectMC(i) {
   if (document.getElementById('nextBtn').style.display !== 'none') return;
-  document.querySelectorAll('.mc-option').forEach(el => el.classList.remove('selected'));
-  document.getElementById('mc-' + i).classList.add('selected');
+  document.querySelectorAll('.mc-option').forEach(el => {
+    el.classList.remove('selected');
+    el.setAttribute('aria-checked', 'false');
+  });
+  const selectedEl = document.getElementById('mc-' + i);
+  selectedEl.classList.add('selected');
+  selectedEl.setAttribute('aria-checked', 'true');
   selectedMC = i;
 }
 
-// ---- DRAG & DROP ----
 function renderDrag(ex) {
   const shuffled = [...ex.bank].sort(() => Math.random() - 0.5);
   let html = '<div class="drag-bank" id="dragBank">';
@@ -941,18 +442,15 @@ function renderDrag(ex) {
 function initDragDrop() {
   const items = document.querySelectorAll('.drag-item');
   const zones = document.querySelectorAll('.drop-zone');
-
   let dragged = null;
 
   items.forEach(item => {
-    item.addEventListener('dragstart', e => {
-      dragged = item;
-      e.dataTransfer.effectAllowed = 'move';
-    });
-
-    // Touch support
-    item.addEventListener('touchstart', e => {
+    item.addEventListener('dragstart', e => { dragged = item; e.dataTransfer.effectAllowed = 'move'; });
+    item.addEventListener('touchstart', e => { if (!item.classList.contains('placed')) dragged = item; }, {passive: true});
+    item.addEventListener('click', () => {
       if (item.classList.contains('placed')) return;
+      items.forEach(i => i.style.outline = '');
+      item.style.outline = '2px solid var(--accent)';
       dragged = item;
     });
   });
@@ -963,36 +461,13 @@ function initDragDrop() {
     zone.addEventListener('drop', e => {
       e.preventDefault();
       zone.classList.remove('over');
-      if (dragged && !zone.classList.contains('filled')) {
-        placeInZone(zone, dragged);
-      }
+      if (dragged && !zone.classList.contains('filled')) placeInZone(zone, dragged);
     });
-
-    // Touch: tap zone after selecting item
     zone.addEventListener('click', () => {
       if (dragged && !zone.classList.contains('filled')) {
         placeInZone(zone, dragged);
         dragged = null;
       }
-    });
-
-    // Touch: also tap items
-    zone.addEventListener('touchend', e => {
-      e.preventDefault();
-      if (dragged && !zone.classList.contains('filled')) {
-        placeInZone(zone, dragged);
-        dragged = null;
-      }
-    });
-  });
-
-  // Tap-to-select for mobile
-  items.forEach(item => {
-    item.addEventListener('click', () => {
-      if (item.classList.contains('placed')) return;
-      items.forEach(i => i.style.outline = '');
-      item.style.outline = '2px solid var(--accent)';
-      dragged = item;
     });
   });
 }
@@ -1018,12 +493,11 @@ function clearDrop(zone) {
   zone.removeAttribute('data-source-id');
 }
 
-// ---- ERROR CORRECTION ----
 function renderError(ex) {
   const words = ex.sentence.split(' ');
   let html = '<div class="error-sentence">';
   words.forEach((w, i) => {
-    html += `<span class="error-word" id="errw-${i}" onclick="selectError(${i})">${w}</span> `;
+    html += `<span class="error-word" id="errw-${i}" onclick="selectError(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){selectError(${i});event.preventDefault();}" tabindex="0">${w}</span> `;
   });
   html += '</div>';
   html += `<div class="error-correction-input" id="correctionArea" style="display:none">
@@ -1039,15 +513,17 @@ function selectError(i) {
   document.querySelectorAll('.error-word').forEach(el => el.classList.remove('selected'));
   document.getElementById('errw-' + i).classList.add('selected');
   selectedErrorIndex = i;
-  document.getElementById('correctionArea').style.display = 'flex';
+  
+  const correctionArea = document.getElementById('correctionArea');
+  correctionArea.style.display = 'flex';
   document.getElementById('correctionInput').focus();
 }
 
 // ============================================================
-// CHECK ANSWER
+// LOGIC: CHECK ANSWER
 // ============================================================
 function checkAnswer() {
-  const topic = EXERCISES[state.currentTopic];
+  const topic = EXERCISE_DB[state.currentTopic];
   const ex = topic.exercises[state.currentIndex];
   let isCorrect = false;
 
@@ -1055,6 +531,7 @@ function checkAnswer() {
     const inputs = document.querySelectorAll('.gap-input');
     const answers = ex.answer.split(' ... ');
     let allCorrect = true;
+    
     if (inputs.length === 1) {
       const val = inputs[0].value.trim().toLowerCase();
       const correct = ex.answer.toLowerCase();
@@ -1068,7 +545,7 @@ function checkAnswer() {
     } else {
       inputs.forEach((inp, i) => {
         const val = inp.value.trim().toLowerCase();
-        if (val === answers[i]?.toLowerCase()) {
+        if (val === (answers[i] || '').trim().toLowerCase()) {
           inp.classList.add('correct');
         } else {
           inp.classList.add('wrong');
@@ -1095,9 +572,9 @@ function checkAnswer() {
     let allCorrect = true;
     zones.forEach(zone => {
       const blank = zone.dataset.blank;
-      const expected = ex.blanks[blank]?.toLowerCase();
+      const expected = (ex.blanks[blank] || '').toLowerCase();
       const actual = (zone.textContent || '').trim().toLowerCase();
-      if (actual === expected) {
+      if (actual === expected && actual !== '') {
         zone.classList.add('correct');
       } else {
         zone.classList.add('wrong');
@@ -1112,28 +589,42 @@ function checkAnswer() {
     const correctionVal = document.getElementById('correctionInput').value.trim().toLowerCase();
     const correctIndex = ex.errorIndex;
     const correctWord = ex.correction.toLowerCase();
-    if (selectedErrorIndex === correctIndex && (correctionVal === correctWord)) {
-      document.getElementById('errw-' + selectedErrorIndex).classList.add('wrong-word');
+    
+    const deletionAnswers = ['-', '', 'delete', 'remove'];
+    const correctionMatches = correctWord === '-'
+      ? deletionAnswers.includes(correctionVal)
+      : correctionVal === correctWord;
+    if (selectedErrorIndex === correctIndex && correctionMatches) {
+      document.getElementById('errw-' + selectedErrorIndex).classList.add('correct-word');
       isCorrect = true;
     } else {
       if (selectedErrorIndex !== correctIndex) {
         document.getElementById('errw-' + selectedErrorIndex).classList.remove('selected');
+        document.getElementById('errw-' + selectedErrorIndex).classList.add('wrong-word');
       }
-      document.getElementById('errw-' + correctIndex).classList.add('wrong-word');
+      document.getElementById('errw-' + correctIndex).classList.add('correct-word');
       isCorrect = false;
     }
   }
 
-  // Show feedback
+  // Feedback
   const feedbackEl = document.getElementById('feedback');
   if (isCorrect) {
     state.score++;
-    feedbackEl.innerHTML = `<div class="feedback correct">✓ Correct!</div>`;
+    feedbackEl.innerHTML = `<div class="feedback correct">✓ Correct!${ex.hint ? `<div class="explanation">${ex.hint}</div>` : ''}</div>`;
   } else {
     let correctText = '';
-    if (ex.type === 'gap') correctText = ex.answer;
+    if (ex.type === 'gap') {
+      correctText = ex.answer;
+      if (ex.alt && ex.alt.length) correctText += ` (also accepted: ${ex.alt.join(', ')})`;
+    }
     else if (ex.type === 'mc') correctText = ex.options[ex.correct];
-    else if (ex.type === 'error') correctText = `Word "${ex.sentence.split(' ')[ex.errorIndex]}" → "${ex.correction}"`;
+    else if (ex.type === 'error') {
+      const wrongWord = ex.sentence.split(' ')[ex.errorIndex];
+      correctText = ex.correction === '-'
+        ? `Remove the word "${wrongWord}"`
+        : `Change "${wrongWord}" to "${ex.correction}"`;
+    }
     else if (ex.type === 'drag') correctText = Object.values(ex.blanks).join(', ');
 
     feedbackEl.innerHTML = `<div class="feedback wrong">
@@ -1144,15 +635,14 @@ function checkAnswer() {
 
   document.getElementById('checkBtn').style.display = 'none';
   document.getElementById('nextBtn').style.display = 'inline-flex';
+  document.getElementById('nextBtn').focus();
 }
 
-// ---- NEXT ----
 function nextExercise() {
   state.currentIndex++;
   selectedMC = null;
   selectedErrorIndex = null;
 
-  // Update progress
   if (!state.progress[state.currentTopic]) state.progress[state.currentTopic] = { completed: 0 };
   state.progress[state.currentTopic].completed = Math.max(
     state.progress[state.currentTopic].completed,
@@ -1164,9 +654,8 @@ function nextExercise() {
   window.scrollTo(0, 0);
 }
 
-// ---- RESULTS ----
 function renderResults() {
-  const topic = EXERCISES[state.currentTopic];
+  const topic = EXERCISE_DB[state.currentTopic];
   const pct = Math.round((state.score / state.total) * 100);
   let message = pct >= 80 ? 'Excellent work!' : pct >= 60 ? 'Good effort! Keep practising.' : 'Keep going — practice makes perfect!';
 
@@ -1193,7 +682,7 @@ function goHome() {
   window.scrollTo(0, 0);
 }
 
-// ---- INIT ----
+// ---- APP START ----
 render();
 </script>
 </body>
