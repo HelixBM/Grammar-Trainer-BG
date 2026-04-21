@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammar Trainer – Eingangsklasse BG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f0e8;
+  --fg: #1a1a1a;
+  --border: #1a1a1a;
+  --card: #ffffff;
+  --yellow: #ffcc00;
+  --blue: #0055ff;
+  --red: #ff4422;
+  --green: #00aa44;
+  --muted: #e8e4dc;
+  --muted-light: #f0ede8;
+  --sh: 5px 5px 0px var(--border);
+  --sh-sm: 3px 3px 0px var(--border);
+  --sh-lg: 8px 8px 0px var(--border);
+}
+html.dark {
+  --bg: #121212; --fg: #f5f0e8; --border: #f5f0e8;
+  --card: #1e1e1e; --muted: #2e2e2e; --muted-light: #252525;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+  transition: background .2s, color .2s;
+}
+
+/* ── Header ── */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--bg); border-bottom: 3px solid var(--border);
+  height: 64px; display: flex; align-items: center;
+  justify-content: space-between; padding: 0 1.5rem;
+  transition: background .2s;
+}
+.logo { font-size: 20px; font-weight: 800; letter-spacing: -.05em; text-transform: uppercase; font-style: italic; }
+.header-btns { display: flex; gap: 8px; align-items: center; }
+.icon-btn {
+  width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+  border: 3px solid var(--border); background: var(--card); color: var(--fg);
+  cursor: pointer; transition: all .1s; font-family: inherit; font-size: 16px; font-weight: 700;
+}
+.icon-btn:hover { transform: translate(-1px,-1px); box-shadow: 3px 3px 0 var(--border); }
+.icon-btn:active { transform: translate(2px,2px); box-shadow: none; }
+
+/* ── Layout ── */
+.wrap { width: 100%; max-width: 640px; margin: 0 auto; padding: 2rem 1.25rem; }
+.screen { display: none; }
+.screen.active { display: block; }
+
+/* ── Typography ── */
+.page-title { font-size: clamp(28px, 6vw, 48px); font-weight: 800; text-transform: uppercase; letter-spacing: -.04em; line-height: 1; margin-bottom: .25rem; }
+.page-sub { font-size: 13px; font-weight: 500; opacity: .55; margin-bottom: 1.5rem; }
+.section-label { display: inline-block; background: var(--fg); color: var(--bg); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; padding: 3px 9px; margin-bottom: .75rem; }
+.sub { font-size: 13px; opacity: .6; margin-bottom: 1.25rem; }
+
+/* ── Buttons ── */
+.btn {
+  cursor: pointer; padding: 10px 20px; border: 3px solid var(--border);
+  background: var(--card); color: var(--fg); font-size: 13px; font-weight: 700;
+  font-family: inherit; text-transform: uppercase; letter-spacing: .03em;
+  transition: all .1s; box-shadow: var(--sh-sm);
+}
+.btn:hover:not(:disabled) { transform: translate(-2px,-2px); box-shadow: var(--sh); }
+.btn:active:not(:disabled) { transform: translate(3px,3px); box-shadow: none; }
+.btn:disabled { opacity: .35; cursor: default; pointer-events: none; }
+.btn-primary { background: var(--blue); color: #fff; border-color: var(--border); }
+.btn-yellow { background: var(--yellow); color: #1a1a1a; border-color: var(--border); }
+.btn-red { background: var(--red); color: #fff; border-color: var(--border); }
+.btn-green { background: var(--green); color: #fff; border-color: var(--border); }
+.btn-lg { padding: 16px 24px; font-size: 16px; font-weight: 800; width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: var(--sh); }
+.btn-sm { padding: 7px 16px; font-size: 11px; box-shadow: var(--sh-sm); }
+.back-link {
+  display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700;
+  color: var(--fg); cursor: pointer; margin-bottom: 1.5rem; background: none; border: none;
+  font-family: inherit; text-transform: uppercase; letter-spacing: .05em; padding: 0; opacity: .55;
+}
+.back-link:hover { opacity: 1; }
+
+/* ── Progress ── */
+.progress-bar { height: 10px; border: 3px solid var(--border); background: var(--muted); overflow: hidden; margin-bottom: 1.5rem; }
+.progress-fill { height: 100%; background: var(--yellow); transition: width .35s; }
+.score-row { display: flex; justify-content: space-between; align-items: center; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; opacity: .65; margin-bottom: .75rem; }
+
+/* ── Topic Groups ── */
+.topic-group { margin-bottom: 1.25rem; }
+.topic-header { background: var(--fg); color: var(--bg); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; padding: 6px 12px; margin-bottom: 6px; }
+.unit-grid { display: flex; flex-direction: column; gap: 6px; }
+.unit-card {
+  cursor: pointer; padding: 14px 16px; border: 3px solid var(--border);
+  background: var(--card); display: flex; align-items: center; justify-content: space-between;
+  transition: all .1s; box-shadow: var(--sh-sm);
+}
+.unit-card:hover { transform: translate(-2px,-2px); box-shadow: var(--sh); }
+.unit-card:active { transform: translate(2px,2px); box-shadow: none; }
+.unit-name { font-size: 13px; font-weight: 700; }
+.unit-count { font-size: 10px; font-weight: 700; padding: 2px 8px; border: 2px solid var(--border); background: var(--muted); white-space: nowrap; text-transform: uppercase; }
+
+/* ── Exercise Card ── */
+.ex-type-badge { display: inline-block; background: var(--fg); color: var(--bg); font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; padding: 3px 8px; margin-bottom: .75rem; }
+.ex-instruction { font-size: 15px; font-weight: 700; margin-bottom: 1rem; line-height: 1.4; }
+.ex-sentence {
+  background: var(--card); border: 3px solid var(--border); box-shadow: var(--sh-sm);
+  padding: 1.25rem 1.5rem; font-size: clamp(16px, 4vw, 22px); font-weight: 600;
+  margin-bottom: 1.5rem; line-height: 1.6; letter-spacing: -.01em;
+}
+.ex-blank { color: var(--blue); border-bottom: 3px solid var(--blue); padding: 0 4px; min-width: 60px; display: inline-block; text-align: center; }
+
+/* ── Multiple Choice ── */
+.options-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.5rem; }
+.opt {
+  cursor: pointer; padding: 14px 16px; border: 3px solid var(--border);
+  background: var(--card); color: var(--fg); font-size: 14px; font-weight: 600;
+  text-align: left; transition: all .1s; width: 100%; font-family: inherit;
+  box-shadow: var(--sh-sm); line-height: 1.4;
+}
+.opt:hover:not([disabled]) { transform: translate(-2px,-2px); box-shadow: var(--sh); background: var(--yellow); color: #1a1a1a; }
+.opt.correct { background: #ccffdd; color: #004422; border-color: var(--border); }
+html.dark .opt.correct { background: #003311; color: #88ffaa; }
+.opt.wrong { background: #ffdddd; color: #880000; border-color: var(--border); }
+html.dark .opt.wrong { background: #330000; color: #ff9977; }
+.opt.reveal { background: #ccffdd; color: #004422; opacity: .5; }
+html.dark .opt.reveal { background: #003311; color: #88ffaa; opacity: .5; }
+.opt[disabled] { cursor: default; pointer-events: none; }
+
+/* ── Gap Fill ── */
+.gap-input {
+  width: 100%; padding: 14px 16px; font-size: 18px; font-weight: 700;
+  border: 3px solid var(--border); background: var(--bg); color: var(--fg);
+  margin-bottom: 10px; font-family: inherit; box-shadow: var(--sh-sm); transition: all .1s;
+}
+.gap-input:focus { outline: none; background: var(--yellow); color: #1a1a1a; box-shadow: var(--sh); }
+.feedback {
+  font-size: 13px; font-weight: 700; min-height: 22px;
+  margin-bottom: 1rem; text-transform: uppercase; letter-spacing: .03em; padding: 8px 0;
+}
+.feedback.correct { color: var(--green); }
+.feedback.wrong { color: var(--red); }
+
+/* ── Drag / Word Bank ── */
+.drag-sentence {
+  background: var(--card); border: 3px solid var(--border); box-shadow: var(--sh-sm);
+  padding: 1.25rem 1.5rem; font-size: clamp(16px, 4vw, 20px); font-weight: 600;
+  margin-bottom: 1.25rem; line-height: 2; letter-spacing: -.01em;
+}
+.drag-slot {
+  display: inline-block; border-bottom: 3px solid var(--blue);
+  min-width: 80px; padding: 2px 8px; margin: 0 4px; text-align: center;
+  font-size: 16px; cursor: pointer; color: var(--blue); font-weight: 700;
+  transition: all .15s; vertical-align: middle;
+}
+.drag-slot.filled { background: var(--yellow); color: #1a1a1a; border-color: #1a1a1a; border-bottom-width: 3px; border-style: solid; }
+.drag-slot.correct-fill { background: #ccffdd; color: #004422; border-color: var(--border); }
+.drag-slot.wrong-fill { background: #ffdddd; color: #880000; border-color: var(--border); }
+.word-bank { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem; }
+.word-chip {
+  cursor: pointer; padding: 8px 14px; border: 3px solid var(--border);
+  background: var(--card); color: var(--fg); font-size: 14px; font-weight: 700;
+  font-family: inherit; transition: all .1s; box-shadow: var(--sh-sm);
+}
+.word-chip:hover:not([disabled]) { transform: translate(-1px,-1px); box-shadow: var(--sh); background: var(--yellow); }
+.word-chip.used { opacity: .3; pointer-events: none; }
+.word-chip[disabled] { cursor: default; pointer-events: none; }
+
+/* ── Error Exercise ── */
+.error-sentence { font-size: clamp(16px, 4vw, 20px); font-weight: 600; line-height: 2.2; margin-bottom: 1.25rem; }
+.word-token {
+  cursor: pointer; display: inline-block; padding: 4px 8px; margin: 2px;
+  border: 2px solid transparent; border-radius: 4px; font-size: inherit;
+  font-weight: inherit; font-family: inherit; background: transparent;
+  color: var(--fg); transition: all .15s; line-height: 1.4;
+}
+.word-token:hover:not([disabled]) { border-color: var(--red); background: #fff0ee; color: var(--red); }
+.word-token.selected { border-color: var(--red); background: #ffdddd; color: #880000; }
+.word-token.wrong { border-color: #cc4400; background: #fff0e0; color: #cc4400; }        /* false positive */
+.word-token.confirmed-wrong { border-color: #880000; background: #ffdddd; color: #880000; }
+.word-token.confirmed-correct { border-color: var(--green); background: #ccffdd; color: #004422; }
+html.dark .word-token.wrong { background: #2a1500; color: #ff8844; border-color: #ff8844; }
+html.dark .word-token.confirmed-wrong { background: #330000; color: #ff9977; border-color: #ff4422; }
+html.dark .word-token.confirmed-correct { background: #003311; color: #88ffaa; border-color: var(--green); }
+.word-token[disabled] { cursor: default; pointer-events: none; }
+.no-error-btn { width: 100%; }
+.correction-box {
+  background: #ccffdd; border: 3px solid var(--border); box-shadow: var(--sh-sm);
+  padding: 12px 16px; font-size: 14px; font-weight: 700; margin-bottom: 1rem;
+}
+html.dark .correction-box { background: #003311; color: #88ffaa; }
+
+/* ── Hint ── */
+.hint-box {
+  background: var(--muted-light); border: 2px solid var(--muted);
+  padding: 10px 14px; font-size: 13px; font-weight: 500; margin-bottom: 1rem;
+  line-height: 1.5;
+}
+html.dark .hint-box { background: var(--muted); border-color: var(--border); }
+
+/* ── Results ── */
+.result-header {
+  border: 3px solid var(--border); box-shadow: var(--sh);
+  background: var(--card); padding: 2rem 1.5rem; text-align: center; margin-bottom: 1.5rem;
+}
+.result-pct { font-size: clamp(56px, 12vw, 88px); font-weight: 800; letter-spacing: -.05em; line-height: 1; }
+.result-title { font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: -.02em; margin-top: .5rem; }
+.result-sub { font-size: 12px; font-weight: 600; opacity: .55; text-transform: uppercase; letter-spacing: .04em; margin-top: .25rem; }
+.wrong-list { background: var(--card); border: 3px solid var(--border); box-shadow: var(--sh-sm); padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+.wrong-item { padding: 10px 0; border-bottom: 2px solid var(--muted); font-size: 13px; }
+.wrong-item:last-child { border-bottom: none; }
+.wrong-q { font-weight: 700; margin-bottom: 4px; }
+.wrong-a { opacity: .6; font-weight: 500; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--bg); border-left: 3px solid var(--border); }
+::-webkit-scrollbar-thumb { background: var(--border); }
+</style>
+<script>
+if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  document.documentElement.classList.add('dark');
+}
+function toggleTheme() {
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  document.getElementById('theme-icon').textContent = isDark ? '☀' : '☾';
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="logo">Grammar Trainer</div>
+  <div class="header-btns">
+    <button class="icon-btn" onclick="toggleTheme()" title="Toggle dark mode">
+      <span id="theme-icon">☾</span>
+    </button>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+<!-- ── Select Screen ── -->
+<div id="select-screen" class="screen active">
+  <div class="page-title">Grammar Drills</div>
+  <div class="page-sub">Eingangsklasse BG · Click a topic to start training</div>
+
+  <div id="topic-list"></div>
+</div>
+
+<!-- ── Exercise Screen ── -->
+<div id="exercise-screen" class="screen">
+  <button class="back-link" onclick="quitExercise()">← Back to topics</button>
+  <div class="score-row">
+    <span id="ex-label">Q 1 / 10</span>
+    <span id="ex-score">Score: 0</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="ex-progress"></div></div>
+
+  <div id="ex-type-badge" class="ex-type-badge"></div>
+  <div id="ex-instruction" class="ex-instruction"></div>
+  <div id="ex-body"></div>
+
+  <div id="hint-area"></div>
+  <div id="action-area"></div>
+</div>
+
+<!-- ── Result Screen ── -->
+<div id="result-screen" class="screen">
+  <div class="result-header">
+    <div class="result-pct" id="result-pct"></div>
+    <div class="result-title" id="result-title"></div>
+    <div class="result-sub" id="result-sub"></div>
+  </div>
+  <div id="result-wrong"></div>
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+    <button class="btn btn-primary" onclick="retryUnit()">Retry Unit</button>
+    <button class="btn" onclick="show('select-screen')">All Topics</button>
+  </div>
+</div>
+
+</div><!-- .wrap -->
+</main>
+
+<script src="grammar_db.js"></script>
+<script>
+// ── App State ──
+let currentUnitKey = '';
+let exercises = [];
+let currentIdx = 0;
+let score = 0;
+let wrong = [];
+
+// Drag state (per-exercise, reset on each renderDrag call)
+let dragFilled = {};      // slotKey → filledWord | null
+let slotToBankIdx = {};   // slotKey → bankChipIndex
+let bankUsed = {};        // bankChipIndex → true
+
+// Error state (per-exercise, reset on each renderError call)
+let errorSelected = [];   // word token indices the user has clicked
+
+// ── Init ──
+function initApp() {
+  document.getElementById('theme-icon').textContent =
+    document.documentElement.classList.contains('dark') ? '☀' : '☾';
+  buildTopicList();
+}
+
+// ── Build Selection ──
+function buildTopicList() {
+  const container = document.getElementById('topic-list');
+  container.innerHTML = '';
+  const groups = groupUnitsByGroup();
+
+  for (const [groupName, units] of Object.entries(groups)) {
+    const groupEl = buildGroupElement(groupName, units);
+    container.appendChild(groupEl);
+  }
+}
+
+function groupUnitsByGroup() {
+  const groups = {};
+  for (const [key, data] of Object.entries(EXERCISE_DB)) {
+    const g = data.group || 'Other';
+    if (!groups[g]) groups[g] = [];
+    groups[g].push({ key, data });
+  }
+  return groups;
+}
+
+function buildGroupElement(groupName, units) {
+  const groupEl = document.createElement('div');
+  groupEl.className = 'topic-group';
+
+  const header = document.createElement('div');
+  header.className = 'topic-header';
+  header.textContent = groupName;
+  groupEl.appendChild(header);
+
+  const grid = document.createElement('div');
+  grid.className = 'unit-grid';
+  units.forEach(({ key, data }) => grid.appendChild(buildUnitCard(key, data)));
+  groupEl.appendChild(grid);
+
+  return groupEl;
+}
+
+function buildUnitCard(key, data) {
+  const card = document.createElement('div');
+  card.className = 'unit-card';
+  card.innerHTML = `
+    <div class="unit-name">${data.title}</div>
+    <span class="unit-count">${data.exercises.length} drills</span>
+  `;
+  card.onclick = () => startUnit(key);
+  return card;
+}
+
+// ── Start a Unit ──
+function startUnit(key) {
+  currentUnitKey = key;
+  exercises = shuffle([...EXERCISE_DB[key].exercises]);
+  currentIdx = 0;
+  score = 0;
+  wrong = [];
+  show('exercise-screen');
+  renderCurrentExercise();
+}
+
+function retryUnit() {
+  startUnit(currentUnitKey);
+}
+
+// ── Exercise Rendering Dispatcher ──
+function renderCurrentExercise() {
+  if (currentIdx >= exercises.length) { showResult(); return; }
+
+  const ex = exercises[currentIdx];
+  updateProgressUI();
+  clearExerciseAreas();
+  setExerciseTypeBadge(ex.type);
+  document.getElementById('ex-instruction').textContent = ex.instruction;
+
+  const renderers = { mc: renderMC, gap: renderGap, drag: renderDrag, error: renderError };
+  const render = renderers[ex.type];
+  if (render) render(ex);
+}
+
+function updateProgressUI() {
+  document.getElementById('ex-label').textContent = `Q ${currentIdx + 1} / ${exercises.length}`;
+  document.getElementById('ex-score').textContent = `Score: ${score}`;
+  document.getElementById('ex-progress').style.width = Math.round((currentIdx / exercises.length) * 100) + '%';
+}
+
+function clearExerciseAreas() {
+  ['ex-body', 'hint-area', 'action-area'].forEach(id => {
+    document.getElementById(id).innerHTML = '';
+  });
+}
+
+function setExerciseTypeBadge(type) {
+  const labels = { mc: 'Multiple Choice', gap: 'Fill in the Blank', drag: 'Word Bank', error: 'Find the Error' };
+  document.getElementById('ex-type-badge').textContent = labels[type] || type;
+}
+
+// ── Sentence Formatting ──
+function formatSentenceHTML(sentence) {
+  return sentence
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br>');
+}
+
+// ── Multiple Choice ──
+function renderMC(ex) {
+  const body = document.getElementById('ex-body');
+
+  if (ex.sentence) {
+    const html = formatSentenceHTML(ex.sentence).replace(/_{4,8}/g, '<span class="ex-blank">?</span>');
+    const sentenceEl = document.createElement('div');
+    sentenceEl.className = 'ex-sentence';
+    sentenceEl.innerHTML = html;
+    body.appendChild(sentenceEl);
+  }
+
+  const list = buildMCOptionsList(ex);
+  body.appendChild(list);
+}
+
+function buildMCOptionsList(ex) {
+  const list = document.createElement('div');
+  list.className = 'options-list';
+
+  ex.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.textContent = opt;
+    btn.onclick = () => handleMCPick(btn, idx === ex.correct, ex.options[ex.correct], ex.hint, list, ex);
+    list.appendChild(btn);
+  });
+
+  return list;
+}
+
+function handleMCPick(clickedBtn, isCorrect, correctText, hint, list, ex) {
+  list.querySelectorAll('.opt').forEach(b => b.setAttribute('disabled', 'true'));
+
+  if (isCorrect) {
+    clickedBtn.classList.add('correct');
+    score++;
+  } else {
+    clickedBtn.classList.add('wrong');
+    list.querySelectorAll('.opt').forEach(b => {
+      if (b.textContent === correctText) b.classList.add('reveal');
+    });
+    recordWrong(ex.sentence || ex.instruction, correctText);
+  }
+
+  showHint(hint);
+  showNextButton();
+}
+
+// ── Gap Fill ──
+function renderGap(ex) {
+  const body = document.getElementById('ex-body');
+
+  const sentenceEl = document.createElement('div');
+  sentenceEl.className = 'ex-sentence';
+  sentenceEl.innerHTML = formatSentenceHTML(ex.sentence).replace(/___/g, '<span class="ex-blank">___</span>');
+  body.appendChild(sentenceEl);
+
+  const isMultiPart = (ex.answer || '').includes('...');
+  const input = buildGapInput(isMultiPart, ex);
+  body.appendChild(input);
+
+  const feedback = document.createElement('div');
+  feedback.className = 'feedback';
+  feedback.id = 'gap-feedback';
+  body.appendChild(feedback);
+
+  const checkBtn = document.createElement('button');
+  checkBtn.className = 'btn btn-primary';
+  checkBtn.textContent = 'Check Answer';
+  checkBtn.style.width = '100%';
+  checkBtn.onclick = () => handleGapCheck(ex);
+  document.getElementById('action-area').appendChild(checkBtn);
+
+  setTimeout(() => input.focus(), 50);
+}
+
+function buildGapInput(isMultiPart, ex) {
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'gap-input';
+  input.placeholder = isMultiPart ? 'Type both parts (e.g. have … finished)' : 'Type your answer…';
+  input.autocomplete = 'off';
+  input.spellcheck = false;
+  input.id = 'gap-input';
+  input.onkeydown = e => { if (e.key === 'Enter') handleGapCheck(ex); };
+  return input;
+}
+
+function handleGapCheck(ex) {
+  const input = document.getElementById('gap-input');
+  const val = input.value.trim();
+  if (!val) return;
+
+  const isCorrect = isGapAnswerCorrect(val, ex.answer, ex.alt || []);
+  input.disabled = true;
+  document.getElementById('action-area').innerHTML = '';
+
+  const feedback = document.getElementById('gap-feedback');
+  if (isCorrect) {
+    feedback.textContent = '✓ Correct!';
+    feedback.className = 'feedback correct';
+    score++;
+  } else {
+    feedback.textContent = `✗ Answer: ${ex.answer}`;
+    feedback.className = 'feedback wrong';
+    recordWrong(ex.sentence, ex.answer);
+  }
+
+  showHint(ex.hint);
+  showNextButton();
+}
+
+function isGapAnswerCorrect(userInput, correctAnswer, alternatives) {
+  const normalize = s => s.toLowerCase()
+    .replace(/\.\.\./g, ' ')
+    .replace(/['']/g, "'")
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const normalized = normalize(userInput);
+  return [correctAnswer, ...alternatives].map(normalize).some(a => a === normalized);
+}
+
+// ── Drag / Word Bank ──
+function renderDrag(ex) {
+  dragFilled = {};
+  slotToBankIdx = {};
+  bankUsed = {};
+
+  const blankKeys = Object.keys(ex.blanks);
+  blankKeys.forEach(k => { dragFilled[k] = null; });
+
+  const body = document.getElementById('ex-body');
+
+  const sentenceEl = document.createElement('div');
+  sentenceEl.className = 'drag-sentence';
+  sentenceEl.innerHTML = buildDragSentenceHTML(ex.sentence, blankKeys);
+  body.appendChild(sentenceEl);
+
+  const bankLabel = document.createElement('div');
+  bankLabel.className = 'section-label';
+  bankLabel.textContent = 'Word Bank';
+  bankLabel.style.marginBottom = '.5rem';
+  body.appendChild(bankLabel);
+
+  body.appendChild(buildWordBank(ex.bank, blankKeys));
+
+  const checkBtn = document.createElement('button');
+  checkBtn.className = 'btn btn-primary';
+  checkBtn.textContent = 'Check Answer';
+  checkBtn.style.width = '100%';
+  checkBtn.id = 'drag-check-btn';
+  checkBtn.onclick = () => handleDragCheck(ex);
+  document.getElementById('action-area').appendChild(checkBtn);
+}
+
+function buildDragSentenceHTML(sentence, blankKeys) {
+  let html = formatSentenceHTML(sentence);
+  blankKeys.forEach(key => {
+    const slotHTML = `<span class="drag-slot" data-key="${key}" onclick="handleSlotClick('${key}')">&nbsp;&nbsp;&nbsp;</span>`;
+    html = html.replace(key, slotHTML);
+  });
+  return html;
+}
+
+function buildWordBank(bank, blankKeys) {
+  const bankEl = document.createElement('div');
+  bankEl.className = 'word-bank';
+  bankEl.id = 'drag-bank';
+
+  bank.forEach((word, idx) => {
+    const chip = document.createElement('button');
+    chip.className = 'word-chip';
+    chip.textContent = word;
+    chip.dataset.idx = idx;
+    chip.onclick = () => handleBankClick(chip, word, idx, blankKeys);
+    bankEl.appendChild(chip);
+  });
+
+  return bankEl;
+}
+
+function handleBankClick(chip, word, bankIdx, blankKeys) {
+  if (bankUsed[bankIdx]) return;
+
+  const firstEmptySlot = blankKeys.find(k => !dragFilled[k]);
+  if (!firstEmptySlot) return;
+
+  dragFilled[firstEmptySlot] = word;
+  slotToBankIdx[firstEmptySlot] = bankIdx;
+  bankUsed[bankIdx] = true;
+  chip.classList.add('used');
+  updateDragSlot(firstEmptySlot, word);
+}
+
+function handleSlotClick(slotKey) {
+  const word = dragFilled[slotKey];
+  if (!word) return;
+
+  const bankIdx = slotToBankIdx[slotKey];
+  if (bankIdx !== undefined) {
+    const chip = document.querySelector(`#drag-bank .word-chip[data-idx="${bankIdx}"]`);
+    if (chip) chip.classList.remove('used');
+    delete bankUsed[bankIdx];
+    delete slotToBankIdx[slotKey];
+  }
+
+  dragFilled[slotKey] = null;
+  updateDragSlot(slotKey, null);
+}
+
+function updateDragSlot(key, word) {
+  const slot = document.querySelector(`.drag-slot[data-key="${key}"]`);
+  if (!slot) return;
+  if (word) {
+    slot.textContent = word;
+    slot.classList.add('filled');
+  } else {
+    slot.innerHTML = '&nbsp;&nbsp;&nbsp;';
+    slot.classList.remove('filled');
+  }
+}
+
+function handleDragCheck(ex) {
+  const blankKeys = Object.keys(ex.blanks);
+  if (!blankKeys.every(k => dragFilled[k])) {
+    showTempFeedback('Fill all blanks first!', false);
+    return;
+  }
+
+  let allCorrect = true;
+  blankKeys.forEach(key => {
+    const slot = document.querySelector(`.drag-slot[data-key="${key}"]`);
+    if (!slot) return;
+    const isRight = dragFilled[key].toLowerCase() === ex.blanks[key].toLowerCase();
+    slot.classList.add(isRight ? 'correct-fill' : 'wrong-fill');
+    slot.onclick = null;
+    if (!isRight) allCorrect = false;
+  });
+
+  document.querySelectorAll('#drag-bank .word-chip').forEach(c => c.setAttribute('disabled', 'true'));
+  document.getElementById('drag-check-btn').style.display = 'none';
+
+  if (allCorrect) {
+    score++;
+  } else {
+    const answer = blankKeys.map(k => ex.blanks[k]).join(' / ');
+    recordWrong(ex.sentence, answer);
+  }
+
+  showHint(ex.hint);
+  showNextButton();
+}
+
+// ── Error Exercise ──
+function renderError(ex) {
+  errorSelected = [];
+  const words = ex.sentence.split(' ');
+  const hasNoError = ex.errorIndex.length === 0;
+
+  const body = document.getElementById('ex-body');
+  const sentenceEl = buildErrorSentenceEl(words);
+  body.appendChild(sentenceEl);
+
+  const actionArea = document.getElementById('action-area');
+
+  if (hasNoError) {
+    actionArea.appendChild(buildNoErrorButton(ex));
+  }
+
+  actionArea.appendChild(buildErrorCheckButton(ex));
+}
+
+function buildErrorSentenceEl(words) {
+  const el = document.createElement('div');
+  el.className = 'error-sentence';
+
+  words.forEach((word, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'word-token';
+    btn.textContent = word;
+    btn.dataset.idx = idx;
+    btn.onclick = () => toggleErrorWord(btn, idx);
+    el.appendChild(btn);
+    if (idx < words.length - 1) el.appendChild(document.createTextNode(' '));
+  });
+
+  return el;
+}
+
+function buildNoErrorButton(ex) {
+  const btn = document.createElement('button');
+  btn.className = 'btn btn-yellow no-error-btn';
+  btn.textContent = 'No Error Here';
+  btn.style.marginBottom = '8px';
+  btn.onclick = () => handleErrorCheck(ex, true);
+  return btn;
+}
+
+function buildErrorCheckButton(ex) {
+  const btn = document.createElement('button');
+  btn.className = 'btn btn-primary';
+  btn.textContent = 'Check Selection';
+  btn.style.width = '100%';
+  btn.id = 'error-check-btn';
+  btn.onclick = () => handleErrorCheck(ex, false);
+  return btn;
+}
+
+function toggleErrorWord(btn, idx) {
+  if (btn.classList.contains('selected')) {
+    btn.classList.remove('selected');
+    errorSelected = errorSelected.filter(i => i !== idx);
+  } else {
+    btn.classList.add('selected');
+    errorSelected.push(idx);
+  }
+}
+
+function handleErrorCheck(ex, userSaidNoError) {
+  document.querySelectorAll('.word-token').forEach(b => b.setAttribute('disabled', 'true'));
+  document.getElementById('action-area').innerHTML = '';
+
+  const hasNoError = ex.errorIndex.length === 0;
+  const isCorrect = hasNoError
+    ? userSaidNoError
+    : arraysMatch([...errorSelected].sort((a,b)=>a-b), [...ex.errorIndex].sort((a,b)=>a-b));
+
+  // For "no error" sentences, pass empty selections when correct so all tokens show green.
+  // When wrong (user falsely marked words), their selections should show red.
+  const highlightedSelections = (hasNoError && userSaidNoError) ? [] : errorSelected;
+  highlightErrorTokens(ex.errorIndex, highlightedSelections);
+
+  const correctionText = formatCorrectionText(ex.correction, ex.errorIndex);
+  if (isCorrect) {
+    score++;
+  } else {
+    const wrongAnswer = hasNoError ? 'No error — sentence is correct' : correctionText;
+    recordWrong(ex.sentence, wrongAnswer);
+  }
+
+  if (!hasNoError && correctionText) {
+    showCorrectionBox(correctionText);
+  }
+
+  showHint(ex.hint);
+  showNextButton();
+}
+
+function formatCorrectionText(correction, errorIndex) {
+  if (!correction) return '';
+  const items = correction.filter(c => c !== '-');
+  if (!items.length) return '';
+  // More alternatives than error positions → show as choices separated by " / "
+  const isAlternatives = items.length > errorIndex.length;
+  return isAlternatives ? items.join(' / ') : items.join(' ');
+}
+
+function highlightErrorTokens(errorIndices, selectedIndices) {
+  document.querySelectorAll('.word-token').forEach(btn => {
+    const idx = parseInt(btn.dataset.idx);
+    const isActualError = errorIndices.includes(idx);
+    const wasSelected = selectedIndices.includes(idx);
+
+    if (isActualError)    btn.classList.add('confirmed-wrong');
+    else if (wasSelected) btn.classList.add('wrong');   // false positive
+    else                  btn.classList.add('confirmed-correct');
+  });
+}
+
+function showCorrectionBox(correctionText) {
+  const hintArea = document.getElementById('hint-area');
+  const box = document.createElement('div');
+  box.className = 'correction-box';
+  box.textContent = `✓ Correction: ${correctionText}`;
+  hintArea.insertBefore(box, hintArea.firstChild);
+}
+
+// ── Shared UI Helpers ──
+function showHint(hintText) {
+  if (!hintText) return;
+  const hintArea = document.getElementById('hint-area');
+  const box = document.createElement('div');
+  box.className = 'hint-box';
+  box.textContent = `Tip: ${hintText}`;
+  hintArea.appendChild(box);
+}
+
+function showNextButton() {
+  const actionArea = document.getElementById('action-area');
+  const isLast = currentIdx + 1 >= exercises.length;
+  const btn = document.createElement('button');
+  btn.className = 'btn btn-primary';
+  btn.textContent = isLast ? 'See Results →' : 'Next →';
+  btn.style.width = '100%';
+  btn.style.marginTop = '8px';
+  btn.onclick = () => { currentIdx++; renderCurrentExercise(); };
+  actionArea.appendChild(btn);
+}
+
+function showTempFeedback(msg, isGood) {
+  const hintArea = document.getElementById('hint-area');
+  const old = hintArea.querySelector('.temp-feedback');
+  if (old) old.remove();
+  const el = document.createElement('div');
+  el.className = `feedback temp-feedback ${isGood ? 'correct' : 'wrong'}`;
+  el.textContent = msg;
+  hintArea.appendChild(el);
+}
+
+function recordWrong(question, answer) {
+  wrong.push({ q: String(question || ''), a: String(answer || '') });
+}
+
+function quitExercise() {
+  show('select-screen');
+}
+
+// ── Results ──
+function showResult() {
+  show('result-screen');
+  const total = exercises.length;
+  const pct = Math.round((score / total) * 100);
+
+  document.getElementById('result-pct').textContent = pct + '%';
+  document.getElementById('result-title').textContent = resultTitle(pct);
+  document.getElementById('result-sub').textContent = `${score} / ${total} correct · ${EXERCISE_DB[currentUnitKey].title}`;
+
+  renderWrongList();
+}
+
+function resultTitle(pct) {
+  if (pct === 100) return 'Perfect! Flawless!';
+  if (pct >= 80)  return 'Great Work!';
+  if (pct >= 60)  return 'Good Effort!';
+  return 'Keep Practising!';
+}
+
+function renderWrongList() {
+  const container = document.getElementById('result-wrong');
+  if (!wrong.length) { container.innerHTML = ''; return; }
+
+  const uniq = [...new Map(wrong.map(w => [w.q, w])).values()];
+  container.innerHTML = `
+    <div class="section-label" style="margin-bottom:.75rem">Review These</div>
+    <div class="wrong-list">
+      ${uniq.map(w => `
+        <div class="wrong-item">
+          <div class="wrong-q">${escapeHTML(w.q)}</div>
+          <div class="wrong-a">✓ ${escapeHTML(w.a)}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+// ── Pure Utilities ──
+function show(screenId) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(screenId).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function arraysMatch(a, b) {
+  return a.length === b.length && a.every((v, i) => v === b[i]);
+}
+
+function escapeHTML(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// ── Boot ──
+initApp();
+</script>
+</body>
+</html>
