@@ -1121,7 +1121,7 @@
   },
 
   word_order: {
-    group: "4. The Abitur Killers",
+    group: "4. Miscellaneous",
     title: "Word Order (SVOMPT)",
     exercises: [
       // --- PLACE BEFORE TIME & SVOMPT (1-20) ---
