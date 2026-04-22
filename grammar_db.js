@@ -1079,7 +1079,7 @@
   },
 
   adjectives_adverbs: {
-    group: "4. The Abitur Killers",
+    group: "4. The Miscellaneous",
     title: "Adjectives vs. Adverbs (The -ly traps)",
     exercises: [
       // --- SENSE VERBS & GOOD/WELL (1-15) ---
@@ -1151,7 +1151,7 @@
   },
 
   quantifiers_pronouns: {
-    group: "4. The Abitur Killers",
+    group: "4. The Miscellaneous",
     title: "Quantifiers (Much/Many, Few/Little)",
     exercises: [
       // --- MUCH / MANY & COUNTABLE TRAPS (1-20) ---
@@ -1181,7 +1181,7 @@
   },
 
   false_friends: {
-    group: "4. The Abitur Killers",
+    group: "4. The Miscellaneous",
     title: "False Friends (Lexical Traps)",
     exercises: [
       // --- ACTUAL/CURRENT & BECOME/GET (1-20) ---
