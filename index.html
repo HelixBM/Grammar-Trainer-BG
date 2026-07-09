@@ -251,6 +251,25 @@ html.dark .hint-box { background: var(--muted); border-color: var(--border); }
 .wrong-q { font-weight: 700; margin-bottom: 4px; }
 .wrong-a { opacity: .6; font-weight: 500; }
 
+/* ── Modals ── */
+.ex-topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; gap: 10px; }
+.ex-topbar .back-link { margin-bottom: 0; }
+.modal-overlay {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,.6);
+  z-index: 200; align-items: flex-start; justify-content: center;
+  overflow-y: auto; padding: 2rem 1.25rem;
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: var(--bg); border: 3px solid var(--border); box-shadow: var(--sh-lg);
+  max-width: 640px; width: 100%; padding: 1.5rem; margin-top: 1rem;
+}
+.modal-box.modal-sm { max-width: 420px; }
+.modal-box .back-link { margin-bottom: 1rem; }
+.confirm-body { font-size: 14px; line-height: 1.5; opacity: .8; margin-bottom: 1.25rem; }
+.confirm-actions { display: flex; gap: 10px; }
+.confirm-actions .btn { flex: 1; }
+
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--bg); border-left: 3px solid var(--border); }
@@ -302,7 +321,10 @@ function toggleTheme() {
 
 <!-- ── Exercise Screen ── -->
 <div id="exercise-screen" class="screen">
-  <button class="back-link" onclick="quitExercise()">← Back to topics</button>
+  <div class="ex-topbar">
+    <button class="back-link" onclick="quitExercise()">← Back to topics</button>
+    <button class="back-link" id="ex-rules-btn" onclick="openRulesModal()">Rules ⓘ</button>
+  </div>
   <div class="score-row">
     <span id="ex-label">Q 1 / 10</span>
     <span id="ex-score">Score: 0</span>
@@ -333,6 +355,27 @@ function toggleTheme() {
 
 </div><!-- .wrap -->
 </main>
+
+<!-- ── In-Quiz Rules Modal ── -->
+<div id="rules-modal-overlay" class="modal-overlay">
+  <div class="modal-box">
+    <button class="back-link" onclick="closeRulesModal()">← Close</button>
+    <div class="page-title" id="rules-modal-title" style="font-size:clamp(20px,4vw,28px)"></div>
+    <div id="rules-modal-body"></div>
+  </div>
+</div>
+
+<!-- ── Quit Confirmation Modal ── -->
+<div id="quit-modal-overlay" class="modal-overlay">
+  <div class="modal-box modal-sm">
+    <div class="page-title" style="font-size:20px">Quit This Session?</div>
+    <div class="confirm-body" id="quit-modal-sub"></div>
+    <div class="confirm-actions">
+      <button class="btn" onclick="closeQuitModal()">Cancel</button>
+      <button class="btn btn-red" onclick="confirmQuitExercise()">Quit</button>
+    </div>
+  </div>
+</div>
 
 <script src="grammar_db.js"></script>
 <script>
@@ -589,6 +632,7 @@ function renderCurrentExercise() {
   clearExerciseAreas();
   setExerciseTypeBadge(ex.type);
   document.getElementById('ex-instruction').textContent = ex.instruction;
+  updateRulesButtonVisibility();
 
   const renderers = { mc: renderMC, gap: renderGap, drag: renderDrag, error: renderError };
   const render = renderers[ex.type];
@@ -1041,8 +1085,50 @@ function recordWrong(ex, question, answer) {
 }
 
 function quitExercise() {
+  const inProgress = exercises.length > 0 && currentIdx < exercises.length;
+  if (!inProgress) { goToTopics(); return; }
+  document.getElementById('quit-modal-sub').textContent =
+    `You're on question ${currentIdx + 1} of ${exercises.length}. This attempt won't be saved, but your best score for this unit is safe.`;
+  document.getElementById('quit-modal-overlay').classList.add('active');
+}
+
+function closeQuitModal() {
+  document.getElementById('quit-modal-overlay').classList.remove('active');
+}
+
+function confirmQuitExercise() {
+  closeQuitModal();
   goToTopics();
 }
+
+// ── In-Quiz Rules Modal ──
+function currentExerciseUnitKey() {
+  const ex = exercises[currentIdx];
+  return ex && ex._id ? ex._id.split(':')[0] : null;
+}
+
+function updateRulesButtonVisibility() {
+  const data = EXERCISE_DB[currentExerciseUnitKey()];
+  document.getElementById('ex-rules-btn').style.display = (data && data.rules) ? '' : 'none';
+}
+
+function openRulesModal() {
+  const data = EXERCISE_DB[currentExerciseUnitKey()];
+  if (!data || !data.rules) return;
+  document.getElementById('rules-modal-title').textContent = data.title;
+  document.getElementById('rules-modal-body').innerHTML = renderRulesHTML(data.rules);
+  document.getElementById('rules-modal-overlay').classList.add('active');
+}
+
+function closeRulesModal() {
+  document.getElementById('rules-modal-overlay').classList.remove('active');
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  closeRulesModal();
+  closeQuitModal();
+});
 
 // ── Results ──
 function showResult() {
