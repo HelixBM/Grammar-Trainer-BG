@@ -1142,7 +1142,7 @@
       { type: "drag", instruction: "Drag the adverbs.", sentence: "I _1_ eat meat because I am _2_ hungry for it.", bank: ["rarely", "always", "never"], blanks: { "_1_": "rarely", "_2_": "never" }, hint: "Before main verb, after 'be'." },
       { type: "error", instruction: "Find the error.", sentence: "She plays often tennis on Sundays.", errorIndex: [2], correction: ["often plays"], hint: "Frequency before main verb." },
       { type: "mc", instruction: "Choose the correct sentence.", options: ["He has always been a good friend.", "He always has been a good friend.", "He has been always a good friend."], correct: 0, hint: "Between the auxiliary and the main verb." },
-      { type: "gap", instruction: "Insert 'usually':", sentence: "They ___ don't agree with me.", answer: "usually", alt: [], hint: "Before the negative auxiliary." },
+      { type: "gap", instruction: "Insert something to show it happens most of the time:", sentence: "They ___ don't agree with me.", answer: "usually", alt: [], hint: "Before the negative auxiliary." },
       { type: "drag", instruction: "Complete the sentence with 'sometimes'.", sentence: "I _1_ go to the gym, but I am _2_ too tired.", bank: ["sometimes", "sometimes"], blanks: { "_1_": "sometimes", "_2_": "sometimes" }, hint: "Before main verb, after 'be'." },
       { type: "error", instruction: "Find the error.", sentence: "We will go definitely to the party.", errorIndex: [3], correction: ["will definitely go"], hint: "Adverbs of certainty go between the auxiliary and main verb." },
       { type: "mc", instruction: "Where does 'probably' go?", sentence: "He ________ won't come.", options: ["probably", "(after won't)"], correct: 0, hint: "Before the negative auxiliary." },
