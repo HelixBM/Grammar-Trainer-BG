@@ -2,6 +2,26 @@
   present_tenses: {
     group: "1. The Tenses",
     title: "Present Tenses (Simple vs. Continuous)",
+    rules: {
+      summary: "The choice between Present Simple and Present Continuous is rarely about 'now' vs 'always' — it's about **states vs actions**, **permanent vs temporary**, and a handful of special future and narrative uses.",
+      points: [
+        { heading: "Stative vs Dynamic Verbs", body: "Verbs describing a state (opinions, senses, possession, emotions) are **stative** and normally stay in the Simple form even when something is happening right now: *understand, believe, know, think (opinion), want, need, love, hate, belong, own, seem, appear, have (possession)*. The same verb can be dynamic with a different meaning: *think* (consider), *have* (an experience: 'having dinner'), *see* (meet), *taste/smell/look* (actively perform the action)." },
+        { heading: "Permanent vs Temporary", body: "Present Simple describes routines, facts and permanent states ('He works from home'). Present Continuous describes a temporary situation around now, even if it isn't happening at this exact second ('This week he is working in the office')." },
+        { heading: "Annoying Habits & Changing Trends", body: "'Always/forever/constantly' + Present Continuous expresses irritation at a repeated habit ('She is always losing her keys'). Present Continuous also describes a gradual change or trend over time ('The climate is changing')." },
+        { heading: "Present Tenses for the Future", body: "Present Simple is used for fixed schedules and timetables (trains, flights, cinema times, calendars). Present Continuous is used for personal arrangements that have already been organized (a fixed time and place agreed with someone)." },
+        { heading: "Performative Verbs & Narrative", body: "Verbs that perform the act just by being said (*promise, suggest, apologize, advise, swear*) are Present Simple. In jokes, summaries and sports commentary, the main storyline uses Present Simple while background/simultaneous actions use Present Continuous." }
+      ],
+      examples: [
+        { en: "This cake **tastes** incredibly sweet. / I **am tasting** the sauce to check the seasoning.", note: "Stative (quality) vs dynamic (active testing)" },
+        { en: "He normally **works** from home, but this week he **is working** in the office.", note: "Permanent routine vs temporary exception" },
+        { en: "My brother **is always losing** his keys.", note: "Annoying repeated habit" },
+        { en: "The flight **leaves** at 19:45. / I **am flying** to Madrid tomorrow.", note: "Timetable vs personal arrangement" }
+      ],
+      exceptions: [
+        "Stative verbs almost never take -ing, even to talk about right now: 'I understand', not 'I am understanding'.",
+        "'Are being' + adjective is a special case: it describes temporary behaviour ('You are being very quiet today'), not a permanent trait."
+      ]
+    },
     exercises: [
       // --- STATIVE VS DYNAMIC (1-15) ---
       { type: "gap", instruction: "Fill in the correct present tense: (taste)", sentence: "I ___ the sauce to see if it needs more garlic.", answer: "am tasting", alt: ["'m tasting"], hint: "Active testing is dynamic." },
@@ -68,6 +88,28 @@
   perfect_tenses: {
     group: "1. The Tenses",
     title: "Perfect Tenses (Present Perf. vs Past Simple & Continuous)",
+    rules: {
+      summary: "Present Perfect connects the past to now; Past Simple cuts it off in a finished period. Once you can tell the two apart, Present Perfect Simple vs Continuous is just about **result** vs **activity**.",
+      points: [
+        { heading: "Past Simple vs Present Perfect", body: "Use Past Simple for a finished time period, a specific date, or when the person/thing is no longer available (Shakespeare wrote 39 plays — he's dead, the period is closed). Use Present Perfect for life experience up to now with no specific time given, or an action whose result matters right now. A specific time word ('yesterday', 'in 2021', 'ago') always forces Past Simple, even if the result is still visible." },
+        { heading: "Present Perfect Simple vs Continuous", body: "Simple focuses on the **result** or a **completed quantity** ('I have painted the living room' / 'I have read three chapters'). Continuous focuses on the **activity itself** and its duration, and often explains present evidence ('Your hands are covered in paint — what have you been doing?'). Stative verbs (know, have, be, want, believe, belong) never take the continuous form, even with 'since/for'." },
+        { heading: "Been vs Gone", body: "'Has been to' = went and already returned. 'Has gone to' = went and hasn't come back yet." },
+        { heading: "Superlatives & 'First Time'", body: "Superlatives ('the most beautiful', 'the best') and phrases like 'It's the first/second/third time...' are strong triggers for the Present Perfect." },
+        { heading: "Already / Yet / Still / Just", body: "'Already' and 'just' go between the auxiliary and the main verb (I have already eaten). 'Yet' goes at the end of questions and negatives. 'Still' goes before the negative auxiliary (I still haven't decided), never after it." },
+        { heading: "For vs Since", body: "'For' + a duration (for ten years). 'Since' + a starting point in time (since 2015, since I was a child)." }
+      ],
+      examples: [
+        { en: "He **went** to Paris last year. / He **has been** to Paris three times.", note: "Specific past date vs life experience" },
+        { en: "I **have painted** the living room. / I **have been painting** all day.", note: "Result vs ongoing activity" },
+        { en: "She has **gone** to the shops. / She has **been** to the shops (she's back now).", note: "Still away vs returned" },
+        { en: "This is the best film I **have ever seen**.", note: "Superlative trigger" }
+      ],
+      exceptions: [
+        "Stative verbs cannot be continuous even to emphasise duration: 'I have known him for years', not 'have been knowing'.",
+        "'Ago' is always Past Simple: 'I saw him two minutes ago', never 'have seen'.",
+        "Short, sudden actions (break, cut, lose) rarely appear in the continuous form: 'I've broken my leg', not 'have been breaking'."
+      ]
+    },
     exercises: [
       // --- PAST SIMPLE VS PRESENT PERFECT (1-20) ---
       { type: "mc", instruction: "Choose the correct tense.", sentence: "I ________ my keys yesterday, and I still ________ them.", options: ["lost / didn't find", "have lost / haven't found", "lost / haven't found", "have lost / didn't find"], correct: 2, hint: "Past Simple for finished time (yesterday). Present Perfect for an action with a connection to the present." },
@@ -114,8 +156,8 @@
       { type: "mc", instruction: "Select the correct phrasing.", sentence: "Sorry for the mess, we ________ the kitchen.", options: ["have decorated", "have been decorating", "decorated", "decorate"], correct: 1, hint: "The mess is evidence of the activity, which may or may not be finished." },
 
       // --- STATIVE, BEEN VS GONE, SUPERLATIVES, FIRST TIME (41-60) ---
-      { type: "gap", instruction: "Fill in the correct form (been or gone):", sentence: "Where is Sarah? She has ___ to the supermarket.", answer: "gone", alt: [], hint: "'Gone' means she is still there and hasn't returned." },
-      { type: "gap", instruction: "Fill in the correct form (been or gone):", sentence: "You look tanned! Have you ___ on holiday?", answer: "been", alt: [], hint: "'Been' means you went there and have returned." },
+      { type: "gap", instruction: "Fill in the correct form (been or gone):", sentence: "Where is Sarah? She has ___ to the supermarket.", answer: "gone", alt: [], hint: "One of these two words implies she is still away; the other implies she's already back." },
+      { type: "gap", instruction: "Fill in the correct form (been or gone):", sentence: "You look tanned! Have you ___ on holiday?", answer: "been", alt: [], hint: "Since you're here to be seen looking tanned, has the trip finished or not?" },
       { type: "drag", instruction: "Drag the correct words.", sentence: "My parents have _1_ to Rome, so they can recommend a good hotel. My sister has _2_ to Rome, she'll be back next week.", bank: ["been", "gone", "went", "visited"], blanks: { "_1_": "been", "_2_": "gone" }, hint: "Returned (been) vs. Still there (gone)." },
       { type: "error", instruction: "Find the error.", sentence: "This is the most beautiful sunset I ever saw.", errorIndex: [8], correction: ["have ever seen"], hint: "Superlatives (the most, the best) trigger the Present Perfect." },
       { type: "mc", instruction: "Choose the correct form.", sentence: "It's the first time I ________ snails.", options: ["eat", "ate", "am eating", "have eaten"], correct: 3, hint: "The structure 'It is the first time...' always takes Present Perfect." },
@@ -136,8 +178,8 @@
       { type: "gap", instruction: "Fill in the correct tense: (seem)", sentence: "He ___ very stressed lately.", answer: "has seemed", alt: [], hint: "'Seem' is stative." },
 
       // --- ADVANCED MARKERS, MIXED B2/C1 CONTEXT (61-80) ---
-      { type: "gap", instruction: "Fill in the correct word (already, yet, still, just):", sentence: "Have you finished your essay ___?", answer: "yet", alt: [], hint: "'Yet' is used in questions and negatives, usually at the end." },
-      { type: "gap", instruction: "Fill in the correct word (already, yet, still, just):", sentence: "I have ___ eaten, so I'm not hungry.", answer: "already", alt: ["just"], hint: "'Already' emphasizes it happened sooner than expected." },
+      { type: "gap", instruction: "Fill in the correct word (already, yet, still, just):", sentence: "Have you finished your essay ___?", answer: "yet", alt: [], hint: "This word belongs in questions and negatives, usually right at the end of the sentence." },
+      { type: "gap", instruction: "Fill in the correct word (already, yet, still, just):", sentence: "I have ___ eaten, so I'm not hungry.", answer: "already", alt: ["just"], hint: "This word emphasizes that something happened sooner than expected." },
       { type: "mc", instruction: "Choose the correct position.", sentence: "I ________ haven't finished my homework.", options: ["yet", "still", "already", "just"], correct: 1, hint: "'Still' goes before the negative auxiliary." },
       { type: "drag", instruction: "Drag the adverbs.", sentence: "He _1_ hasn't replied to my email, and I sent it three days ago! Has he replied to yours _2_?", bank: ["still", "yet", "already", "just"], blanks: { "_1_": "still", "_2_": "yet" }, hint: "Still + negative auxiliary. Yet at the end of a question." },
       { type: "error", instruction: "Find the error.", sentence: "I haven't still decided which university to attend.", errorIndex: [1, 2], correction: ["still", "haven't"], hint: "'Still' must come before 'haven't'." },
@@ -154,9 +196,7 @@
       { type: "error", instruction: "Find the error.", sentence: "I've been breaking my leg, so I can't walk.", errorIndex: [1, 2], correction: ["have", "broken"], hint: "Breaking a leg is a short, sudden action. It cannot be continuous." },
       { type: "gap", instruction: "Fill in the correct tense: (read)", sentence: "I ___ this book all week, and I'm still only on page 50.", answer: "have been reading", alt: ["'ve been reading"], hint: "Focus on the ongoing activity." },
       { type: "mc", instruction: "Choose the correct meaning.", sentence: "I've cut my finger.", options: ["I cut it recently and it's probably still bleeding or bandaged.", "I cut it a long time ago and there's a scar.", "I was cutting it for a long time."], correct: 0, hint: "Present Perfect implies a strong present connection." },
-      { type: "error", instruction: "Find the error.", sentence: "She has gone to the bank, she'll be back in an hour. Wait, actually, she's back! She went to the bank.", errorIndex: [], correction: [], alt: ["This is a tricky one! Engine bypass"], hint: "Actually, if she's back, it should be 'She has been to the bank'." },
-      // Fixing the previous error item to be parsable:
-      { type: "error", instruction: "Find the error.", sentence: "She has gone to the bank. Oh, look, here she is! She just walked in.", errorIndex: [2], correction: ["been"], hint: "If she has returned, we use 'been', not 'gone'." },
+      { type: "error", instruction: "Find the error.", sentence: "She has gone to the bank. Oh, look, here she is! She just walked in.", errorIndex: [2], correction: ["been"], hint: "She has already returned, so this needs the form used for a completed round trip." },
       { type: "gap", instruction: "Fill in the correct tense: (not / see)", sentence: "I ___ him since we left university.", answer: "have not seen", alt: ["haven't seen"], hint: "'Since' + starting point triggers Present Perfect." }
     ]
   },
@@ -164,6 +204,27 @@
   future_tenses: {
     group: "1. The Tenses",
     title: "Future Tenses (Will, Going to, Continuous, Perfect)",
+    rules: {
+      summary: "English has no single future tense — the form you choose signals *how* you know the future: evidence, plan, schedule, or a point of view looking back from a future moment.",
+      points: [
+        { heading: "Will vs Going To", body: "'Going to' is for predictions based on present evidence ('Look at those clouds — it's going to rain') and for decisions/plans already made. 'Will' is for predictions based on opinion/belief ('I think it will rain'), and for spontaneous decisions and offers made at the moment of speaking ('The phone's ringing — I'll get it')." },
+        { heading: "Present Tenses for the Future", body: "Present Simple = fixed timetables and schedules (trains, flights, cinema showings, official calendars). Present Continuous = personal arrangements already fixed with someone else (I'm seeing the dentist at 3)." },
+        { heading: "Future Continuous", body: "will + be + -ing describes an action that will be in progress at a specific future time ('This time tomorrow, I'll be lying on a beach'), and is also a polite way to ask about someone's plans ('Will you be using the car later?')." },
+        { heading: "Future Perfect (Simple & Continuous)", body: "will have + V3 = an action completed **before** a future deadline ('By the end of the month, I will have finished my exams'). will have been + -ing = the **duration** of an action up to that future point ('By December, I'll have been working here for ten years'). Stative verbs only take the Simple form, never the Continuous, even for duration." },
+        { heading: "Future Time Clauses", body: "Never use 'will' after time conjunctions — when, as soon as, before, after, until, once, by the time. Use Present Simple (or Present Perfect for emphasis on completion) instead: 'I'll call you as soon as I arrive', not 'as soon as I will arrive'." }
+      ],
+      examples: [
+        { en: "Watch out! You **are going to drop** those glasses!", note: "Prediction from visible evidence" },
+        { en: "The bags look heavy — don't worry, I **will help** you.", note: "Spontaneous offer" },
+        { en: "The bus **leaves** in ten minutes. / I **am seeing** the dentist at 3 PM.", note: "Timetable vs personal arrangement" },
+        { en: "By 2050, scientists **will have found** a cure.", note: "Completed before a future point" },
+        { en: "I'll let you know as soon as I **have finished** the report.", note: "No 'will' in the time clause" }
+      ],
+      exceptions: [
+        "'Will' has no place in a clause starting with when/as soon as/before/after/until/once/by the time — use Present Simple or Present Perfect there instead.",
+        "Stative verbs in the Future Perfect stay Simple even with 'for': 'By June we will have been married for 20 years' uses 'be', which is stative, so no continuous form exists for it."
+      ]
+    },
     exercises: [
       // --- WILL VS GOING TO: PREDICTIONS & DECISIONS (1-15) ---
       { type: "gap", instruction: "Fill in the correct future form (will or going to):", sentence: "Look at those completely black clouds! It ___ rain heavily.", answer: "is going to", alt: ["'s going to"], hint: "When there is physical evidence right now (black clouds), we use 'going to' for predictions." },
@@ -261,6 +322,27 @@
 
   conditionals: {
     group: "2. Complex Structures",
+    rules: {
+      summary: "Each conditional matches a different relationship to reality: general truths, real future possibilities, unreal present/future, unreal past, and the mixed forms that combine two different time frames.",
+      points: [
+        { heading: "Zero & First Conditional", body: "Zero: If + Present Simple, Present Simple — general truths and scientific facts ('If you heat ice, it melts'). First: If + Present Simple, will + base verb — real future possibility ('If it rains, I will stay home'). Never put 'will' inside the if-clause or after time words like 'as soon as'." },
+        { heading: "Alternatives to 'If'", body: "Unless = 'if not' (never combine it with another negative). As long as, provided that, supposing, in case all take a present tense with no 'will', just like a normal if-clause." },
+        { heading: "Second Conditional", body: "If + Past Simple, would + base verb — an unreal or unlikely situation in the present/future ('If I were rich, I would travel the world'). In formal or careful English, use 'were' for all persons, not 'was' ('If I were you...'). Formal inversion drops 'if': 'Were I the manager, I would...'." },
+        { heading: "Third Conditional", body: "If + Past Perfect, would have + V3 — an unreal situation in the past that can no longer be changed ('If I had studied harder, I would have passed'). Formal inversion: 'Had I known...'. Fixed phrases 'Had it not been for...' / 'But for...' mean 'if it hadn't been for...'." },
+        { heading: "Mixed Conditionals", body: "Past condition → present result: If + Past Perfect, would + base verb ('If I had won the lottery last week, I would be rich now'). Present/general condition → past result: If + Past Simple, would have + V3 ('If you really loved me, you would have remembered my birthday')." }
+      ],
+      examples: [
+        { en: "If you **heat** ice, it **melts**.", note: "Zero conditional — general truth" },
+        { en: "You can't enter the club **unless** you **are** 18.", note: "Unless = if not" },
+        { en: "If I **were** you, I **wouldn't accept** that offer.", note: "Second conditional, formal 'were'" },
+        { en: "**Had it not been for** his quick thinking, we would have crashed.", note: "Fixed inversion phrase" },
+        { en: "If I had won the lottery last week, I **would be** rich now.", note: "Mixed: past condition, present result" }
+      ],
+      exceptions: [
+        "Never put 'would' or 'would have' inside the if-clause itself — it always belongs in the result clause.",
+        "'Unless you don't...' is a double negative error — 'unless' already means 'if not'."
+      ]
+    },
     title: "Conditionals (Zero, 1st, 2nd, 3rd, Mixed)",
     exercises: [
       // --- ZERO & FIRST CONDITIONAL (1-20) ---
@@ -281,7 +363,7 @@
       { type: "error", instruction: "Find the error.", sentence: "If the temperature drops below zero, water will freeze.", errorIndex: [8], correction: ["freezes"], hint: "Scientific facts take the Zero Conditional (Present + Present)." },
       { type: "gap", instruction: "Fill in the correct tense: (not / finish)", sentence: "If you ___ your vegetables, you won't get dessert.", answer: "don't finish", alt: ["do not finish"], hint: "First conditional negative." },
       { type: "mc", instruction: "Select the correct form.", sentence: "I ________ a taxi if it rains.", options: ["take", "will take", "took", "am taking"], correct: 1, hint: "Prediction/Decision based on a real condition." },
-      { type: "error", instruction: "Find the error.", sentence: "Unless he apologizes, I will never speak to him again.", errorIndex: [], correction: [], alt: ["Bypass - sentence is correct"], hint: "This sentence is grammatically flawless." },
+      { type: "error", instruction: "Find the error.", sentence: "Unless he apologizes, I will never speak to him again.", errorIndex: [], correction: [], hint: "This sentence is grammatically flawless." },
       { type: "error", instruction: "Find the error.", sentence: "Unless he doesn't apologize, I will never speak to him.", errorIndex: [2], correction: ["apologizes"], hint: "Double negative: 'unless' already contains 'not'." },
       { type: "gap", instruction: "Fill in the correct tense: (call)", sentence: "If she arrives early, ___ me immediately.", answer: "call", alt: [], hint: "Imperative in the main clause." },
 
@@ -340,7 +422,7 @@
       { type: "error", instruction: "Find the error.", sentence: "If he had been born in the US, he will have an American passport now.", errorIndex: [9, 10], correction: ["would", "have"], hint: "Past event -> Present result requires 'would'." },
       { type: "gap", instruction: "Fill in the correct tense: (have)", sentence: "If you ___ to work tomorrow, we could go out tonight.", answer: "didn't have", alt: ["did not have"], hint: "Future plan acting as a present condition -> Present result." },
       { type: "mc", instruction: "Choose the correct phrasing.", sentence: "________ the weather so bad, we would be sitting in the garden now.", options: ["If wasn't", "Were it not for", "Had it not been for", "Unless"], correct: 2, hint: "Past state extending to present (Had it not been for / If it hadn't been for)." },
-      { type: "error", instruction: "Find the error.", sentence: "If you really loved me, you would have remembered my birthday yesterday.", errorIndex: [], correction: [], alt: ["Bypass - sentence is correct"], hint: "Present state (love) -> Past action (remembered). This is a perfectly correct mixed conditional!" },
+      { type: "error", instruction: "Find the error.", sentence: "If you really loved me, you would have remembered my birthday yesterday.", errorIndex: [], correction: [], hint: "Present state (love) -> Past action (remembered). This is a perfectly correct mixed conditional!" },
       { type: "error", instruction: "Find the error.", sentence: "If you really loved me, you will have remembered my birthday.", errorIndex: [6], correction: ["would"], hint: "Mixed conditional requires 'would have'." },
       { type: "gap", instruction: "Fill in the correct tense: (speak)", sentence: "If I ___ French, I would have applied for that job in Paris.", answer: "spoke", alt: [], hint: "General present ability -> Missed past opportunity." },
       { type: "drag", instruction: "Drag the correct forms.", sentence: "If they _1_ their flight, they _2_ here with us right now.", bank: ["hadn't missed", "didn't miss", "would be", "would have been"], blanks: { "_1_": "hadn't missed", "_2_": "would be" }, hint: "Past mistake -> Present consequence." },
@@ -356,6 +438,28 @@
   passive_voice: {
     group: "2. Complex Structures",
     title: "Passive Voice & Causative Forms",
+    rules: {
+      summary: "The passive (be + V3) shifts focus from who does an action to what happens to something. Every active tense has a passive equivalent — the challenge is building the right auxiliary chain and knowing the special structures (causative, impersonal passive, passive gerunds).",
+      points: [
+        { heading: "Building the Passive", body: "Passive = a form of 'be' + past participle (V3), matching the tense of the active sentence: is cleaned (Present Simple), was painted (Past Simple), is being cleaned (Present Continuous — 'being'), has been repaired (Present Perfect — 'been'). 'Being' and 'been' are a classic confusion pair: being = in progress, been = completed." },
+        { heading: "Modals in the Passive", body: "modal + be + V3 for present/future ('A helmet must be worn'). modal + have been + V3 for past deduction/criticism ('He ought to have been fired')." },
+        { heading: "Impersonal Passive (Reporting)", body: "'It is said/believed/expected that...' or 'Subject + is said/believed + to-infinitive' ('He is said to be a spy'). For an earlier action, use the perfect infinitive: 'He is thought to have stolen the painting'." },
+        { heading: "Verbs with Two Objects", body: "Verbs like give, offer, tell, send can passivize with the indirect object as subject: 'He was given a reward.' Verbs like explain and describe cannot — you must restructure: 'The rules were explained to us', not 'We were explained the rules'." },
+        { heading: "Causative: have/get something done", body: "have/get + object + V3 (no 'to') describes arranging for someone else to do something ('I had my car fixed' / 'I got my hair cut'), and can also describe something happening to you, often negatively ('He had his wallet stolen')." },
+        { heading: "Passive Gerunds & Infinitives", body: "being + V3 = passive gerund ('I don't like being told what to do'). to be + V3 = passive infinitive ('She hopes to be chosen'). 'Need + -ing' has a passive meaning: 'The grass needs cutting' = needs to be cut." }
+      ],
+      examples: [
+        { en: "The office **is cleaned** every day. / It **was being cleaned** when I arrived.", note: "Simple vs continuous passive" },
+        { en: "A helmet **must be worn**. / He **ought to have been fired**.", note: "Present vs past modal passive" },
+        { en: "He **is said to be** a spy.", note: "Impersonal reporting passive" },
+        { en: "I **had my car fixed** last week.", note: "Causative — arranging a service" },
+        { en: "The grass needs **cutting**.", note: "Passive meaning of need + -ing" }
+      ],
+      exceptions: [
+        "'Translated' takes the preposition 'into' a language, not 'in'.",
+        "Causative 'have/get something done' never takes 'to' before the participle: 'had it fixed', not 'had it to be fixed'."
+      ]
+    },
     exercises: [
       // --- PRESENT & PAST SIMPLE PASSIVE (1-15) ---
       { type: "gap", instruction: "Convert to Passive (Present Simple):", sentence: "They clean the office every day. -> The office ___ every day.", answer: "is cleaned", alt: [], hint: "am/is/are + Past Participle (V3)." },
@@ -416,7 +520,7 @@
       { type: "gap", instruction: "Rewrite:", sentence: "People think she stole the money. -> She is thought ___ the money.", answer: "to have stolen", alt: [], hint: "When the action happened before the reporting verb, use 'to have + V3'." },
       { type: "mc", instruction: "Choose the correct form.", sentence: "Stonehenge ________ built around 2500 BC.", options: ["is believed to be", "is believed to have been", "believes to be", "was believed to be"], correct: 1, hint: "Present belief about a past event." },
       { type: "error", instruction: "Find the error.", sentence: "It is say that eating an apple a day is good for you.", errorIndex: [2], correction: ["said"], hint: "Passive requires V3." },
-      { type: "drag", instruction: "Convert the double object verb.", sentence: "They gave him a reward. -> He _1_ a reward. / A reward _2_ to him.", bank: ["was given", "is given", "was given", "gave"], blanks: { "_1_": "was given", "_2_": "was given" }, hint: "Usually the person becomes the subject, but both are possible." },
+      { type: "drag", instruction: "Convert the double object verb.", sentence: "They gave him a reward yesterday, but they rarely give bonuses like that. -> He _1_ a reward yesterday, but bonuses like that _2_ rarely.", bank: ["was given", "are given", "is given", "were given"], blanks: { "_1_": "was given", "_2_": "are given" }, hint: "Match each verb to its own time reference: yesterday vs a general habit." },
       { type: "gap", instruction: "Convert to Passive (focus on the person):", sentence: "They offered me a job. -> I ___ a job.", answer: "was offered", alt: [], hint: "Make 'I' the subject." },
       { type: "mc", instruction: "Select the correct form.", sentence: "I ________ a lot of difficult questions during the interview.", options: ["asked", "was asked", "have asked", "was asking"], correct: 1, hint: "I received the action (the questions)." },
       { type: "error", instruction: "Find the error.", sentence: "A new laptop was bought me for my birthday.", errorIndex: [4], correction: ["for me"], hint: "When the object (laptop) is the subject, use 'bought FOR me' or 'given TO me'." },
@@ -454,6 +558,26 @@
   gerunds_infinitives: {
     group: "2. Complex Structures",
     title: "Gerunds & Infinitives (Verb Patterns)",
+    rules: {
+      summary: "Whether a verb, preposition or adjective is followed by an -ing form (gerund) or a to-infinitive is mostly fixed by the word before it — but a handful of verbs change meaning depending on which one you pick.",
+      points: [
+        { heading: "Verbs + Gerund", body: "avoid, mind, suggest, admit (to), postpone, imagine, miss, keep, deny, risk + -ing. A gerund can also be the subject of a sentence ('Smoking is strictly forbidden')." },
+        { heading: "Prepositions + Gerund", body: "Any preposition is followed by -ing, including 'to' when it's acting as a preposition rather than part of an infinitive: look forward to, be/get used to, object to, accustomed to + -ing. Fixed idioms also take -ing: can't help, it's no use, there's no point in, instead of, without." },
+        { heading: "Verbs + To-Infinitive", body: "afford, refuse, promise, manage, seem, pretend, threaten, tend, prepare, agree, hesitate, plan, hope + to-infinitive. Some take an object first: want/advise/warn someone (not) to do something." },
+        { heading: "The C1 Meaning-Change Traps", body: "stop + -ing (quit a habit) vs stop + to-infinitive (pause in order to do something); remember/forget + -ing (memory of a past action) vs + to-infinitive (a task still to do); regret + -ing (a past action) vs + to-infinitive (formal bad news); try + to-infinitive (a difficult effort) vs try + -ing (an experiment/alternative method); go on + to-infinitive (move to the next stage) vs + -ing (continue the same activity)." },
+        { heading: "Bare Infinitive & Perception Verbs", body: "make, let, had better, would rather + bare infinitive (no 'to'). Verbs of perception (see, hear, watch) + object + bare infinitive describe a completed action ('I saw him cross the road'); + object + -ing describes an action in progress ('I saw him crossing when the accident happened')." }
+      ],
+      examples: [
+        { en: "I am really looking forward **to seeing** you next week.", note: "'to' as a preposition + gerund" },
+        { en: "After his heart attack, he had to **stop smoking**. / We stopped **to smoke** a cigarette.", note: "Quit a habit vs pause for a purpose" },
+        { en: "I remember **going** to the beach as a kid. Did you remember **to bring** the tickets?", note: "Memory vs task" },
+        { en: "I saw the blind man **cross** the road. / I saw him **crossing** when the accident happened.", note: "Completed action vs in-progress action" }
+      ],
+      exceptions: [
+        "'Look forward to' and similar phrases are one of the most common C1 traps: the 'to' is a preposition, so 'looking forward to see you' is wrong.",
+        "make and let drop 'to' in the active voice ('let him go') but keep it in the passive ('He was made to apologize')."
+      ]
+    },
     exercises: [
       // --- CORE GERUNDS (1-20) ---
       { type: "gap", instruction: "Fill in the correct form (Gerund or Infinitive): (make)", sentence: "Try to avoid ___ stupid mistakes in the exam.", answer: "making", alt: [], hint: "The verb 'avoid' is always followed by the gerund (-ing)." },
@@ -548,18 +672,39 @@
   modal_verbs: {
     group: "2. Complex Structures",
     title: "Modal Verbs (Present, Past & Deduction)",
+    rules: {
+      summary: "Modals express obligation, necessity, ability and — most tricky for learners — how certain you are about something (deduction), both in the present and looking back at the past.",
+      points: [
+        { heading: "Obligation & Necessity", body: "must / have to = obligation (must often personal/internal, have to often external rules) — both work for present rules. mustn't = prohibition, but don't have to / needn't = no obligation, it's optional. This opposite-meaning pair is the classic trap. 'Must' has no past form — use 'had to' instead." },
+        { heading: "Had Better & Ought To", body: "had better + bare infinitive is a strong warning ('You'd better hurry'), negative 'had better not'. 'Ought to' needs 'to' (unlike other modals) and behaves like 'should': 'You ought to apologize'." },
+        { heading: "Present/Future Deduction", body: "must = I'm almost certain it's true ('You must be exhausted'). can't = I'm almost certain it's false ('That can't be John — he's in Australia'). might/may/could = it's possible (~50%). Never use 'mustn't' for deduction — that's a completely different, much rarer meaning." },
+        { heading: "Past Deduction", body: "must have + V3 = certain about the past ('It must have rained last night'). can't have / couldn't have + V3 = certain it's impossible ('He can't have seen me'). might/may/could have + V3 = possible. The modal is always followed by 'have', never 'had'." },
+        { heading: "Regret & Criticism (Past)", body: "should have + V3 = regret about something you didn't do ('I should have studied more'). shouldn't have + V3 = criticism of something that was done. could have + V3 = a missed opportunity. needn't have + V3 = you did something that turned out to be unnecessary (contrast with 'didn't need to', which means it was known to be unnecessary beforehand, so it wasn't done)." }
+      ],
+      examples: [
+        { en: "You **mustn't** park here. / You **don't have to** finish today.", note: "Prohibition vs no obligation" },
+        { en: "You've been travelling all day — you **must** be exhausted!", note: "Present deduction, high certainty" },
+        { en: "The street is wet. It **must have rained** last night.", note: "Past deduction" },
+        { en: "I failed the exam. I **should have studied** more.", note: "Regret about an omission" },
+        { en: "I **needn't have bought** a gift — but thank you!", note: "Unnecessary action that was still done" }
+      ],
+      exceptions: [
+        "'Mustn't' is never used for logical deduction — use can't/couldn't instead.",
+        "Past modals always take 'have', not 'had': 'must have gone', never 'must had gone'."
+      ]
+    },
     exercises: [
       // --- OBLIGATION, PROHIBITION & LACK OF NECESSITY (1-20) ---
       { type: "mc", instruction: "Choose the correct modal.", sentence: "You ________ wear a seatbelt in the car; it's the law.", options: ["must", "have to", "should", "both A and B are correct"], correct: 3, hint: "For strong obligations or rules, both 'must' and 'have to' can be used in the present." },
       { type: "gap", instruction: "Fill in the modal (must vs have to):", sentence: "I ___ go to the dentist tomorrow because I have a terrible toothache.", answer: "must", alt: ["have to"], hint: "Internal obligation (speaker feels it's necessary)." },
-      { type: "drag", instruction: "Drag the correct forms.", sentence: "At my school, we _1_ wear a uniform. I hate it, but I _2_.", bank: ["have to", "must", "had to", "mustn't"], blanks: { "_1_": "have to", "_2_": "have to" }, hint: "'Have to' is preferred for external obligations (rules made by others)." },
+      { type: "drag", instruction: "Drag the correct forms.", sentence: "At my school, we _1_ wear a uniform, but on the last day of term we _2_.", bank: ["have to", "don't have to", "must", "mustn't"], blanks: { "_1_": "have to", "_2_": "don't have to" }, hint: "Contrast an external obligation with its absence." },
       { type: "error", instruction: "Find the error.", sentence: "You mustn't to park here; it is a restricted zone.", errorIndex: [1, 2], correction: ["mustn't"], hint: "Modals are followed by the bare infinitive (no 'to')." },
       { type: "mc", instruction: "Select the correct meaning.", sentence: "You don't have to finish the report today.", options: ["You are forbidden from finishing it.", "It is a bad idea to finish it.", "It is not necessary to finish it today.", "You cannot finish it."], correct: 2, hint: "'Don't have to' means there is no obligation. You can if you want, but you don't need to." },
       { type: "gap", instruction: "Fill in the correct modal: (mustn't / don't have to)", sentence: "You ___ touch that wire; it's extremely dangerous!", answer: "mustn't", alt: ["must not"], hint: "Prohibition (it is not allowed / it is dangerous)." },
       { type: "drag", instruction: "Drag the modals.", sentence: "You _1_ pay for the tickets; they are free. But you _2_ lose them!", bank: ["don't have to", "mustn't", "shouldn't", "needn't"], blanks: { "_1_": "don't have to", "_2_": "mustn't" }, hint: "Lack of necessity vs Prohibition." },
       { type: "error", instruction: "Find the error.", sentence: "We haven't to wake up early tomorrow because it's Sunday.", errorIndex: [1, 2], correction: ["don't", "have to"], hint: "The negative of 'have to' requires the auxiliary 'do' (don't/doesn't have to)." },
       { type: "mc", instruction: "Choose the correct form.", sentence: "We ________ rush. The train doesn't leave for another hour.", options: ["mustn't", "can't", "needn't", "shouldn't"], correct: 2, hint: "'Needn't' is a formal alternative to 'don't have to'." },
-      { type: "gap", instruction: "Fill in the past form of 'must':", sentence: "I ___ work late yesterday to finish the project.", answer: "had to", alt: [], hint: "'Must' has no past form. You must use 'had to'." },
+      { type: "gap", instruction: "Fill in the past form of 'must':", sentence: "I ___ work late yesterday to finish the project.", answer: "had to", alt: [], hint: "'Must' has no past tense form — you need a different expression of obligation." },
       { type: "drag", instruction: "Complete the sentence.", sentence: "In the past, people _1_ work on Saturdays, but now they _2_.", bank: ["had to", "must", "don't have to", "mustn't"], blanks: { "_1_": "had to", "_2_": "don't have to" }, hint: "Past obligation vs Present lack of necessity." },
       { type: "error", instruction: "Find the error.", sentence: "He doesn't needs to bring anything to the party.", errorIndex: [1, 2], correction: ["doesn't", "need"], hint: "After 'doesn't', the main verb must be the bare infinitive (no 's')." },
       { type: "gap", instruction: "Fill in the correct modal: (mustn't / needn't)", sentence: "You ___ apologize; it wasn't your fault at all.", answer: "needn't", alt: ["don't have to", "don't need to"], hint: "Lack of necessity." },
@@ -610,7 +755,7 @@
       { type: "mc", instruction: "Select the correct deduction.", sentence: "There's no pizza left. The kids ________ it all.", options: ["must have eaten", "can't have eaten", "should have eaten", "had to eat"], correct: 0, hint: "Logical conclusion about the past." },
       { type: "error", instruction: "Find the error.", sentence: "I might have leave my laptop at the coffee shop.", errorIndex: [2], correction: ["left"], hint: "V3 required: left." },
       { type: "gap", instruction: "Fill in the continuous past deduction:", sentence: "He looked exhausted. He must have been ___ hard all day.", answer: "working", alt: ["studying"], hint: "Modal + have been + V-ing." },
-      { type: "drag", instruction: "Complete the sentence.", sentence: "She _1_ have been happy when she heard the news. She _2_ have smiled for days.", bank: ["must", "can't", "must", "might"], blanks: { "_1_": "must", "_2_": "must" }, hint: "Certainty about the past." },
+      { type: "drag", instruction: "Complete the sentence.", sentence: "She _1_ have been happy when she heard the news, because she was smiling for days. He, on the other hand, _2_ have been pleased, because he stormed out of the room.", bank: ["must", "can't", "might", "should"], blanks: { "_1_": "must", "_2_": "can't" }, hint: "Positive evidence supports one deduction; contradictory evidence rules it out." },
       { type: "mc", instruction: "Choose the correct form.", sentence: "They ________ the museum. It was closed all day yesterday.", options: ["couldn't visit", "can't have visited", "must not have visited", "didn't have to visit"], correct: 1, hint: "Logical impossibility." },
       { type: "error", instruction: "Find the error.", sentence: "He may has forgotten his password.", errorIndex: [1, 2], correction: ["may", "have"], hint: "Modals are followed by the bare infinitive 'have', never 'has'." },
       { type: "gap", instruction: "Fill in the past deduction (Negative possibility):", sentence: "She is very late. She ___ not have caught the 8:00 bus.", answer: "might", alt: ["may"], hint: "It is possible she didn't catch it." },
@@ -642,17 +787,38 @@
   relative_participle_clauses: {
     group: "2. Complex Structures",
     title: "Relative Clauses & Participles",
+    rules: {
+      summary: "Relative clauses add information about a noun using who/which/that/whose/whom. Whether you can drop the pronoun, use a comma, or reduce the whole clause to a participle depends on a few precise rules.",
+      points: [
+        { heading: "Core Pronouns", body: "who/whom = people, which = things, whose = possession, why = with 'reason', when = with a time noun (not 'where', which is for places). After a preposition, formal style requires 'whom' or 'which': 'the manager to whom I spoke'. After indefinite pronouns (everything, nothing, all, something), always use 'that', never 'which'." },
+        { heading: "Defining vs Non-Defining", body: "A defining clause identifies which one and has no commas ('The man who stole the car was arrested'). A non-defining clause just adds extra information and needs commas ('My brother, who lives in New York, is a doctor'). 'That' is banned in non-defining clauses — you must use who/which. Non-defining 'which' can also refer back to a whole previous idea: 'He passed the exam, which surprised everyone.'" },
+        { heading: "Contact Clauses & Prepositions", body: "You can only omit the relative pronoun when it is the object of the clause, never the subject, and never in a non-defining (comma) clause. A stranded preposition can stay at the end informally ('the song you were listening to') or move to the front formally with whom/which ('the song to which you were listening'). 'That' can never follow a preposition directly." },
+        { heading: "Present Participle Clauses (-ing)", body: "An active relative clause can be reduced to -ing: 'the man who is standing there' → 'the man standing there'. -ing clauses can also replace 'because/as/since': 'Not knowing his number, I couldn't call him.' The subject of the participle must match the subject of the main clause, or you get a dangling participle error." },
+        { heading: "Past & Perfect Participle Clauses", body: "A passive relative clause reduces to V3: 'the book which was written by Tolkien' → 'the book written by Tolkien'. 'Having + V3' shows an action completed before the main clause ('Having finished the test, he left'); 'Having been + V3' is its passive form." }
+      ],
+      examples: [
+        { en: "The manager to **whom** I spoke was very helpful.", note: "Formal preposition + whom" },
+        { en: "Everything **that** he said was a lie.", note: "'that' after an indefinite pronoun" },
+        { en: "He passed the exam, **which** surprised everyone.", note: "Non-defining 'which' referring to the whole clause" },
+        { en: "The man **standing** there is my uncle.", note: "Reduced active participle clause" },
+        { en: "**Having finished** the test, he left.", note: "Perfect participle — completed before the main clause" }
+      ],
+      exceptions: [
+        "'That' can never appear directly after a comma or directly after a preposition.",
+        "Dangling participles are a classic exam trap: 'Walking down the street, a dog bit me' wrongly implies the dog was walking."
+      ]
+    },
     exercises: [
       // --- CORE RELATIVE PRONOUNS (who, which, that, whose, whom) (1-15) ---
-      { type: "gap", instruction: "Fill in the correct relative pronoun: (who / which)", sentence: "The man ___ stole the car was arrested yesterday.", answer: "who", alt: ["that"], hint: "Use 'who' or 'that' for people." },
+      { type: "gap", instruction: "Fill in the correct relative pronoun: (who / which)", sentence: "The man ___ stole the car was arrested yesterday.", answer: "who", alt: ["that"], hint: "The man is a person, not a thing — pick the pronoun used for people." },
       { type: "mc", instruction: "Select the correct pronoun.", sentence: "I lost the book ________ I borrowed from the library.", options: ["who", "whose", "which", "whom"], correct: 2, hint: "Use 'which' or 'that' for things." },
       { type: "drag", instruction: "Drag the correct pronouns.", sentence: "The girl _1_ dog bit me is the one _2_ lives next door.", bank: ["whose", "who", "whom", "which"], blanks: { "_1_": "whose", "_2_": "who" }, hint: "'Whose' shows possession (the dog of the girl)." },
       { type: "error", instruction: "Find the error.", sentence: "The laptop who I bought yesterday is already broken.", errorIndex: [2], correction: ["which", "that"], hint: "A laptop is a thing, not a person." },
       { type: "gap", instruction: "Fill in the correct relative pronoun: (who / whose / whom)", sentence: "The woman ___ car was stolen called the police.", answer: "whose", alt: [], hint: "Possession: the car belongs to the woman." },
       { type: "mc", instruction: "Choose the correct formal pronoun.", sentence: "The manager to ________ I spoke was very helpful.", options: ["who", "which", "whom", "whose"], correct: 2, hint: "After a preposition (to, for, with), you must use 'whom' for people in formal English." },
-      { type: "drag", instruction: "Complete the sentence.", sentence: "The town _1_ I grew up is the place _2_ I feel most at home.", bank: ["where", "which", "when", "that"], blanks: { "_1_": "where", "_2_": "where" }, hint: "Use 'where' for places (meaning 'in which')." },
+      { type: "drag", instruction: "Complete the sentence.", sentence: "The reason _1_ I moved was that I found a job in the city _2_ I now live.", bank: ["why", "where", "which", "that"], blanks: { "_1_": "why", "_2_": "where" }, hint: "One clause explains a cause, the other names a location." },
       { type: "error", instruction: "Find the error.", sentence: "Summer is the season where I feel happiest.", errorIndex: [4], correction: ["when"], hint: "Summer is a time, so use 'when', not 'where'." },
-      { type: "gap", instruction: "Fill in the correct pronoun:", sentence: "Do you know the reason ___ she is crying?", answer: "why", alt: [], hint: "Use 'why' after the word 'reason'." },
+      { type: "gap", instruction: "Fill in the correct pronoun:", sentence: "Do you know the reason ___ she is crying?", answer: "why", alt: [], hint: "The word 'reason' is followed by a specific relative adverb, not 'which' or 'that'." },
       { type: "mc", instruction: "Select the correct phrase.", sentence: "I met two brothers, ________ were doctors.", options: ["both of who", "both of whom", "both of which", "both of them"], correct: 1, hint: "Quantifiers (some of, both of, neither of) + whom for people." },
       { type: "error", instruction: "Find the error.", sentence: "I bought three books, none of who I have read yet.", errorIndex: [6], correction: ["which"], hint: "Books are things, so use 'none of which'." },
       { type: "drag", instruction: "Drag the correct pronouns.", sentence: "He is the teacher _1_ everyone respects, and _2_ classes are always full.", bank: ["whom", "who", "whose", "which"], blanks: { "_1_": "whom", "_2_": "whose" }, hint: "'Whom' is the object of 'respects'. 'Whose' shows possession of 'classes'." },
@@ -672,7 +838,7 @@
       { type: "drag", instruction: "Complete the sentence.", sentence: "The sun _1_ _2_ is 150 million km away _3_ provides us with light.", bank: [",", "which", "that", "who"], blanks: { "_1_": ",", "_2_": "which", "_3_": "," }, hint: "Unique noun -> Non-defining -> Commas -> 'which' (not 'that')." },
       { type: "error", instruction: "Find the error.", sentence: "The Titanic that sank in 1912 was a luxury liner.", errorIndex: [2], correction: ["which"], hint: "The Titanic is unique. It requires commas and 'which'." },
       { type: "mc", instruction: "What does 'which' refer to here?", sentence: "He passed the exam, which surprised everyone.", options: ["The exam", "Everyone", "The whole fact that he passed"], correct: 2, hint: "When 'which' follows a comma at the end of a clause, it can refer to the entire previous sentence." },
-      { type: "gap", instruction: "Fill in the correct pronoun (referring to the whole sentence):", sentence: "She offered to help me, ___ was very kind of her.", answer: "which", alt: [], hint: "'Which' refers to the whole action of offering." },
+      { type: "gap", instruction: "Fill in the correct pronoun (referring to the whole sentence):", sentence: "She offered to help me, ___ was very kind of her.", answer: "which", alt: [], hint: "This pronoun can refer back to an entire preceding clause, not just a single noun." },
       { type: "drag", instruction: "Drag the correct pronouns.", sentence: "The car _1_ he was driving, _2_ belonged to his dad, was completely destroyed.", bank: ["that", "which", "who", "whose"], blanks: { "_1_": "that", "_2_": "which" }, hint: "First clause is defining (no comma -> that/which). Second is non-defining (comma -> which)." },
       { type: "error", instruction: "Find the error.", sentence: "He didn't get the job, what made him very sad.", errorIndex: [5], correction: ["which"], hint: "Use ', which' to refer to a whole previous clause. Never use ', what'." },
       { type: "mc", instruction: "Select the correct punctuation.", sentence: "Students ________ will fail the course.", options: ["who do not study", ", who do not study, "], correct: 0, hint: "Defining: Only the specific students who don't study will fail. If you use commas, it means ALL students won't study and ALL will fail." },
@@ -681,7 +847,7 @@
       { type: "mc", instruction: "Can we omit the relative pronoun here?", sentence: "The man WHO stole the car was arrested.", options: ["Yes, omit it.", "No, keep it."], correct: 1, hint: "You can only omit the pronoun if it is the OBJECT. Here, 'who' is the SUBJECT (doing the stealing)." },
       { type: "mc", instruction: "Can we omit the relative pronoun here?", sentence: "The book WHICH I read yesterday was great.", options: ["Yes, omit it.", "No, keep it."], correct: 0, hint: "'Which' is the OBJECT. 'I' is the subject. We can say 'The book I read yesterday...'" },
       { type: "gap", instruction: "Rewrite omitting the pronoun: \"The woman who I met...\"", sentence: "The woman ___ ___ was very nice.", answer: "I met", alt: [], hint: "Drop 'who' because 'I' is the subject." },
-      { type: "drag", instruction: "Drag the correct words to form a contact clause.", sentence: "Is this the song _1_ _2_ _3_?", bank: ["you", "were", "listening", "to", "which", "that"], blanks: { "_1_": "you", "_2_": "were", "_3_": "listening to" }, hint: "Omit the pronoun, keep the preposition at the end." },
+      { type: "drag", instruction: "Drag the correct words to form a contact clause.", sentence: "Is this the song _1_ _2_ _3_ _4_?", bank: ["you", "were", "listening", "to", "which", "that"], blanks: { "_1_": "you", "_2_": "were", "_3_": "listening", "_4_": "to" }, hint: "Omit the pronoun, keep the preposition at the end." },
       { type: "error", instruction: "Find the error.", sentence: "The people which we invited to the party didn't show up.", errorIndex: [2], correction: ["-", "who", "whom", "that"], hint: "You can omit it entirely ('The people we invited'), or use 'who/whom/that' for people. Never 'which'." },
       { type: "gap", instruction: "Rewrite using a formal preposition structure:", sentence: "The man who I spoke to... -> The man ___ ___ I spoke...", answer: "to whom", alt: [], hint: "Move the preposition before the pronoun, and use 'whom' for people." },
       { type: "mc", instruction: "Choose the most formal structure.", sentence: "The project ________ is very important.", options: ["which I am working on", "that I am working on", "on which I am working", "I am working on"], correct: 2, hint: "Preposition + which/whom is the most formal style." },
@@ -738,6 +904,28 @@
   irregular_verbs: {
     group: "3. Vocabulary & Forms",
     title: "Irregular Verbs Master Drill",
+    rules: {
+      summary: "Irregular verbs don't follow the regular -ed rule for the past and participle. There's no single trick, but most of them fall into a small number of recognisable patterns — learning the pattern is faster than learning 93 verbs one by one.",
+      points: [
+        { heading: "All Three Forms Identical", body: "base = past = participle: cut-cut-cut, hit-hit-hit, put-put-put, cost-cost-cost, hurt-hurt-hurt, let-let-let, set-set-set, shut-shut-shut, read-read-read (spelling identical, but the past/participle is pronounced 'red')." },
+        { heading: "Past = Participle, Different From Base", body: "The largest group: an -t or -d ending shared by past and participle, e.g. bring-brought-brought, buy-bought-bought, catch-caught-caught, feel-felt-felt, keep-kept-kept, leave-left-left, lose-lost-lost, make-made-made, say-said-said, sell-sold-sold, teach-taught-taught, think-thought-thought." },
+        { heading: "Three Distinct Forms (Ablaut: i-a-u)", body: "A vowel-change pattern where base, past and participle all differ, often following i→a→u: begin-began-begun, drink-drank-drunk, ring-rang-rung, sing-sang-sung, sink-sank-sunk, swim-swam-swum." },
+        { heading: "Three Distinct Forms (Participle in -en)", body: "Many common irregular verbs form the participle by adding -en/-n to a changed stem: break-broke-broken, choose-chose-chosen, drive-drove-driven, eat-ate-eaten, fall-fell-fallen, give-gave-given, know-knew-known, speak-spoke-spoken, steal-stole-stolen, take-took-taken, wake-woke-woken, write-wrote-written." },
+        { heading: "Base = Participle, Past Differs", body: "A smaller group where the participle returns to the base form: become-became-become, come-came-come, run-ran-run." },
+        { heading: "Irregular One-Offs", body: "Some of the most common verbs in English don't fit any pattern and just have to be memorised: be-was/were-been, go-went-gone, do-did-done, have-had-had, get-got-got (US: gotten)." }
+      ],
+      examples: [
+        { en: "cut – cut – cut", note: "All three forms identical" },
+        { en: "buy – bought – bought", note: "Past = participle, both end in -t" },
+        { en: "sing – sang – sung", note: "Ablaut pattern i-a-u" },
+        { en: "write – wrote – written", note: "Participle ends in -en" },
+        { en: "be – was/were – been", note: "Irregular one-off" }
+      ],
+      exceptions: [
+        "British spellings are used throughout this drill (burnt, dreamt, leant, learnt, smelt, spelt, spilt, spoilt) rather than the American -ed forms (burned, dreamed, learned, spelled, spilled, spoiled) — both are correct English.",
+        "'Get' has two accepted participles: 'got' (standard British English) and 'gotten' (American English)."
+      ]
+    },
     exercises: [
       { type: "gap", instruction: "Type the Past Simple and Past Participle.", sentence: "Base: **arise** -> Past: ___ | Participle: ___", answer: "arose ... arisen", hint: "arise - arose - arisen" },
       { type: "gap", instruction: "Type the Past Simple and Past Participle.", sentence: "Base: **awake** -> Past: ___ | Participle: ___", answer: "awoke ... awoken", hint: "awake - awoke - awoken" },
@@ -881,6 +1069,27 @@
   linking_words: {
     group: "3. Vocabulary & Forms",
     title: "Linking Words & Connectors",
+    rules: {
+      summary: "Linking words fall into families by function (contrast, cause, purpose, addition, result, condition) — and within each family, some connectors take a noun/gerund while others take a full clause. Mixing them up is the most common C1 error.",
+      points: [
+        { heading: "Contrast & Concession", body: "Despite / In spite of + noun or gerund (no 'of' after despite: 'Despite the rain'). Although / Even though / Though / While + a full clause. 'However' is a sentence adverb (needs its own sentence + comma) and cannot connect two clauses the way 'although' does. Whereas contrasts two clauses directly within one sentence. Nevertheless, Nonetheless (formal 'despite this'), Albeit and Much as are more formal alternatives." },
+        { heading: "Cause, Reason & Purpose", body: "due to / owing to / because of / on account of + noun. because / since / as + clause. Purpose: so that / in order to / so as not to / in order not to. 'For to' is always wrong — just use 'to' or 'in order to'." },
+        { heading: "Addition, Result & Effect", body: "Furthermore, Moreover, In addition (to), Besides add a point. 'Not only... but also' requires inversion after the sentence-initial 'Not only' ('Not only is he a musician, but he is also a painter'). Consequently, Therefore, Thus, Hence, As a result (of) show a result — 'as a result of' only needs 'of' when directly followed by a noun." },
+        { heading: "Condition", body: "otherwise = if not, with a negative consequence. provided that / as long as = on condition that. in case = as a precaution (not the same as 'if'). unless = if not — never combine with another negative ('unless you don't...' is wrong, since 'unless' already means 'if not')." }
+      ],
+      examples: [
+        { en: "**Despite** the heavy rain, we decided to go for a hike.", note: "Despite + noun, no 'of'" },
+        { en: "She is extremely wealthy. **However**, she is very unhappy.", note: "However starts a new sentence" },
+        { en: "He hid the money **for fear that** anyone would steal it.", note: "Formal negative purpose" },
+        { en: "**Not only is** he a great musician, but he is also a talented painter.", note: "Inversion after 'Not only'" },
+        { en: "He couldn't even afford the rent, **let alone** buy a new car.", note: "Emphasises the second point is even less likely" }
+      ],
+      exceptions: [
+        "'In contrary to' is wrong — the fixed phrase is 'Contrary to' or 'On the contrary'.",
+        "'Beside' (next to) and 'Besides' (in addition to) look similar but mean different things.",
+        "'Despite' never takes 'of', while 'because of' always does — the two are easy to cross-contaminate."
+      ]
+    },
     exercises: [
       // --- CONTRAST & CONCESSION (1-25) ---
       { type: "mc", instruction: "Choose the correct connector.", sentence: "________ the heavy rain, we decided to go for a hike.", options: ["Although", "Despite", "However", "Even though"], correct: 1, hint: "'Despite' is a preposition followed by a noun phrase. 'Although' requires a full clause (subject + verb)." },
@@ -894,7 +1103,7 @@
       { type: "gap", instruction: "Fill in the connector (meaning: despite this):", sentence: "The economy is in a recession. ___, our company's profits are up.", answer: "Nevertheless", alt: ["Nonetheless", "However"], hint: "A formal C1 alternative to 'However'." },
       { type: "mc", instruction: "Choose the correct form.", sentence: "I couldn't sleep ________ the noise from the party downstairs.", options: ["because", "due to", "since", "as"], correct: 1, hint: "'Due to' is a preposition followed by a noun phrase. The others require a full clause." },
       { type: "error", instruction: "Find the error.", sentence: "However it was very cold, we went swimming in the lake.", errorIndex: [0], correction: ["Although", "Even though"], hint: "'However' cannot connect two clauses in this way. Use 'Although'." },
-      { type: "gap", instruction: "Fill in the formal connector (meaning: even though):", sentence: "___ the project was a success, it cost twice as much as planned.", answer: "Although", alt: ["While", "Even though"], hint: "'While' can also be used formally to mean 'Although' at the beginning of a sentence." },
+      { type: "gap", instruction: "Fill in the formal connector (meaning: even though):", sentence: "___ the project was a success, it cost twice as much as planned.", answer: "Although", alt: ["While", "Even though"], hint: "This full-clause connector means 'despite the fact that' — a time-word can also be stretched to mean this formally." },
       { type: "drag", instruction: "Drag the correct forms.", sentence: "He passed the exam _1_ studying very little. _2_ he didn't study, he still passed.", bank: ["in spite of", "even though", "despite of", "however"], blanks: { "_1_": "in spite of", "_2_": "even though" }, hint: "Preposition + gerund vs Conjunction + clause." },
       { type: "mc", instruction: "Select the best C1 connector.", sentence: "The book is heavily criticized for its historical inaccuracies. ________, it remains a bestseller.", options: ["Furthermore", "Consequently", "Nonetheless", "Therefore"], correct: 2, hint: "'Nonetheless' shows a surprising contrast (meaning 'despite what was just said')." },
       { type: "error", instruction: "Find the error.", sentence: "In contrary to popular belief, bats are not blind.", errorIndex: [0, 1], correction: ["Contrary"], hint: "The fixed expression is 'Contrary to', not 'In contrary to'." },
@@ -916,7 +1125,7 @@
       { type: "error", instruction: "Find the error.", sentence: "Owing to it was raining, the match was postponed.", errorIndex: [0, 1], correction: ["Because", "Since", "As"], hint: "'Owing to' must be followed by a noun/gerund, not a full clause." },
       { type: "gap", instruction: "Fill in the correct connector (meaning: because):", sentence: "___ we have some free time, let's grab a coffee.", answer: "As", alt: ["Since", "Because"], hint: "A short, common synonym for 'because'." },
       { type: "mc", instruction: "Choose the correct phrase for purpose.", sentence: "I set my alarm for 5 AM ________ I wouldn't miss my flight.", options: ["in order to", "so as not to", "so that", "because"], correct: 2, hint: "'So that' is followed by a full clause (subject + would/could)." },
-      { type: "drag", instruction: "Drag the correct words to form the purpose clause.", sentence: "He spoke very quietly _1_ _2_ _3_ wake the baby.", bank: ["so", "as", "not", "to", "that", "in"], blanks: { "_1_": "so", "_2_": "as", "_3_": "not to" }, hint: "Negative purpose: 'so as not to' or 'in order not to'." },
+      { type: "drag", instruction: "Drag the correct words to form the purpose clause.", sentence: "He spoke very quietly _1_ _2_ _3_ _4_ wake the baby.", bank: ["so", "as", "not", "to", "that", "in"], blanks: { "_1_": "so", "_2_": "as", "_3_": "not", "_4_": "to" }, hint: "Negative purpose: 'so as not to' or 'in order not to'." },
       { type: "error", instruction: "Find the error.", sentence: "I went to the library for to study for my exams.", errorIndex: [5, 6], correction: ["to"], hint: "Never use 'for to'. Use 'to' or 'in order to' for purpose." },
       { type: "gap", instruction: "Fill in the missing word:", sentence: "She studied hard in ___ to pass the Abitur with top marks.", answer: "order", alt: [], hint: "'in order to'." },
       { type: "mc", instruction: "Select the correct C1 connector.", sentence: "The stadium was closed ________ safety concerns.", options: ["on account of", "due to the fact", "because", "since"], correct: 0, hint: "'On account of' is a formal preposition meaning 'because of'." },
@@ -955,15 +1164,35 @@
   prepositions: {
     group: "3. Vocabulary & Forms",
     title: "Prepositions (Dependent & Fixed)",
+    rules: {
+      summary: "Many adjectives, verbs and nouns are permanently 'married' to a specific preposition. There's no shortcut — these have to be learned as fixed pairs, ideally grouped by word type.",
+      points: [
+        { heading: "Adjective + Preposition", body: "capable of, accustomed to, famous for, obsessed with, typical of, aware of, responsible for, skilled at, fond of, guilty of, fed up with, tired of, involved in, compatible with, dependent on/upon." },
+        { heading: "Verb + Preposition", body: "succeed in, object to, congratulate on / praise for, prevent...from, translate into, rely on, apologize to (a person) + for (a thing), consist of, suffer from, insist on, accuse of, apply to (an institution) / apply for (a job), complain to (someone) + about (something), participate in, concentrate on." },
+        { heading: "Noun + Preposition", body: "increase/decrease in, intention of, advantage of, access to, demand for, experience in/with, reason for (but cause of), lack of, threat to, solution to, insight into, objection to, connection between, respect for, damage to, belief in." },
+        { heading: "Verbs With No Preposition", body: "Some verbs are transitive in English even though their German equivalent needs a preposition, so no preposition is used at all: discuss (not 'discuss about'), enter (not 'enter into' a room), marry (not 'marry with')." }
+      ],
+      examples: [
+        { en: "She is fully **capable of** passing the exam if she studies.", note: "Adjective + of" },
+        { en: "Did you **succeed in** convincing him to join us?", note: "Verb + in + gerund" },
+        { en: "We must **prevent** the virus **from** spreading further.", note: "prevent...from + gerund" },
+        { en: "There has been a sudden **increase in** the price of oil.", note: "Noun + in" },
+        { en: "We **discussed** the problem for hours.", note: "No preposition after 'discuss'" }
+      ],
+      exceptions: [
+        "'We discussed about the problem' is a very common error — 'discuss' is directly transitive, with no preposition at all.",
+        "'Connection between the two events' is already correct as written — not every prepositional phrase in this unit is broken; some items test whether you can recognise a correct sentence."
+      ]
+    },
     exercises: [
       // --- ADJECTIVE + PREPOSITION (1-15) ---
       { type: "gap", instruction: "Fill in the correct preposition:", sentence: "She is fully capable ___ passing the exam if she studies.", answer: "of", alt: [], hint: "capable + of" },
       { type: "mc", instruction: "Choose the correct preposition.", sentence: "I am not accustomed ________ waking up this early.", options: ["with", "to", "at", "for"], correct: 1, hint: "accustomed + to (+ gerund/noun)" },
-      { type: "drag", instruction: "Drag the prepositions.", sentence: "He is famous _1_ his paintings, but he is notorious _2_ his bad temper.", bank: ["for", "of", "about", "with"], blanks: { "_1_": "for", "_2_": "for" }, hint: "famous for / notorious for" },
+      { type: "drag", instruction: "Drag the prepositions.", sentence: "He is famous _1_ his paintings, but he is obsessed _2_ perfection.", bank: ["for", "with", "about", "of"], blanks: { "_1_": "for", "_2_": "with" }, hint: "famous for / obsessed with" },
       { type: "error", instruction: "Find the error.", sentence: "It is very typical from him to arrive late.", errorIndex: [4], correction: ["of"], hint: "typical + of" },
       { type: "gap", instruction: "Fill in the correct preposition:", sentence: "Are you aware ___ the risks involved in this project?", answer: "of", alt: [], hint: "aware + of" },
       { type: "mc", instruction: "Select the correct form.", sentence: "He is entirely responsible ________ the marketing department.", options: ["of", "about", "for", "with"], correct: 2, hint: "responsible + for" },
-      { type: "drag", instruction: "Complete the sentence.", sentence: "She is highly skilled _1_ coding, but quite bad _2_ public speaking.", bank: ["at", "in", "with", "about"], blanks: { "_1_": "at", "_2_": "at" }, hint: "good/bad/skilled + at" },
+      { type: "drag", instruction: "Complete the sentence.", sentence: "She is highly skilled _1_ coding, but has little experience _2_ public speaking.", bank: ["at", "in", "with", "about"], blanks: { "_1_": "at", "_2_": "in" }, hint: "skilled at / experience in" },
       { type: "error", instruction: "Find the error.", sentence: "I am very fond about classic literature.", errorIndex: [4], correction: ["of"], hint: "fond + of" },
       { type: "gap", instruction: "Fill in the correct preposition:", sentence: "The city was completely destroyed and reduced ___ rubble.", answer: "to", alt: [], hint: "reduced + to" },
       { type: "mc", instruction: "Choose the correct preposition.", sentence: "He was found guilty ________ theft and sentenced to prison.", options: ["for", "of", "about", "with"], correct: 1, hint: "guilty + of" },
@@ -1007,7 +1236,7 @@
       { type: "gap", instruction: "Fill in the correct preposition:", sentence: "The book provides an interesting insight ___ ancient Roman culture.", answer: "into", alt: [], hint: "insight + into" },
       { type: "mc", instruction: "Select the correct preposition.", sentence: "He took great pride ________ his son's achievements.", options: ["of", "in", "about", "for"], correct: 1, hint: "take pride + in" },
       { type: "drag", instruction: "Drag the prepositions.", sentence: "I have no objection _1_ your plan, but I have doubts _2_ its execution.", bank: ["to", "about", "of", "for"], blanks: { "_1_": "to", "_2_": "about" }, hint: "objection + to / doubt + about" },
-      { type: "error", instruction: "Find the error.", sentence: "There is a deep connection between the two events.", errorIndex: [], correction: [], alt: ["Bypass - sentence is correct"], hint: "Connection + between is perfectly correct!" },
+      { type: "error", instruction: "Find the error.", sentence: "There is a deep connection between the two events.", errorIndex: [], correction: [], hint: "Connection + between is perfectly correct!" },
       { type: "error", instruction: "Find the error.", sentence: "I have a lot of respect to my grandfather.", errorIndex: [6], correction: ["for"], hint: "respect + for" },
       { type: "gap", instruction: "Fill in the correct preposition:", sentence: "The damage ___ the car was estimated at £2000.", answer: "to", alt: [], hint: "damage + to" },
       { type: "mc", instruction: "Choose the correct preposition.", sentence: "He has a strong belief ________ life after death.", options: ["on", "about", "in", "for"], correct: 2, hint: "belief + in" }
@@ -1017,6 +1246,27 @@
   articles: {
     group: "3. Vocabulary & Forms",
     title: "Articles (Definite, Indefinite, Zero)",
+    rules: {
+      summary: "German uses articles more freely than English. The default in English is often the zero article (no 'the' or 'a') for general statements — 'the' is reserved for specific, known, or unique things.",
+      points: [
+        { heading: "Zero Article for General Statements", body: "Abstract nouns and uncountable nouns used generally take no article: 'Life was harder 200 years ago', 'Music brings people together'. Academic subjects also take zero article: 'She studies history'. Compare 'most people' (general, no article) with 'most of the people in this room' (a specific group, needs 'the')." },
+        { heading: "Institutions: Purpose vs Visit", body: "Zero article when someone goes to an institution for its primary purpose (prison, hospital, school, bed, church, university): 'He was sent to prison.' Add 'the' when referring to the building for a different reason: 'His wife went to the prison to visit him.'" },
+        { heading: "Geography", body: "Mountain ranges, oceans, rivers, and plural/political country names take 'the': the Alps, the Atlantic, the River Thames, the Netherlands, the UK. Individual mountains, lakes, and most single country names take zero article: Mount Everest, Lake Victoria, Portugal, Germany." },
+        { heading: "Titles & a/an", body: "A title used with a name takes zero article ('Queen Elizabeth'), but the role alone takes 'the' ('the President'). Choose a/an by sound, not spelling: 'an honest man' (silent h), 'a university' ('yoo' sound), 'an hour', 'a European country'." },
+        { heading: "Other Fixed Uses", body: "Superlatives take 'the' ('the best film'). An adjective can stand for a whole group of people with 'the': 'the rich', 'the poor'. Musical instruments take 'the' ('the piano'), but sports and games take zero article ('tennis'). Parts of the day take 'in the' (in the morning) — except 'at night'." }
+      ],
+      examples: [
+        { en: "**Society** must protect its most vulnerable members.", note: "Zero article — general abstract noun" },
+        { en: "The robber was sent to **prison**. / His mother went to **the prison** to visit him.", note: "Primary purpose vs a visit" },
+        { en: "We spent our holiday hiking in **the Alps**, but decided not to visit **Portugal**.", note: "Mountain range vs single country" },
+        { en: "She studies at **a university** in London. It takes **an hour** to get there.", note: "a/an by sound, not spelling" },
+        { en: "Only **the rich** can afford to live in this neighbourhood.", note: "Adjective standing for a group" }
+      ],
+      exceptions: [
+        "'At night' is the odd one out among time-of-day phrases — all the others use 'in the' (in the morning/afternoon/evening).",
+        "'The love' as an abstract general concept is wrong — 'Love is more important than money' needs zero article."
+      ]
+    },
     exercises: [
       // --- ZERO ARTICLE: ABSTRACT NOUNS & GENERALIZATIONS (1-15) ---
       { type: "gap", instruction: "Fill in the article (use '-' for zero article):", sentence: "___ society must protect its most vulnerable members.", answer: "-", alt: [], hint: "Abstract nouns speaking in general take the zero article." },
@@ -1026,7 +1276,7 @@
       { type: "gap", instruction: "Fill in the article (use '-' for zero article):", sentence: "She is studying ___ European history at university.", answer: "-", alt: [], hint: "Academic subjects take the zero article." },
       { type: "mc", instruction: "Choose the correct article.", sentence: "I love listening to ________ music when I work.", options: ["the", "a", "- (zero article)"], correct: 2, hint: "Uncountable noun in a general sense." },
       { type: "drag", instruction: "Complete the sentence.", sentence: "I love _1_ music they are playing right now. Normally, I don't like _2_ jazz.", bank: ["the", "-"], blanks: { "_1_": "the", "_2_": "-" }, hint: "Specific music vs General music genre." },
-      { type: "error", instruction: "Find the error.", sentence: "The information you gave me was very helpful.", errorIndex: [], correction: [], alt: ["Sentence is correct!"], hint: "'Information' is specific here, so 'the' is correct." },
+      { type: "error", instruction: "Find the error.", sentence: "The information you gave me was very helpful.", errorIndex: [], correction: [], hint: "'Information' is specific here, so 'the' is correct." },
       { type: "error", instruction: "Find the error.", sentence: "I need to look for a new information on this topic.", errorIndex: [5], correction: ["-", "some"], hint: "'Information' is uncountable. You cannot use 'a/an'." },
       { type: "gap", instruction: "Fill in the article (use '-' for zero article):", sentence: "___ most people agree that the climate is changing.", answer: "-", alt: [], hint: "'Most' meaning 'the majority of' takes no article." },
       { type: "mc", instruction: "Select the correct form.", sentence: "Most of ________ people in this room are from Germany.", options: ["the", "-", "a"], correct: 0, hint: "When 'most' is followed by 'of', it refers to a specific group and needs 'the'." },
@@ -1037,7 +1287,7 @@
 
       // --- INSTITUTIONS (Prison, Hospital, School, Bed) (16-25) ---
       { type: "mc", instruction: "Select the correct article.", sentence: "The robber was caught and sent to ________ prison for 10 years.", options: ["the", "a", "- (zero article)"], correct: 2, hint: "Institutions (prison, school, hospital) take zero article when used for their PRIMARY PURPOSE (being an inmate)." },
-      { type: "gap", instruction: "Fill in the article (use '-' for zero article):", sentence: "My mother went to ___ prison to visit my brother yesterday.", answer: "the", alt: [], hint: "When visiting the building as a guest/visitor, use 'the'." },
+      { type: "gap", instruction: "Fill in the article (use '-' for zero article):", sentence: "My mother went to ___ prison to visit my brother yesterday.", answer: "the", alt: [], hint: "She's a visitor to the building, not an inmate confined there — that changes the article." },
       { type: "drag", instruction: "Drag the correct articles.", sentence: "After the accident, he was taken to _1_ hospital. His wife went to _2_ hospital to bring him clothes.", bank: ["-", "the"], blanks: { "_1_": "-", "_2_": "the" }, hint: "Patient = zero article. Visitor = the." },
       { type: "error", instruction: "Find the error.", sentence: "Children in the UK usually start the school at age 4.", errorIndex: [6], correction: ["school"], hint: "Primary purpose (learning) = zero article." },
       { type: "gap", instruction: "Fill in the article (use '-' for zero article):", sentence: "I am exhausted. I'm going straight to ___ bed.", answer: "-", alt: [], hint: "Going to bed (to sleep) takes zero article." },
@@ -1048,43 +1298,64 @@
       { type: "mc", instruction: "Select the correct form.", sentence: "Every Sunday, my grandmother goes to ________ church.", options: ["the", "-", "a"], correct: 1, hint: "Primary purpose (worship) = zero article." },
 
       // --- GEOGRAPHY & UNIQUE ENTITIES (26-40) ---
-      { type: "gap", instruction: "Fill in the article (use '-' for zero article):", sentence: "We spent our holiday hiking in ___ Alps.", answer: "the", alt: [], hint: "Mountain ranges take 'the'." },
+      { type: "gap", instruction: "Fill in the article (use '-' for zero article):", sentence: "We spent our holiday hiking in ___ Alps.", answer: "the", alt: [], hint: "This is a range of mountains treated as one defined group, not a single peak like 'Everest'." },
       { type: "mc", instruction: "Choose the correct article.", sentence: "Climbing ________ Mount Everest is incredibly dangerous.", options: ["the", "-", "a"], correct: 1, hint: "Individual mountains take the zero article." },
-      { type: "drag", instruction: "Drag the articles.", sentence: "We flew over _1_ Atlantic Ocean and landed in _2_ United States.", bank: ["the", "the"], blanks: { "_1_": "the", "_2_": "the" }, hint: "Oceans and plural/united countries take 'the'." },
+      { type: "drag", instruction: "Drag the articles.", sentence: "We flew over _1_ Atlantic Ocean, but decided not to visit _2_ Portugal on this trip.", bank: ["the", "-"], blanks: { "_1_": "the", "_2_": "-" }, hint: "Oceans take 'the'. Most individual country names take zero article." },
       { type: "error", instruction: "Find the error.", sentence: "We visited the Lake Victoria during our trip to Africa.", errorIndex: [2], correction: ["Lake"], hint: "Individual lakes take the zero article." },
-      { type: "gap", instruction: "Fill in the article (use '-' for zero article):", sentence: "___ River Thames flows through the centre of London.", answer: "The", alt: [], hint: "Rivers take 'the'." },
+      { type: "gap", instruction: "Fill in the article (use '-' for zero article):", sentence: "___ River Thames flows through the centre of London.", answer: "The", alt: [], hint: "Rivers are treated as unique, specific geographical features." },
       { type: "mc", instruction: "Select the correct article.", sentence: "I have always wanted to visit ________ Japan.", options: ["the", "-", "a"], correct: 1, hint: "Singular countries take the zero article." },
       { type: "drag", instruction: "Complete the sentence.", sentence: "He lives in _1_ Netherlands, but he used to live in _2_ Germany.", bank: ["the", "-"], blanks: { "_1_": "the", "_2_": "-" }, hint: "Plural countries (Netherlands, Philippines) take 'the'." },
-      { type: "error", instruction: "Find the error.", sentence: "The capital of the Republic of Ireland is Dublin.", errorIndex: [], correction: [], alt: ["Correct!"], hint: "Countries containing words like Republic, Kingdom, or States take 'the'." },
+      { type: "error", instruction: "Find the error.", sentence: "The capital of the Republic of Ireland is Dublin.", errorIndex: [], correction: [], hint: "Countries containing words like Republic, Kingdom, or States take 'the'." },
       { type: "error", instruction: "Find the error.", sentence: "They went on a safari in the South Africa.", errorIndex: [6], correction: ["South"], hint: "Singular countries take zero article." },
-      { type: "gap", instruction: "Fill in the article (use '-' for zero article):", sentence: "She is from ___ UK, but currently lives in Paris.", answer: "the", alt: [], hint: "United Kingdom = 'the'." },
+      { type: "gap", instruction: "Fill in the article (use '-' for zero article):", sentence: "She is from ___ UK, but currently lives in Paris.", answer: "the", alt: [], hint: "Country names that are really abbreviations or plural/political unions need an article." },
       { type: "mc", instruction: "Choose the correct article.", sentence: "Look up at ________ sky! The stars are beautiful tonight.", options: ["the", "-", "a"], correct: 0, hint: "Unique entities (the sky, the sun, the moon) take 'the'." },
-      { type: "drag", instruction: "Drag the articles.", sentence: "In the solar system, _1_ Earth revolves around _2_ sun.", bank: ["the", "the"], blanks: { "_1_": "the", "_2_": "the" }, hint: "Unique celestial bodies." },
+      { type: "drag", instruction: "Drag the articles.", sentence: "In the solar system, _1_ Earth revolves around _2_ sun.", bank: ["-", "the"], blanks: { "_1_": "-", "_2_": "the" }, hint: "'Earth', like 'Mars' or 'Venus', is a proper noun with zero article. The sun is a unique object that takes 'the'." },
       { type: "error", instruction: "Find the error.", sentence: "We crossed Sahara desert on camels.", errorIndex: [1], correction: ["crossed", "the"], hint: "Deserts take 'the'." },
-      { type: "gap", instruction: "Fill in the article (use '-' for zero article):", sentence: "___ President will give a speech at 8 PM.", answer: "The", alt: [], hint: "Titles followed by no name take 'the' (but 'President Lincoln' takes zero)." },
+      { type: "gap", instruction: "Fill in the article (use '-' for zero article):", sentence: "___ President will give a speech at 8 PM.", answer: "The", alt: [], hint: "A title used alone, without a name attached, refers to a specific known role (compare with 'President Lincoln', which takes zero)." },
       { type: "mc", instruction: "Select the correct form.", sentence: "________ Queen Elizabeth reigned for over 70 years.", options: ["The", "-", "A"], correct: 1, hint: "Title + Name = zero article." },
 
       // --- INDEFINITE & DEFINITE TRAPS (41-50) ---
-      { type: "gap", instruction: "Fill in the article (a/an/the/-):", sentence: "He is ___ honest man.", answer: "an", alt: [], hint: "'Honest' starts with a vowel SOUND (the 'h' is silent), so use 'an'." },
+      { type: "gap", instruction: "Fill in the article (a/an/the/-):", sentence: "He is ___ honest man.", answer: "an", alt: [], hint: "Listen to the sound at the start of the next word, not the letter — the 'h' here is silent." },
       { type: "mc", instruction: "Choose the correct article.", sentence: "She studies at ________ university in London.", options: ["a", "an", "the", "-"], correct: 0, hint: "'University' starts with a consonant SOUND ('yoo'), so use 'a'." },
       { type: "drag", instruction: "Drag the correct articles.", sentence: "It takes _1_ hour to drive to _2_ European country from here.", bank: ["an", "a"], blanks: { "_1_": "an", "_2_": "a" }, hint: "Hour = silent H. European = 'yoo' sound." },
       { type: "error", instruction: "Find the error.", sentence: "He bought a umbrella because it was raining.", errorIndex: [2], correction: ["an"], hint: "Umbrella starts with a vowel sound." },
-      { type: "gap", instruction: "Fill in the article (a/an/the/-):", sentence: "This is ___ best movie I have ever seen.", answer: "the", alt: [], hint: "Superlatives always take 'the'." },
+      { type: "gap", instruction: "Fill in the article (a/an/the/-):", sentence: "This is ___ best movie I have ever seen.", answer: "the", alt: [], hint: "A superlative describes something unique of its kind, so it needs a specific article." },
       { type: "mc", instruction: "Select the correct form.", sentence: "Only ________ rich can afford to live in this neighbourhood.", options: ["a", "the", "-"], correct: 1, hint: "Adjective used as a noun representing a whole group (the rich, the poor, the elderly) takes 'the'." },
       { type: "drag", instruction: "Complete the sentence.", sentence: "She plays _1_ piano beautifully, but she is terrible at _2_ tennis.", bank: ["the", "-"], blanks: { "_1_": "the", "_2_": "-" }, hint: "Musical instruments take 'the'. Sports take zero article." },
       { type: "error", instruction: "Find the error.", sentence: "I want to be a doctor, just like my father.", errorIndex: [], correction: [], alt: ["Correct!"], hint: "Professions take 'a/an' in English." },
       { type: "error", instruction: "Find the error.", sentence: "He works as engineer for a tech company.", errorIndex: [2], correction: ["as", "an"], hint: "Professions require an article." },
-      { type: "gap", instruction: "Fill in the article (a/an/the/-):", sentence: "We have breakfast early in ___ morning.", answer: "the", alt: [], hint: "Parts of the day (in the morning, in the afternoon, in the evening) take 'the' (but 'at night')." }
+      { type: "gap", instruction: "Fill in the article (a/an/the/-):", sentence: "We have breakfast early in ___ morning.", answer: "the", alt: [], hint: "Parts of the day treated this way need a specific article — but note 'at night' is the odd one out." }
     ]
   },
 
   adjectives_adverbs: {
     group: "4. Miscellaneous",
     title: "Adjectives vs. Adverbs (The -ly traps)",
+    rules: {
+      summary: "Adjectives describe nouns; adverbs describe verbs, adjectives or other adverbs. The trap is that some common words look like an adverb but aren't, or change meaning entirely with -ly.",
+      points: [
+        { heading: "Sense/Linking Verbs + Adjective", body: "smell, taste, feel, look, sound + adjective, not adverb, because they link back to describe the subject: 'This soup smells delicious', not 'deliciously'. But when the same verb describes an action being performed, it needs an adverb: 'He looked at her angrily'." },
+        { heading: "Good vs Well", body: "'Good' is an adjective ('The plan sounds good'). 'Well' is normally the adverb of manner ('She speaks English very well') — but 'well' can also be an adjective meaning 'in good health' ('I don't feel well')." },
+        { heading: "Hard vs Hardly / Late vs Lately", body: "'Hard' is both the adjective and the adverb of effort ('She works hard'). 'Hardly' does NOT mean 'in a hard way' — it means 'barely, almost not' ('I could hardly hear him'). Similarly 'late' is the adverb of time/punctuality ('The train arrived late'), while 'lately' means 'recently', a different meaning entirely." },
+        { heading: "Fast — Same Form", body: "'Fast' is identical as adjective and adverb ('a fast car' / 'he runs fast'). There is no word 'fastly'." },
+        { heading: "Regular Formation", body: "Most adverbs are formed by adding -ly to the adjective: terrible→terribly, careful→carefully, easy→easily (y→ily), safe→safely, gentle→gently. Adjectives ending in -ic add -ally: automatic→automatically." }
+      ],
+      examples: [
+        { en: "This soup smells **delicious**. / He looked at her **angrily**.", note: "Linking verb + adjective vs action verb + adverb" },
+        { en: "She speaks English very **well**.", note: "Well = adverb of manner" },
+        { en: "I could **hardly** hear him over the traffic.", note: "Hardly = barely, not 'in a hard way'" },
+        { en: "Have you seen any good films **lately**?", note: "Lately = recently" },
+        { en: "The doors open **automatically**.", note: "-ic adjective takes -ally" }
+      ],
+      exceptions: [
+        "'Working hardly all week' is a common error — it accidentally means 'doing almost no work', the opposite of the intended meaning.",
+        "'Fastly' does not exist in English; 'fast' covers both jobs."
+      ]
+    },
     exercises: [
       // --- SENSE VERBS & GOOD/WELL (1-15) ---
       { type: "mc", instruction: "Choose the correct form.", sentence: "This soup smells absolutely ________.", options: ["delicious", "deliciously"], correct: 0, hint: "Verbs of the senses (smell, taste, feel, look, sound) are followed by an adjective, not an adverb." },
-      { type: "gap", instruction: "Fill in the correct form (good / well):", sentence: "She speaks English very ___.", answer: "well", alt: [], hint: "'Good' is an adjective. 'Well' is the adverb describing how she speaks." },
+      { type: "gap", instruction: "Fill in the correct form (good / well):", sentence: "She speaks English very ___.", answer: "well", alt: [], hint: "You need the adverb describing how she speaks, not the adjective form." },
       { type: "drag", instruction: "Drag the correct forms.", sentence: "The plan sounds _1_, but we need to execute it _2_.", bank: ["good", "well"], blanks: { "_1_": "good", "_2_": "well" }, hint: "Sound + adjective. Execute + adverb." },
       { type: "error", instruction: "Find the error.", sentence: "I feel terribly about what happened yesterday.", errorIndex: [2], correction: ["terrible"], hint: "Feel + adjective (describing your state of being)." },
       { type: "gap", instruction: "Fill in the correct form (good / well):", sentence: "This new perfume smells really ___.", answer: "good", alt: [], hint: "Smell + adjective." },
@@ -1095,15 +1366,15 @@
       { type: "mc", instruction: "Choose the correct form.", sentence: "The steak tasted ________, but the service was terrible.", options: ["awful", "awfully"], correct: 0, hint: "Taste + adjective." },
 
       // --- HARD/HARDLY & LATE/LATELY (16-30) ---
-      { type: "gap", instruction: "Fill in the correct form (hard / hardly):", sentence: "She works very ___ to support her family.", answer: "hard", alt: [], hint: "'Hard' is both the adjective and the adverb. ('Hardly' means barely/almost not)." },
+      { type: "gap", instruction: "Fill in the correct form (hard / hardly):", sentence: "She works very ___ to support her family.", answer: "hard", alt: [], hint: "One form doubles as both adjective and adverb here; the '-ly' version means something completely different (barely/almost not)." },
       { type: "mc", instruction: "Select the correct form.", sentence: "I could ________ hear him over the noise of the traffic.", options: ["hard", "hardly"], correct: 1, hint: "'Hardly' means barely or almost not at all." },
       { type: "drag", instruction: "Drag the correct words.", sentence: "He hit the ball so _1_ that it flew over the fence. I _2_ saw it go!", bank: ["hard", "hardly"], blanks: { "_1_": "hard", "_2_": "hardly" }, hint: "Hard = with force. Hardly = barely." },
       { type: "error", instruction: "Find the error.", sentence: "We have been working hardly all week to meet the deadline.", errorIndex: [4], correction: ["hard"], hint: "'Working hardly' means you are doing almost no work!" },
-      { type: "gap", instruction: "Fill in the correct form (late / lately):", sentence: "Have you seen any good movies ___?", answer: "lately", alt: [], hint: "'Lately' means recently. 'Late' means not on time." },
+      { type: "gap", instruction: "Fill in the correct form (late / lately):", sentence: "Have you seen any good movies ___?", answer: "lately", alt: [], hint: "You need the word meaning 'recently', not the one meaning 'not on time'." },
       { type: "mc", instruction: "Choose the correct form.", sentence: "The train arrived 20 minutes ________.", options: ["late", "lately"], correct: 0, hint: "'Late' is both the adjective and the adverb." },
       { type: "drag", instruction: "Complete the sentence.", sentence: "He has been coming to work _1_ a lot _2_.", bank: ["late", "lately"], blanks: { "_1_": "late", "_2_": "lately" }, hint: "Late = not on time. Lately = recently." },
       { type: "error", instruction: "Find the error.", sentence: "It was raining so heavily that I could hard see the road.", errorIndex: [8], correction: ["hardly"], hint: "Barely = hardly." },
-      { type: "gap", instruction: "Fill in the correct form (fast / fastly):", sentence: "Don't drive so ___!", answer: "fast", alt: [], hint: "'Fast' is both the adjective and the adverb. 'Fastly' does not exist." },
+      { type: "gap", instruction: "Fill in the correct form (fast / fastly):", sentence: "Don't drive so ___!", answer: "fast", alt: [], hint: "One of these two options isn't actually a real English word." },
       { type: "mc", instruction: "Select the correct form.", sentence: "I've been feeling quite tired ________.", options: ["late", "lately"], correct: 1, hint: "Recently." },
 
       // --- GENERAL ADVERB TRAPS (31-40) ---
@@ -1123,6 +1394,27 @@
   word_order: {
     group: "4. Miscellaneous",
     title: "Word Order (SVOMPT)",
+    rules: {
+      summary: "German allows much more flexible word order than English. English sentences follow a strict backbone — Subject, Verb, Object, Manner, Place, Time (SVOMPT) — and adverbs of frequency/certainty have their own fixed slot.",
+      points: [
+        { heading: "The SVOMPT Backbone", body: "Subject → Verb → Object → Manner (how) → Place (where) → Time (when): 'I will meet you outside the cinema at 8 PM.' The object can never be separated from its verb by another element." },
+        { heading: "Place Before Time", body: "When both appear, place always comes before time: 'I went to London yesterday', not 'yesterday to London'." },
+        { heading: "Time Goes at the End", body: "Time expressions belong at the very end of the sentence, never in the middle: 'We played tennis last night', not 'played last night tennis'. Never insert a time expression between the verb and its object: 'I bought a new computer yesterday', not 'I bought yesterday a new computer'." },
+        { heading: "Adverbs of Frequency", body: "always, never, often, usually, rarely, sometimes go BEFORE the main verb, but AFTER the verb 'to be' or an auxiliary: 'I always drink coffee', 'He is never late', 'He has always been a good friend' (not 'He always has been')." },
+        { heading: "Adverbs of Certainty", body: "definitely, probably sit between the auxiliary and the main verb, or before a negative auxiliary: 'We will definitely go' / 'He probably won't come'." }
+      ],
+      examples: [
+        { en: "I will meet **you outside the cinema at 8 PM**.", note: "Object → Manner → Place → Time" },
+        { en: "We played tennis **last night**.", note: "Time expression goes at the very end" },
+        { en: "He **is never** late for work.", note: "Frequency adverb after 'to be'" },
+        { en: "He **has always been** a good friend.", note: "Frequency adverb between auxiliary and main verb" },
+        { en: "He probably **won't come**.", note: "Certainty adverb before a negative auxiliary" }
+      ],
+      exceptions: [
+        "'We played last night tennis' and 'I bought yesterday a new computer' are both classic German-influenced word-order errors — time never interrupts the verb-object pair.",
+        "Frequency adverbs shift position depending on whether the sentence already has an auxiliary/'to be' — check for one before placing the adverb."
+      ]
+    },
     exercises: [
       // --- PLACE BEFORE TIME & SVOMPT (1-20) ---
       { type: "mc", instruction: "Select the correct word order.", sentence: "I went ________.", options: ["yesterday to London", "to London yesterday"], correct: 1, hint: "Rule: Place before Time." },
@@ -1143,7 +1435,7 @@
       { type: "error", instruction: "Find the error.", sentence: "She plays often tennis on Sundays.", errorIndex: [2], correction: ["often plays"], hint: "Frequency before main verb." },
       { type: "mc", instruction: "Choose the correct sentence.", options: ["He has always been a good friend.", "He always has been a good friend.", "He has been always a good friend."], correct: 0, hint: "Between the auxiliary and the main verb." },
       { type: "gap", instruction: "Insert something to show it happens most of the time:", sentence: "They ___ don't agree with me.", answer: "usually", alt: [], hint: "Before the negative auxiliary." },
-      { type: "drag", instruction: "Complete the sentence with 'sometimes'.", sentence: "I _1_ go to the gym, but I am _2_ too tired.", bank: ["sometimes", "sometimes"], blanks: { "_1_": "sometimes", "_2_": "sometimes" }, hint: "Before main verb, after 'be'." },
+      { type: "drag", instruction: "Complete the sentence.", sentence: "I _1_ go to the gym on weekends, but I am _2_ too busy on weekdays.", bank: ["sometimes", "always", "never", "rarely"], blanks: { "_1_": "sometimes", "_2_": "always" }, hint: "Frequency adverbs go before the main verb, but after 'am/is/are'." },
       { type: "error", instruction: "Find the error.", sentence: "We will go definitely to the party.", errorIndex: [3], correction: ["will definitely go"], hint: "Adverbs of certainty go between the auxiliary and main verb." },
       { type: "mc", instruction: "Where does 'probably' go?", sentence: "He ________ won't come.", options: ["probably", "(after won't)"], correct: 0, hint: "Before the negative auxiliary." },
       { type: "gap", instruction: "Order: (have / easily / won / we)", sentence: "___ the match.", answer: "We have easily won", alt: [], hint: "Auxiliary + Adverb + Main Verb." }
@@ -1153,6 +1445,26 @@
   quantifiers_pronouns: {
     group: "4. Miscellaneous",
     title: "Quantifiers (Much/Many, Few/Little)",
+    rules: {
+      summary: "Which quantifier you use depends entirely on whether the noun is countable (many, few) or uncountable (much, little) — and English treats several nouns as uncountable that German treats as countable.",
+      points: [
+        { heading: "Much vs Many", body: "many + countable plural nouns (many friends, many people). much + uncountable nouns (much information, much time, much money)." },
+        { heading: "Nouns That Are Uncountable in English", body: "Several nouns that have a plural in German are always singular/uncountable in English and never take -s: homework, furniture, advice, baggage/luggage, information, news. 'News' takes a singular verb despite looking plural ('The news is bad'), while 'police' is always plural ('The police are looking for the suspect')." },
+        { heading: "Few vs A Few / Little vs A Little", body: "few (countable) and little (uncountable) have a negative meaning — 'not enough/almost none': 'He has few friends, so he is lonely.' a few / a little have a positive meaning — 'some, and that's fine': 'I have a little money saved, so I can afford a coffee.' 'Very' commonly intensifies 'little' (very little money)." },
+        { heading: "Each vs Every", body: "'Each' focuses on individual items, often in a small or specific set ('a ring on each finger'). 'Every' treats the group as a whole." }
+      ],
+      examples: [
+        { en: "How **much** information did they give you? She has **many** friends but not **much** money.", note: "Countable vs uncountable" },
+        { en: "The teacher gave us too **much homework**.", note: "'Homework' is always uncountable — never 'homeworks'" },
+        { en: "The news **is** very bad today. The police **are** looking for the suspect.", note: "News = singular verb, police = always plural" },
+        { en: "He has **few** friends, so he is very lonely. / Fortunately, **a few** people survived.", note: "Negative vs positive meaning" },
+        { en: "I have **a little** money saved up.", note: "A little = some, positive" }
+      ],
+      exceptions: [
+        "Homework, furniture, advice, luggage/baggage, information, and news are uncountable in English even though their German equivalents are often plural — never add -s to them.",
+        "'Few' and 'a few' look almost identical but mean nearly opposite things — always check for the article."
+      ]
+    },
     exercises: [
       // --- MUCH / MANY & COUNTABLE TRAPS (1-20) ---
       { type: "mc", instruction: "Choose the correct quantifier.", sentence: "How ________ information did they give you?", options: ["much", "many"], correct: 0, hint: "'Information' is uncountable in English." },
@@ -1161,14 +1473,14 @@
       { type: "error", instruction: "Find the error.", sentence: "The teacher gave us too many homeworks.", errorIndex: [5, 6], correction: ["much", "homework"], hint: "'Homework' is always uncountable in English." },
       { type: "mc", instruction: "Select the correct form.", sentence: "We need to buy new ________ for the office.", options: ["furnitures", "pieces of furniture", "furniture"], correct: 2, hint: "'Furniture' is uncountable." },
       { type: "gap", instruction: "Fill in the correct form (much / many):", sentence: "How ___ people were at the party?", answer: "many", alt: [], hint: "People is plural countable." },
-      { type: "drag", instruction: "Complete the sentence.", sentence: "I need some _1_ on how to solve this. Can you give me a piece of _2_?", bank: ["advice", "advices"], blanks: { "_1_": "advice", "_2_": "advice" }, hint: "'Advice' is uncountable." },
+      { type: "drag", instruction: "Complete the sentence.", sentence: "I need some _1_ on how to solve this. I also need to buy a new piece of _2_ for my office.", bank: ["advice", "advices", "furniture", "furnitures"], blanks: { "_1_": "advice", "_2_": "furniture" }, hint: "Both 'advice' and 'furniture' are uncountable — they never take an '-s'." },
       { type: "error", instruction: "Find the error.", sentence: "He carried three heavy baggages to the train.", errorIndex: [3, 4], correction: ["bags", "pieces of baggage"], hint: "'Baggage/Luggage' is uncountable." },
       { type: "mc", instruction: "Choose the correct form.", sentence: "The news ________ very bad today.", options: ["is", "are"], correct: 0, hint: "'News' is uncountable and takes a singular verb." },
       { type: "gap", instruction: "Fill in the correct form (is / are):", sentence: "The police ___ looking for the suspect.", answer: "are", alt: [], hint: "'Police' is always a plural noun in English." },
 
       // --- FEW / A FEW / LITTLE / A LITTLE (21-40) ---
       { type: "mc", instruction: "Positive vs Negative meaning.", sentence: "He has ________ friends, so he is very lonely.", options: ["a few", "few", "a little", "little"], correct: 1, hint: "'Few' means 'not enough' (negative). 'A few' means 'some' (positive)." },
-      { type: "gap", instruction: "Fill in (little / a little):", sentence: "I have ___ money saved up, so I can afford a coffee.", answer: "a little", alt: [], hint: "'A little' = some (positive)." },
+      { type: "gap", instruction: "Fill in (little / a little):", sentence: "I have ___ money saved up, so I can afford a coffee.", answer: "a little", alt: [], hint: "You can afford something, so this needs the positive version meaning 'some', not the negative one implying 'hardly any'." },
       { type: "drag", instruction: "Drag the correct forms.", sentence: "I have _1_ time, so I can't help you. But John has _2_ time, so ask him.", bank: ["little", "a little"], blanks: { "_1_": "little", "_2_": "a little" }, hint: "Little = negative. A little = positive." },
       { type: "error", instruction: "Find the error.", sentence: "Fortunately, few people survived the terrible crash.", errorIndex: [1], correction: ["a few"], hint: "If it's 'fortunately', you want the positive meaning ('a few')." },
       { type: "mc", instruction: "Select the correct form.", sentence: "There is very ________ hope left.", options: ["few", "little", "a few", "a little"], correct: 1, hint: "Hope is uncountable, and 'very' is used with 'little'." },
@@ -1176,13 +1488,36 @@
       { type: "drag", instruction: "Complete the sentence.", sentence: "I speak _1_ French, so I could order food. He speaks _2_ French, so he couldn't understand anything.", bank: ["a little", "little"], blanks: { "_1_": "a little", "_2_": "little" }, hint: "A little = enough to function. Little = almost none." },
       { type: "error", instruction: "Find the error.", sentence: "I have a little questions to ask you.", errorIndex: [2, 3], correction: ["a few"], hint: "Questions are countable, so use 'few/a few'." },
       { type: "mc", instruction: "Choose the correct phrase.", sentence: "I only need ________ minutes to finish this.", options: ["few", "a few", "little", "a little"], correct: 1, hint: "Countable + positive meaning ('only a few')." },
-      { type: "gap", instruction: "Fill in (each / every):", sentence: "I have a ring on ___ finger of my left hand.", answer: "each", alt: [], hint: "'Each' emphasizes individual items (often limited numbers). 'Every' is for groups." }
+      { type: "gap", instruction: "Fill in (each / every):", sentence: "I have a ring on ___ finger of my left hand.", answer: "each", alt: [], hint: "A hand has a small, countable number of fingers — pick the word that emphasizes individual items rather than the group as a whole." }
     ]
   },
 
   false_friends: {
     group: "4. Miscellaneous",
     title: "False Friends (Lexical Traps)",
+    rules: {
+      summary: "False friends are words that look or sound like a German word but mean something different in English. These are memorised pair by pair, not derived from a rule.",
+      points: [
+        { heading: "aktuell vs actual", body: "German 'aktuell' means English 'current' or 'currently' — not 'actual'. English 'actual' means real/genuine, which is German 'tatsächlich'." },
+        { heading: "bekommen vs become", body: "German 'bekommen' means English 'get' or 'receive' — not 'become'. English 'become' means German 'werden' (a change of state)." },
+        { heading: "sensibel vs sensible", body: "German 'sensibel' means English 'sensitive' — not 'sensible'. English 'sensible' means practical/reasonable, which is German 'vernünftig'." },
+        { heading: "sympathisch vs sympathetic", body: "German 'sympathisch' means English 'nice', 'likeable' or 'friendly' — not 'sympathetic'. English 'sympathetic' means showing compassion/pity for someone's problem, which is German 'mitfühlend'." },
+        { heading: "eventuell vs eventually", body: "German 'eventuell' means English 'possibly', 'maybe' or 'perhaps' — not 'eventually'. English 'eventually' means 'in the end, after some time', which is German 'schließlich' or 'irgendwann'." },
+        { heading: "Chef & Handy", body: "German 'Chef' means English 'boss' or 'manager' — English 'chef' means a professional cook (German 'Koch'). German 'Handy' means an English 'mobile phone' or 'cell phone' — English 'handy' is an adjective meaning 'useful/practical' (German 'praktisch')." }
+      ],
+      examples: [
+        { en: "What is your **current** address? / His **actual** words were very serious.", note: "aktuell → current, tatsächlich → actual" },
+        { en: "I **got** a nice gift for my birthday. He wants to **become** a doctor.", note: "bekommen → get, werden → become" },
+        { en: "My skin is very **sensitive** to the sun. Bringing an umbrella was a **sensible** decision.", note: "sensibel → sensitive, vernünftig → sensible" },
+        { en: "He is a very **nice** guy; everybody likes him. When my dog died, my boss was very **sympathetic**.", note: "sympathisch → nice, mitfühlend → sympathetic" },
+        { en: "**Possibly** it will rain later. It took a long time, but **eventually** he found a job.", note: "eventuell → possibly, eventually → schließlich" },
+        { en: "The **boss** of the company gave a speech. Please turn off your **mobile phone**.", note: "Chef → boss, Handy → mobile phone" }
+      ],
+      exceptions: [
+        "'Got' and 'became' are both accepted for a change of state with an adjective ('He got/became angry') — 'got' is more common in spoken English.",
+        "These six pairs are the most common German-English false friends at B2/C1 level, but the trap is the same for all of them: the German-looking word is (almost) never the right English translation."
+      ]
+    },
     exercises: [
       // --- ACTUAL/CURRENT & BECOME/GET (1-20) ---
       { type: "mc", instruction: "Translate 'aktuell':", sentence: "What is your ________ address?", options: ["actual", "current"], correct: 1, hint: "'Actual' means 'tatsächlich'. 'Current' means 'aktuell'." },
@@ -1190,7 +1525,7 @@
       { type: "drag", instruction: "Drag the correct words.", sentence: "He wants to _1_ a doctor. He hopes to _2_ a scholarship.", bank: ["become", "get"], blanks: { "_1_": "become", "_2_": "get" }, hint: "Become = werden. Get = bekommen." },
       { type: "error", instruction: "Find the error.", sentence: "The actual situation in the country is very tense.", errorIndex: [1], correction: ["current", "present"], hint: "Aktuell = current." },
       { type: "mc", instruction: "Translate 'tatsächlich':", sentence: "I thought he was joking, but his ________ words were very serious.", options: ["current", "actual"], correct: 1, hint: "Actual = tatsächlich." },
-      { type: "gap", instruction: "Translate 'werden':", sentence: "The weather is going to ___ worse tomorrow.", answer: "get", alt: ["become"], hint: "With adjectives, 'get' is often used for 'werden'." },
+      { type: "gap", instruction: "Translate 'werden':", sentence: "The weather is going to ___ worse tomorrow.", answer: "get", alt: ["become"], hint: "Before an adjective describing a change of state, English often prefers a shorter, more casual verb than the obvious cognate." },
       { type: "drag", instruction: "Complete the sentence.", sentence: "This is a _1_ problem right now. What was the _2_ cause of the fire?", bank: ["current", "actual"], blanks: { "_1_": "current", "_2_": "actual" }, hint: "Current = now. Actual = real." },
       { type: "error", instruction: "Find the error.", sentence: "I become a new car yesterday.", errorIndex: [1], correction: ["got", "bought", "received"], hint: "Become = werden." },
       { type: "mc", instruction: "Choose the correct word.", sentence: "He ________ angry when I told him the news.", options: ["got", "became", "both are correct"], correct: 2, hint: "Both mean 'werden' with adjectives, though 'got' is more common in spoken English." },

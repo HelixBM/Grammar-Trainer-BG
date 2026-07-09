@@ -1,0 +1,12 @@
+{
+  "name": "Grammar Trainer – Eingangsklasse BG",
+  "short_name": "Grammar Trainer",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f0e8",
+  "theme_color": "#f5f0e8",
+  "icons": [
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

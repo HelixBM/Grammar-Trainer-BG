@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Grammar Trainer – Eingangsklasse BG</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#f5f0e8">
+<link rel="apple-touch-icon" href="./icons/icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -105,6 +108,36 @@ body {
 .unit-card:active { transform: translate(2px,2px); box-shadow: none; }
 .unit-name { font-size: 13px; font-weight: 700; }
 .unit-count { font-size: 10px; font-weight: 700; padding: 2px 8px; border: 2px solid var(--border); background: var(--muted); white-space: nowrap; text-transform: uppercase; }
+.unit-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.unit-rules-btn {
+  cursor: pointer; padding: 5px 10px; border: 2px solid var(--border); background: var(--card);
+  color: var(--fg); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em;
+  font-family: inherit; transition: all .1s; white-space: nowrap;
+}
+.unit-rules-btn:hover { background: var(--yellow); color: #1a1a1a; }
+.review-card {
+  cursor: pointer; padding: 16px; border: 3px solid var(--border); background: var(--yellow);
+  color: #1a1a1a; display: flex; align-items: center; justify-content: space-between;
+  box-shadow: var(--sh-sm); transition: all .1s; margin-bottom: 1.5rem;
+}
+.review-card:hover { transform: translate(-2px,-2px); box-shadow: var(--sh); }
+.review-card:active { transform: translate(2px,2px); box-shadow: none; }
+.review-card-title { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: -.01em; }
+.review-card-sub { font-size: 11px; font-weight: 600; opacity: .7; margin-top: 2px; }
+.mix-btn { margin-bottom: 1.5rem; }
+
+/* ── Rules Screen ── */
+.rules-summary { font-size: 14px; line-height: 1.6; margin-bottom: 1.5rem; opacity: .85; }
+.rule-point { background: var(--card); border: 3px solid var(--border); box-shadow: var(--sh-sm); padding: 1rem 1.25rem; margin-bottom: 10px; }
+.rule-point-heading { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; color: var(--blue); }
+.rule-point-body { font-size: 14px; line-height: 1.6; }
+.rule-examples { background: var(--card); border: 3px solid var(--border); box-shadow: var(--sh-sm); padding: 1rem 1.25rem; margin: 1.25rem 0; }
+.rule-example { padding: 8px 0; border-bottom: 2px solid var(--muted); font-size: 14px; }
+.rule-example:last-child { border-bottom: none; }
+.rule-example-note { font-size: 11px; opacity: .55; font-weight: 600; margin-top: 3px; text-transform: uppercase; letter-spacing: .03em; }
+.rule-exceptions { background: var(--muted-light); border: 2px solid var(--muted); padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+.rule-exceptions li { font-size: 13px; line-height: 1.6; margin-left: 1.1em; }
+html.dark .rule-exceptions { background: var(--muted); border-color: var(--border); }
 
 /* ── Exercise Card ── */
 .ex-type-badge { display: inline-block; background: var(--fg); color: var(--bg); font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; padding: 3px 8px; margin-bottom: .75rem; }
@@ -253,7 +286,18 @@ function toggleTheme() {
   <div class="page-title">Grammar Drills</div>
   <div class="page-sub">Eingangsklasse BG · Click a topic to start training</div>
 
+  <button class="btn btn-primary btn-lg mix-btn" onclick="startMixedPractice()">Mixed Practice · 20 Questions</button>
+
+  <div id="review-mistakes-card"></div>
   <div id="topic-list"></div>
+</div>
+
+<!-- ── Rules Screen ── -->
+<div id="rules-screen" class="screen">
+  <button class="back-link" onclick="goToTopics()">← Back to topics</button>
+  <div class="page-title" id="rules-title" style="font-size:clamp(22px,5vw,34px)"></div>
+  <div id="rules-body"></div>
+  <button class="btn btn-primary btn-lg" id="rules-start-btn">Start Drills →</button>
 </div>
 
 <!-- ── Exercise Screen ── -->
@@ -283,7 +327,7 @@ function toggleTheme() {
   <div id="result-wrong"></div>
   <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
     <button class="btn btn-primary" onclick="retryUnit()">Retry Unit</button>
-    <button class="btn" onclick="show('select-screen')">All Topics</button>
+    <button class="btn" onclick="goToTopics()">All Topics</button>
   </div>
 </div>
 
@@ -293,6 +337,12 @@ function toggleTheme() {
 <script src="grammar_db.js"></script>
 <script>
 // ── App State ──
+const REVIEW_KEY = '__review__';
+const MIX_KEY = '__mix__';
+const MIX_SIZE = 20;
+const PROGRESS_STORAGE_KEY = 'gtbg_progress_v1';
+const MISSED_STORAGE_KEY = 'gtbg_missed_v1';
+
 let currentUnitKey = '';
 let exercises = [];
 let currentIdx = 0;
@@ -314,16 +364,107 @@ function initApp() {
   buildTopicList();
 }
 
+// ── Exercise Identity ──
+function tagWithId(ex, unitKey, idx) {
+  return Object.assign({}, ex, { _id: unitKey + ':' + idx });
+}
+
+function unitExercisesWithIds(unitKey) {
+  return EXERCISE_DB[unitKey].exercises.map((ex, i) => tagWithId(ex, unitKey, i));
+}
+
+// ── Progress & Missed Pool ──
+function loadProgress() {
+  try { return JSON.parse(localStorage.getItem(PROGRESS_STORAGE_KEY)) || {}; }
+  catch (e) { return {}; }
+}
+
+function saveProgress(progress) {
+  localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(progress));
+}
+
+function recordUnitCompletion(unitKey, sessionScore, total) {
+  const progress = loadProgress();
+  const pct = Math.round((sessionScore / total) * 100);
+  const prev = progress[unitKey];
+  progress[unitKey] = {
+    bestScore: prev ? Math.max(prev.bestScore, sessionScore) : sessionScore,
+    bestTotal: prev && prev.bestScore >= sessionScore ? prev.bestTotal : total,
+    bestPct: prev ? Math.max(prev.bestPct, pct) : pct,
+    attempts: (prev ? prev.attempts : 0) + 1,
+    lastPlayedISO: new Date().toISOString()
+  };
+  saveProgress(progress);
+}
+
+function loadMissed() {
+  try { return JSON.parse(localStorage.getItem(MISSED_STORAGE_KEY)) || {}; }
+  catch (e) { return {}; }
+}
+
+function saveMissed(missed) {
+  localStorage.setItem(MISSED_STORAGE_KEY, JSON.stringify(missed));
+}
+
+function addToMissedPool(id, question, answer) {
+  if (!id) return;
+  const missed = loadMissed();
+  const [unitKey, idxStr] = id.split(':');
+  const prev = missed[id];
+  missed[id] = {
+    id, unitKey, exIndex: Number(idxStr),
+    q: String(question || ''), a: String(answer || ''),
+    missedCount: (prev ? prev.missedCount : 0) + 1,
+    lastMissedISO: new Date().toISOString()
+  };
+  saveMissed(missed);
+}
+
+function recordCorrect(ex) {
+  if (!ex || !ex._id) return;
+  const missed = loadMissed();
+  if (missed[ex._id]) {
+    delete missed[ex._id];
+    saveMissed(missed);
+  }
+}
+
+function getMissedCount() {
+  return Object.keys(loadMissed()).length;
+}
+
 // ── Build Selection ──
 function buildTopicList() {
   const container = document.getElementById('topic-list');
   container.innerHTML = '';
+  const progress = loadProgress();
   const groups = groupUnitsByGroup();
 
   for (const [groupName, units] of Object.entries(groups)) {
-    const groupEl = buildGroupElement(groupName, units);
+    const groupEl = buildGroupElement(groupName, units, progress);
     container.appendChild(groupEl);
   }
+
+  buildReviewMistakesCard();
+}
+
+function buildReviewMistakesCard() {
+  const mount = document.getElementById('review-mistakes-card');
+  mount.innerHTML = '';
+  const count = getMissedCount();
+  if (!count) return;
+
+  const card = document.createElement('div');
+  card.className = 'review-card';
+  card.innerHTML = `
+    <div>
+      <div class="review-card-title">Review Mistakes</div>
+      <div class="review-card-sub">${count} question${count === 1 ? '' : 's'} to master</div>
+    </div>
+    <span style="font-size:20px">→</span>
+  `;
+  card.onclick = () => startReviewMistakes();
+  mount.appendChild(card);
 }
 
 function groupUnitsByGroup() {
@@ -336,7 +477,7 @@ function groupUnitsByGroup() {
   return groups;
 }
 
-function buildGroupElement(groupName, units) {
+function buildGroupElement(groupName, units, progress) {
   const groupEl = document.createElement('div');
   groupEl.className = 'topic-group';
 
@@ -347,27 +488,46 @@ function buildGroupElement(groupName, units) {
 
   const grid = document.createElement('div');
   grid.className = 'unit-grid';
-  units.forEach(({ key, data }) => grid.appendChild(buildUnitCard(key, data)));
+  units.forEach(({ key, data }) => grid.appendChild(buildUnitCard(key, data, progress)));
   groupEl.appendChild(grid);
 
   return groupEl;
 }
 
-function buildUnitCard(key, data) {
+function buildUnitCard(key, data, progress) {
   const card = document.createElement('div');
   card.className = 'unit-card';
+
+  const best = progress && progress[key];
+  const countLabel = best
+    ? `Best: ${best.bestScore}/${best.bestTotal}`
+    : `${data.exercises.length} drills`;
+
+  const rulesBtn = data.rules
+    ? `<button class="unit-rules-btn" data-rules-key="${key}">Rules</button>`
+    : '';
+
   card.innerHTML = `
     <div class="unit-name">${data.title}</div>
-    <span class="unit-count">${data.exercises.length} drills</span>
+    <div class="unit-actions">
+      ${rulesBtn}
+      <span class="unit-count">${countLabel}</span>
+    </div>
   `;
   card.onclick = () => startUnit(key);
+
+  const rulesBtnEl = card.querySelector('.unit-rules-btn');
+  if (rulesBtnEl) {
+    rulesBtnEl.onclick = (e) => { e.stopPropagation(); showRules(key); };
+  }
+
   return card;
 }
 
 // ── Start a Unit ──
 function startUnit(key) {
   currentUnitKey = key;
-  exercises = shuffle([...EXERCISE_DB[key].exercises]);
+  exercises = shuffle(unitExercisesWithIds(key));
   currentIdx = 0;
   score = 0;
   wrong = [];
@@ -375,8 +535,49 @@ function startUnit(key) {
   renderCurrentExercise();
 }
 
+function startMixedPractice() {
+  const pool = [];
+  for (const key of Object.keys(EXERCISE_DB)) pool.push(...unitExercisesWithIds(key));
+  exercises = shuffle(pool).slice(0, Math.min(MIX_SIZE, pool.length));
+  currentUnitKey = MIX_KEY;
+  currentIdx = 0;
+  score = 0;
+  wrong = [];
+  show('exercise-screen');
+  renderCurrentExercise();
+}
+
+function startReviewMistakes() {
+  const missed = loadMissed();
+  exercises = shuffle(Object.keys(missed).map(id => {
+    const [unitKey, idxStr] = id.split(':');
+    const src = EXERCISE_DB[unitKey] && EXERCISE_DB[unitKey].exercises[Number(idxStr)];
+    return src ? tagWithId(src, unitKey, Number(idxStr)) : null;
+  }).filter(Boolean));
+  if (!exercises.length) return;
+  currentUnitKey = REVIEW_KEY;
+  currentIdx = 0;
+  score = 0;
+  wrong = [];
+  show('exercise-screen');
+  renderCurrentExercise();
+}
+
+function currentSessionTitle() {
+  if (currentUnitKey === REVIEW_KEY) return 'Review Mistakes';
+  if (currentUnitKey === MIX_KEY) return 'Mixed Practice';
+  return EXERCISE_DB[currentUnitKey] ? EXERCISE_DB[currentUnitKey].title : '';
+}
+
 function retryUnit() {
+  if (currentUnitKey === REVIEW_KEY) return startReviewMistakes();
+  if (currentUnitKey === MIX_KEY) return startMixedPractice();
   startUnit(currentUnitKey);
+}
+
+function goToTopics() {
+  buildTopicList();
+  show('select-screen');
 }
 
 // ── Exercise Rendering Dispatcher ──
@@ -415,6 +616,7 @@ function setExerciseTypeBadge(type) {
 function formatSentenceHTML(sentence) {
   return sentence
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.*?)\*/g, '<em>$1</em>')
     .replace(/\n/g, '<br>');
 }
 
@@ -455,12 +657,13 @@ function handleMCPick(clickedBtn, isCorrect, correctText, hint, list, ex) {
   if (isCorrect) {
     clickedBtn.classList.add('correct');
     score++;
+    recordCorrect(ex);
   } else {
     clickedBtn.classList.add('wrong');
     list.querySelectorAll('.opt').forEach(b => {
       if (b.textContent === correctText) b.classList.add('reveal');
     });
-    recordWrong(ex.sentence || ex.instruction, correctText);
+    recordWrong(ex, ex.sentence || ex.instruction, correctText);
   }
 
   showHint(hint);
@@ -521,10 +724,11 @@ function handleGapCheck(ex) {
     feedback.textContent = '✓ Correct!';
     feedback.className = 'feedback correct';
     score++;
+    recordCorrect(ex);
   } else {
     feedback.textContent = `✗ Answer: ${ex.answer}`;
     feedback.className = 'feedback wrong';
-    recordWrong(ex.sentence, ex.answer);
+    recordWrong(ex, ex.sentence, ex.answer);
   }
 
   showHint(ex.hint);
@@ -664,9 +868,10 @@ function handleDragCheck(ex) {
 
   if (allCorrect) {
     score++;
+    recordCorrect(ex);
   } else {
     const answer = blankKeys.map(k => ex.blanks[k]).join(' / ');
-    recordWrong(ex.sentence, answer);
+    recordWrong(ex, ex.sentence, answer);
   }
 
   showHint(ex.hint);
@@ -755,9 +960,10 @@ function handleErrorCheck(ex, userSaidNoError) {
   const correctionText = formatCorrectionText(ex.correction, ex.errorIndex);
   if (isCorrect) {
     score++;
+    recordCorrect(ex);
   } else {
     const wrongAnswer = hasNoError ? 'No error — sentence is correct' : correctionText;
-    recordWrong(ex.sentence, wrongAnswer);
+    recordWrong(ex, ex.sentence, wrongAnswer);
   }
 
   if (!hasNoError && correctionText) {
@@ -829,12 +1035,13 @@ function showTempFeedback(msg, isGood) {
   hintArea.appendChild(el);
 }
 
-function recordWrong(question, answer) {
+function recordWrong(ex, question, answer) {
   wrong.push({ q: String(question || ''), a: String(answer || '') });
+  if (ex) addToMissedPool(ex._id, question, answer);
 }
 
 function quitExercise() {
-  show('select-screen');
+  goToTopics();
 }
 
 // ── Results ──
@@ -843,9 +1050,13 @@ function showResult() {
   const total = exercises.length;
   const pct = Math.round((score / total) * 100);
 
+  if (EXERCISE_DB[currentUnitKey]) {
+    recordUnitCompletion(currentUnitKey, score, total);
+  }
+
   document.getElementById('result-pct').textContent = pct + '%';
   document.getElementById('result-title').textContent = resultTitle(pct);
-  document.getElementById('result-sub').textContent = `${score} / ${total} correct · ${EXERCISE_DB[currentUnitKey].title}`;
+  document.getElementById('result-sub').textContent = `${score} / ${total} correct · ${currentSessionTitle()}`;
 
   renderWrongList();
 }
@@ -875,6 +1086,62 @@ function renderWrongList() {
   `;
 }
 
+// ── Rules Screen ──
+function showRules(key) {
+  const data = EXERCISE_DB[key];
+  if (!data || !data.rules) return;
+
+  document.getElementById('rules-title').textContent = data.title;
+  document.getElementById('rules-body').innerHTML = renderRulesHTML(data.rules);
+
+  const startBtn = document.getElementById('rules-start-btn');
+  startBtn.onclick = () => startUnit(key);
+
+  show('rules-screen');
+}
+
+function renderRulesHTML(rules) {
+  let html = '';
+
+  if (rules.summary) {
+    html += `<div class="rules-summary">${formatSentenceHTML(rules.summary)}</div>`;
+  }
+
+  if (rules.points && rules.points.length) {
+    html += rules.points.map(p => `
+      <div class="rule-point">
+        <div class="rule-point-heading">${p.heading}</div>
+        <div class="rule-point-body">${formatSentenceHTML(p.body)}</div>
+      </div>
+    `).join('');
+  }
+
+  if (rules.examples && rules.examples.length) {
+    html += `
+      <div class="section-label">Examples</div>
+      <div class="rule-examples">
+        ${rules.examples.map(ex => `
+          <div class="rule-example">
+            <div>${formatSentenceHTML(ex.en)}</div>
+            ${ex.note ? `<div class="rule-example-note">${ex.note}</div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  if (rules.exceptions && rules.exceptions.length) {
+    html += `
+      <div class="section-label">Exceptions & Traps</div>
+      <ul class="rule-exceptions">
+        ${rules.exceptions.map(e => `<li>${formatSentenceHTML(e)}</li>`).join('')}
+      </ul>
+    `;
+  }
+
+  return html;
+}
+
 // ── Pure Utilities ──
 function show(screenId) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -901,6 +1168,11 @@ function escapeHTML(str) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+
+// ── PWA ──
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
 }
 
 // ── Boot ──
